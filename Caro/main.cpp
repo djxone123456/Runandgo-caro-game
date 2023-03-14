@@ -1,4 +1,3 @@
-#include "Variables.h"
 #include "View.h"
 #include "Control.h"
 #include "Data.h"
@@ -14,10 +13,29 @@
 #include "CaroFrame.h" // This is the main header for Dev 5
 
 int main() {
-	CreateConsoleWindow(WIDTH, HEIGHT);
-	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
+	/*CreateConsoleWindow(WIDTH, HEIGHT);
+	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);*/
 	
 	//Do something here
+
+
+
+
+	CreateConsoleWindow(WIDTH, HEIGHT);
+	ImportSettings();
+	BackgroundMusic();
+	/*Store();
+	while (1)
+		HandleEvent(0, 0, HandleKeyForChoosingChar);*/
+	/*Setting();
+	while (1)
+		HandleEvent(0, 0, HandleKeyForSettings);*/
+	/*_CURRENT_MENU = 1;
+	NewGame();*/
+	/*while(1)
+		HandleEvent(D3_NewGame_Box_Left + 26, D3_NewGame_Box_Top + 7, HandleKeyForNewGame);
+	cin.get();*/
+	ControlMenu();
 
 	return 0;
 }

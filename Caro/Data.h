@@ -1,4 +1,4 @@
-#ifndef DATA_H
+﻿#ifndef DATA_H
 #define DATA_H
 
 #pragma once
@@ -15,11 +15,7 @@
 #include <stdio.h>
 
 //Namespace
-using std::cout;
-using std::cin;
-using std::string;
-using std::wcout;
-using std::wstring;
+using namespace std;
 
 //Game Data
 #define BOARD_SIZE 15
@@ -58,10 +54,6 @@ using std::wstring;
 #define T_SHAPE_LEFT char(185)
 #define CROSS char(206)
 
-//ASCII Code For Selected Part Of The Menu
-#define SELECTED_LEFT char(175)
-#define SELECTED_RIGHT char(174)
-
 // ASCII Code For Box
 #define Horizontal_Line char(219)
 #define Upper_Vertical char(223)
@@ -82,12 +74,6 @@ using std::wstring;
 #define Right_Arrow char(16)
 #define Up_Arrow char(30)
 #define Down_Arrow char(31)
-
-//Setting Data
-#define SLeft 43
-#define STop 9
-#define SMax_i 82
-#define SMax_j 32
 
 // Info data
 #define ILeft 43
@@ -110,15 +96,205 @@ extern bool _KEYPRESSED;
 extern int _MENU;
 extern int _CURRENT_MENU;
 
-//Main Menu
-extern int DEFAULT_X;
-extern int  DEFAULT_Y;
+//ASCII ARTS
+const wstring D2_CAROCHESS_0 = L"  ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄		";
+const wstring D2_CAROCHESS_1 = L"▄▄█•••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••█▄▄	";
+const wstring D2_CAROCHESS_2 = L"█•••██████╗•█████╗•██████╗••██████╗••••••██████╗██╗••██╗███████╗███████╗███████╗••█	";
+const wstring D2_CAROCHESS_3 = L"█••██╔════╝██╔══██╗██╔══██╗██╔═══██╗••••██╔════╝██║••██║██╔════╝██╔════╝██╔════╝••█	";
+const wstring D2_CAROCHESS_4 = L"█••██║•••••███████║██████╔╝██║•••██║••••██║•••••███████║█████╗••███████╗███████╗••█	";
+const wstring D2_CAROCHESS_5 = L"█••██║•••••██╔══██║██╔══██╗██║•••██║••••██║•••••██╔══██║██╔══╝••╚════██║╚════██║••█	";
+const wstring D2_CAROCHESS_6 = L"█••╚██████╗██║••██║██║••██║╚██████╔╝••••╚██████╗██║••██║███████╗███████║███████║••█	";
+const wstring D2_CAROCHESS_7 = L"█•••╚═════╝╚═╝••╚═╝╚═╝••╚═╝•╚═════╝••••••╚═════╝╚═╝••╚═╝╚══════╝╚══════╝╚══════╝••█	";
+const wstring D2_CAROCHESS_8 = L"▀▀█•••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••█▀▀	";
+const wstring D2_CAROCHESS_9 = L"  ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀		";
 
-//Setting
-extern int music_mode;
-extern int sound_mode;
-const string mode[] = { "Off", "On" };
-extern int _SETTING;
-extern int _Y_Set;
+
+const wstring D2_HCMUS_1 = L" ▄ .▄ ▄▄· • ▌ ▄ ·. ▄• ▄▌.▄▄ ·	";
+const wstring D2_HCMUS_2 = L"██▪▐█▐█ ▌▪·██ ▐███▪█▪██▌▐█ ▀.	";
+const wstring D2_HCMUS_3 = L"██▀▀███ ▄▄▐█ ▌▐▌▐█·█▌▐█▌▄▀▀▀█▄	";
+const wstring D2_HCMUS_4 = L"██▌▐▀▐███▌██ ██▌▐█▌▐█▄█▌▐█▄▪▐█	";
+const wstring D2_HCMUS_5 = L"▀▀▀ ··▀▀▀ ▀▀  █▪▀▀▀ ▀▀▀  ▀▀▀▀	";
+
+//D2_CHARACTER = 0
+const wstring D2_COMPUTER_1 = L"▐▓█▀▀▀▀▀▀▀▀▀█▓▌░▄▄▄▄▄░";
+const wstring D2_COMPUTER_2 = L"▐▓█░░▀░░▀▄░░█▓▌░█▄▄▄█░";
+const wstring D2_COMPUTER_3 = L"▐▓█░░▄░░▄▀░░█▓▌░█▄▄▄█░";
+const wstring D2_COMPUTER_4 = L"▐▓█▄▄▄▄▄▄▄▄▄█▓▌░█████░";
+const wstring D2_COMPUTER_5 = L"░░░░▄▄███▄▄░░░░░█████░";
+
+//D2_CHARACTER = 1
+const wstring D2_BEAR_1 = L"───▄▀▀▀▄▄▄▄▄▄▄▀▀▀▄───";
+const wstring D2_BEAR_2 = L"───█▒▒░░░░░░░░░▒▒█───";
+const wstring D2_BEAR_3 = L"────█░░█░░░░░█░░█────";
+const wstring D2_BEAR_4 = L"─▄▄──█░░░▀█▀░░░█──▄▄─";
+const wstring D2_BEAR_5 = L"█░░█─▀▄░░░░░░░▄▀─█░░█";
+
+//D2_CHARACTER = 2
+const wstring D2_ROBOT_1 = L"▒▒▒▒▒▒▐███████▌		";
+const wstring D2_ROBOT_2 = L"▒▒▒▒▒▒▐░▀░▀░▀░▌		";
+const wstring D2_ROBOT_3 = L"▒▒▒▒▒▒▐▄▄▄▄▄▄▄▌		";
+const wstring D2_ROBOT_4 = L"▄▀▀▀█▒▐░▀▀▄▀▀░▌▒█▀▀▀▄	";
+const wstring D2_ROBOT_5 = L"▌▌▌▌▐▒▄▌░▄▄▄░▐▄▒▌▐▐▐▐	";
+
+//D2_CHARACTER = 3
+const wstring D2_CAT_1 = L"──────▄▀▄─────▄▀▄	  ";
+const wstring D2_CAT_2 = L"─────▄█░░▀▀▀▀▀░░█▄	  ";
+const wstring D2_CAT_3 = L"─▄▄──█░░░░░░░░░░░█──▄▄ ";
+const wstring D2_CAT_4 = L"█▄▄█─█░░▀░░┬░░▀░░█─█▄▄█";
+const wstring D2_CAT_5 = L"▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀";
+
+//D2_CHARACTER = 4
+const wstring D2_ALIEN_1 = L"▒▒▄▀▀▀▀▀▄▒▒▒▒▒▄▄▄▄▄▒▒▒";
+const wstring D2_ALIEN_2 = L"▒▐░▄░░░▄░▌▒▒▄█▄█▄█▄█▄▒";
+const wstring D2_ALIEN_3 = L"▒▐░▀▀░▀▀░▌▒▒▒▒▒░░░▒▒▒▒";
+const wstring D2_ALIEN_4 = L"▒▒▀▄░═░▄▀▒▒▒▒▒▒░░░▒▒▒▒";
+const wstring D2_ALIEN_5 = L"▒▒▐░▀▄▀░▌▒▒▒▒▒▒░░░▒▒▒▒";
+
+//D2_CHARACTER = 5
+const wstring D2_LION_1 = L"───▄▀▀▀▀▀───▄█▀▀▀█▄	";
+const wstring D2_LION_2 = L"──▐▄▄▄▄▄▄▄▄██▌▀▄▀▐██";
+const wstring D2_LION_3 = L"──▐▒▒▒▒▒▒▒▒███▌▀▐███";
+const wstring D2_LION_4 = L"───▌▒▓▒▒▒▒▓▒██▌▀▐██	";
+const wstring D2_LION_5 = L"───▌▓▐▀▀▀▀▌▓─▀▀▀▀▀	";
+
+//D2_CHARACTER = 6
+const wstring D2_CROCODILE_1 = L"░░░░░▄▄▄▄▄░▄░▄░▄░▄		";
+const wstring D2_CROCODILE_2 = L"▄▄▄▄██▄████▀█▀█▀█▀██▄	";
+const wstring D2_CROCODILE_3 = L"▀▄▀▄▀▄████▄█▄█▄█▄█████	";
+const wstring D2_CROCODILE_4 = L"▒▀▀▀▀▀▀▀▀██▀▀▀▀██▀▒▄██	";
+const wstring D2_CROCODILE_5 = L"▒▒▒▒▒▒▒▒▀▀▒▒▒▒▀▀▄▄██▀▒	";
+
+//D2_CHARACTER = 7
+const wstring D2_SNAKE_1 = L"▄▄▀█▄───▄───────▄		";
+const wstring D2_SNAKE_2 = L"▀▀▀██──███─────███		";
+const wstring D2_SNAKE_3 = L"░▄██▀░█████░░░█████░░	";
+const wstring D2_SNAKE_4 = L"███▀▄███░███░███░███░▄	";
+const wstring D2_SNAKE_5 = L"▀█████▀░░░▀███▀░░░▀██▀	";
+
+//D2_CHARACTER = 8
+const wstring D2_CRAB_1 = L"░░▄█▀▀▀░░░░░░░░▀▀▀█▄	";
+const wstring D2_CRAB_2 = L"▄███▄▄░░▀▄██▄▀░░▄▄███▄	";
+const wstring D2_CRAB_3 = L"▀██▄▄▄▄████████▄▄▄▄██▀	";
+const wstring D2_CRAB_4 = L"░░▄▄▄▄██████████▄▄▄▄	";
+const wstring D2_CRAB_5 = L"░▐▐▀▐▀░▀██████▀░▀▌▀▌▌	";
+
+//D2_CHARACTER = 9
+const wstring D2_TURTLE_1 = L"─▄▀▀▀▄────▄▀█▀▀█▄		";
+const wstring D2_TURTLE_2 = L"▄▀─▀─▀▄▄▀█▄▀─▄▀─▄▀▄	";
+const wstring D2_TURTLE_3 = L"█▄▀█───█─█▄▄▀─▄▀─▄▀▄	";
+const wstring D2_TURTLE_4 = L"──█▄▄▀▀█▄─▀▀▀▀▀▀▀─▄█	";
+const wstring D2_TURTLE_5 = L"─────▄████▀▀▀▀████─▀▄	";
+
+//D2_CHARACTER = 10
+const wstring D2_WHALE_1 = L"─────▀▄▀─────▄─────▄	";
+const wstring D2_WHALE_2 = L"──▄███████▄──▀██▄██▀	";
+const wstring D2_WHALE_3 = L"▄█████▀█████▄──▄█		";
+const wstring D2_WHALE_4 = L"███████▀████████▀		";
+const wstring D2_WHALE_5 = L"─▄▄▄▄▄▄███████▀		";
+
+
+const wstring D2_BYE_01 = L"────────────█───────────────█																			";
+const wstring D2_BYE_02 = L"────────────██─────────────██																			";
+const wstring D2_BYE_03 = L"─────────────███████████████																			";
+const wstring D2_BYE_04 = L"────────────█████████████████																			";
+const wstring D2_BYE_05 = L"───────────███████████████████																			";
+const wstring D2_BYE_06 = L"──────────████──█████████──████																			";
+const wstring D2_BYE_07 = L"─────────███████████████████████																		";
+const wstring D2_BYE_08 = L"────────█████████████████████████																		";
+const wstring D2_BYE_09 = L"────────█████████████████████████		        ████████████████████████████████████████████████████	";
+const wstring D2_BYE_10 = L"───███──▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒──███			█░░░░░░░░░░░░░░███░░░░░░░░██░░░░░░░░█░░░░░░░░░░░░░░█	";
+const wstring D2_BYE_11 = L"──█████─█████████████████████████─█████			█░░▄▀▄▀▄▀▄▀▄▀░░███░░▄▀▄▀░░██░░▄▀▄▀░░█░░▄▀▄▀▄▀▄▀▄▀░░█	";
+const wstring D2_BYE_12 = L"──█████─████████████████──███████─█████			█░░▄▀░░░░░░▄▀░░███░░░░▄▀░░██░░▄▀░░░░█░░▄▀░░░░░░░░░░█	";
+const wstring D2_BYE_13 = L"──█████─██████────────█──█────███─█████			█░░▄▀░░██░░▄▀░░█████░░▄▀▄▀░░▄▀▄▀░░███░░▄▀░░█████████	";
+const wstring D2_BYE_14 = L"──█████─█████─▓▓▓▓▓▓▓█──█▓▓─▓─███─█████			█░░▄▀░░░░░░▄▀░░░░███░░░░▄▀▄▀▄▀░░░░███░░▄▀░░░░░░░░░░█	";
+const wstring D2_BYE_15 = L"──█████─███─█─▓▓▓▓▓▓█──█▓▓─▓▓─███─█████			█░░▄▀▄▀▄▀▄▀▄▀▄▀░░█████░░░░▄▀░░░░█████░░▄▀▄▀▄▀▄▀▄▀░░█	";
+const wstring D2_BYE_16 = L"──█████─██──█─▓▓▓▓▓█──█▓▓─▓▓▓─███─█████			█░░▄▀░░░░░░░░▄▀░░███████░░▄▀░░███████░░▄▀░░░░░░░░░░█	";
+const wstring D2_BYE_17 = L"──█████─███─█─▓▓▓▓█──█▓▓─▓▓▓▓─███─█████			█░░▄▀░░████░░▄▀░░███████░░▄▀░░███████░░▄▀░░█████████	";
+const wstring D2_BYE_18 = L"──█████─█████────█──█─────────███─█████			█░░▄▀░░░░░░░░▄▀░░███████░░▄▀░░███████░░▄▀░░░░░░░░░░█	";
+const wstring D2_BYE_19 = L"──█████─█████████──██████████████─█████			█░░▄▀▄▀▄▀▄▀▄▀▄▀░░███████░░▄▀░░███████░░▄▀▄▀▄▀▄▀▄▀░░█	";
+const wstring D2_BYE_20 = L"───███──████████──███████████████──███			█░░░░░░░░░░░░░░░░███████░░░░░░███████░░░░░░░░░░░░░░█	";
+const wstring D2_BYE_21 = L"────────█████████████████████████		    	████████████████████████████████████████████████████	";
+const wstring D2_BYE_22 = L"─────────███████████████████████																		";
+const wstring D2_BYE_23 = L"──────────█████████████████████																			";
+const wstring D2_BYE_24 = L"─────────────██████───██████																			";
+const wstring D2_BYE_25 = L"─────────────██████───██████																			";
+const wstring D2_BYE_26 = L"─────────────██████───██████																			";
+const wstring D2_BYE_27 = L"─────────────██████───██████																			";
+const wstring D2_BYE_28 = L"──────────────████─────████																				";
+
+
+const wstring D2_NEWGAME_1 = L"███╗   ██╗███████╗██╗    ██╗     ██████╗  █████╗ ███╗   ███╗███████╗";
+const wstring D2_NEWGAME_2 = L"████╗  ██║██╔════╝██║    ██║    ██╔════╝ ██╔══██╗████╗ ████║██╔════╝";
+const wstring D2_NEWGAME_3 = L"██╔██╗ ██║█████╗  ██║ █╗ ██║    ██║  ███╗███████║██╔████╔██║█████╗  ";
+const wstring D2_NEWGAME_4 = L"██║╚██╗██║██╔══╝  ██║███╗██║    ██║   ██║██╔══██║██║╚██╔╝██║██╔══╝  ";
+const wstring D2_NEWGAME_5 = L"██║ ╚████║███████╗╚███╔███╔╝    ╚██████╔╝██║  ██║██║ ╚═╝ ██║███████╗";
+const wstring D2_NEWGAME_6 = L"╚═╝  ╚═══╝╚══════╝ ╚══╝╚══╝      ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝";
+
+
+const wstring D2_SAVEDGAMES_1 = L"███████╗ █████╗ ██╗   ██╗███████╗██████╗      ██████╗  █████╗ ███╗   ███╗███████╗███████╗";
+const wstring D2_SAVEDGAMES_2 = L"██╔════╝██╔══██╗██║   ██║██╔════╝██╔══██╗    ██╔════╝ ██╔══██╗████╗ ████║██╔════╝██╔════╝";
+const wstring D2_SAVEDGAMES_3 = L"███████╗███████║██║   ██║█████╗  ██║  ██║    ██║  ███╗███████║██╔████╔██║█████╗  ███████╗";
+const wstring D2_SAVEDGAMES_4 = L"╚════██║██╔══██║╚██╗ ██╔╝██╔══╝  ██║  ██║    ██║   ██║██╔══██║██║╚██╔╝██║██╔══╝  ╚════██║";
+const wstring D2_SAVEDGAMES_5 = L"███████║██║  ██║ ╚████╔╝ ███████╗██████╔╝    ╚██████╔╝██║  ██║██║ ╚═╝ ██║███████╗███████║";
+const wstring D2_SAVEDGAMES_6 = L"╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚══════╝╚═════╝      ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝╚══════╝";
+
+
+const wstring D2_PLAYER01_1 = L"██████╗ ██╗      █████╗ ██╗   ██╗███████╗██████╗      ██████╗  ██╗";
+const wstring D2_PLAYER01_2 = L"██╔══██╗██║     ██╔══██╗╚██╗ ██╔╝██╔════╝██╔══██╗    ██╔═████╗███║";
+const wstring D2_PLAYER01_3 = L"██████╔╝██║     ███████║ ╚████╔╝ █████╗  ██████╔╝    ██║██╔██║╚██║";
+const wstring D2_PLAYER01_4 = L"██╔═══╝ ██║     ██╔══██║  ╚██╔╝  ██╔══╝  ██╔══██╗    ████╔╝██║ ██║";
+const wstring D2_PLAYER01_5 = L"██║     ███████╗██║  ██║   ██║   ███████╗██║  ██║    ╚██████╔╝ ██║";
+const wstring D2_PLAYER01_6 = L"╚═╝     ╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝     ╚═════╝  ╚═╝";
+
+
+const wstring D2_PLAYER02_1 = L"██████╗ ██╗      █████╗ ██╗   ██╗███████╗██████╗      ██████╗ ██████╗	";
+const wstring D2_PLAYER02_2 = L"██╔══██╗██║     ██╔══██╗╚██╗ ██╔╝██╔════╝██╔══██╗    ██╔═████╗╚════██╗	";
+const wstring D2_PLAYER02_3 = L"██████╔╝██║     ███████║ ╚████╔╝ █████╗  ██████╔╝    ██║██╔██║ █████╔╝	";
+const wstring D2_PLAYER02_4 = L"██╔═══╝ ██║     ██╔══██║  ╚██╔╝  ██╔══╝  ██╔══██╗    ████╔╝██║██╔═══╝	";
+const wstring D2_PLAYER02_5 = L"██║     ███████╗██║  ██║   ██║   ███████╗██║  ██║    ╚██████╔╝███████╗	";
+const wstring D2_PLAYER02_6 = L"╚═╝     ╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝     ╚═════╝ ╚══════╝	";
+
+
+const wstring D2_SETTINGS_1 = L"███████╗███████╗████████╗████████╗██╗███╗   ██╗ ██████╗ ███████╗";
+const wstring D2_SETTINGS_2 = L"██╔════╝██╔════╝╚══██╔══╝╚══██╔══╝██║████╗  ██║██╔════╝ ██╔════╝";
+const wstring D2_SETTINGS_3 = L"███████╗█████╗     ██║      ██║   ██║██╔██╗ ██║██║  ███╗███████╗";
+const wstring D2_SETTINGS_4 = L"╚════██║██╔══╝     ██║      ██║   ██║██║╚██╗██║██║   ██║╚════██║";
+const wstring D2_SETTINGS_5 = L"███████║███████╗   ██║      ██║   ██║██║ ╚████║╚██████╔╝███████║";
+const wstring D2_SETTINGS_6 = L"╚══════╝╚══════╝   ╚═╝      ╚═╝   ╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚══════╝";
+
+
+const wstring D2_ABOUT_1 = L" █████╗ ██████╗  ██████╗ ██╗   ██╗████████╗";
+const wstring D2_ABOUT_2 = L"██╔══██╗██╔══██╗██╔═══██╗██║   ██║╚══██╔══╝";
+const wstring D2_ABOUT_3 = L"███████║██████╔╝██║   ██║██║   ██║   ██║   ";
+const wstring D2_ABOUT_4 = L"██╔══██║██╔══██╗██║   ██║██║   ██║   ██║   ";
+const wstring D2_ABOUT_5 = L"██║  ██║██████╔╝╚██████╔╝╚██████╔╝   ██║   ";
+const wstring D2_ABOUT_6 = L"╚═╝  ╚═╝╚═════╝  ╚═════╝  ╚═════╝    ╚═╝   ";
+
+
+const wstring D2_HELP_1 = L"██╗  ██╗███████╗██╗     ██████╗ ";
+const wstring D2_HELP_2 = L"██║  ██║██╔════╝██║     ██╔══██╗";
+const wstring D2_HELP_3 = L"███████║█████╗  ██║     ██████╔╝";
+const wstring D2_HELP_4 = L"██╔══██║██╔══╝  ██║     ██╔═══╝ ";
+const wstring D2_HELP_5 = L"██║  ██║███████╗███████╗██║     ";
+const wstring D2_HELP_6 = L"╚═╝  ╚═╝╚══════╝╚══════╝╚═╝     ";
+
+
+const wstring D2_WIN_1 = L"██╗    ██╗██╗███╗   ██╗";
+const wstring D2_WIN_2 = L"██║    ██║██║████╗  ██║";
+const wstring D2_WIN_3 = L"██║ █╗ ██║██║██╔██╗ ██║";
+const wstring D2_WIN_4 = L"██║███╗██║██║██║╚██╗██║";
+const wstring D2_WIN_5 = L"╚███═███═╝██╝██╝ ╚████╝";
+
+
+const wstring D2_LOSE_1 = L"██╗      ██████╗ ███████╗███████";
+const wstring D2_LOSE_2 = L"██║     ██╔═══██╗██╔════╝██╔═══╝";
+const wstring D2_LOSE_3 = L"██║     ██║   ██║███████╗█████╗	";
+const wstring D2_LOSE_4 = L"██╚════╗██║   ██║╚════██║██╔══╝	";
+const wstring D2_LOSE_5 = L"███████╝╚██████═╝███████╝███████";
+
+
+const wstring D2_TOPPLAYERS_1 = L"░▀█▀░▄▀▄▒█▀▄░░▒█▀▄░█▒░▒▄▀▄░▀▄▀▒██▀▒█▀▄░▄▀▀";
+const wstring D2_TOPPLAYERS_2 = L"░▒█▒░▀▄▀░█▀▒▒░░█▀▒▒█▄▄░█▀█░▒█▒░█▄▄░█▀▄▒▄██";
+
 
 #endif

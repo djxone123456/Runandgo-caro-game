@@ -2,5 +2,5 @@
 
 char* MainMenu()
 {
-
+	return nullptr;
 }

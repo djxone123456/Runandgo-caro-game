@@ -1,7 +1,6 @@
 #pragma once
-#ifndef CONTROL_H
-#define CONTROL_H
-#pragma once
+#ifndef HELP_H
+#define HELP_H
 
 
 

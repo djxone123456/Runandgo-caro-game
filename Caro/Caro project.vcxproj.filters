@@ -60,6 +60,9 @@
     <ClCompile Include="Ranking.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="D2_variables.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainMenu.h">
@@ -86,9 +89,6 @@
     <ClInclude Include="Error.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Variables.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="View.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -102,6 +102,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Ranking.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D2_data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

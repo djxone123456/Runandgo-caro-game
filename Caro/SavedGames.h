@@ -1,7 +1,6 @@
 #pragma once
-#ifndef CONTROL_H
-#define CONTROL_H
-#pragma once
+#ifndef SAVEDGAMES_H
+#define SAVEDGAMES_H
 
 
 
