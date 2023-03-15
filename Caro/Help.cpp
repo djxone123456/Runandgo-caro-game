@@ -257,3 +257,9 @@ void Help()
 	DrawKey();
 	DrawEnter();
 }
+
+void HandleKeyForHelp(int X, int Y, KEY_EVENT_RECORD key) {
+	if (key.bKeyDown && key.wVirtualKeyCode == VK_RETURN) {
+
+	}
+}
