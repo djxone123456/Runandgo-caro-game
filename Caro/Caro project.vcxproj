@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="About.cpp" />
     <ClCompile Include="Control.cpp" />
     <ClCompile Include="D2_variables.cpp" />
     <ClCompile Include="Data.cpp" />
@@ -145,6 +146,7 @@
     <ClCompile Include="View.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="About.h" />
     <ClInclude Include="CaroFrame.h" />
     <ClInclude Include="Control.h" />
     <ClInclude Include="D2_data.h" />

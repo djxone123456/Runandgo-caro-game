@@ -11,6 +11,7 @@
 #include "NewGame.h" // This is the main header for Dev 3
 #include "SavedGames.h"  // This is the main header for Dev 4
 #include "CaroFrame.h" // This is the main header for Dev 5
+#include "About.h"
 
 int main() {
 	/*CreateConsoleWindow(WIDTH, HEIGHT);
@@ -36,6 +37,8 @@ int main() {
 		HandleEvent(D3_NewGame_Box_Left + 26, D3_NewGame_Box_Top + 7, HandleKeyForNewGame);
 	cin.get();*/
 	ControlMenu();
-
+	/*About();
+	while (1)
+		HandleEvent(0, 0, HandleKeyForAbout);*/
 	return 0;
 }
