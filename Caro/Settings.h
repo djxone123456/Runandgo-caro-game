@@ -4,10 +4,10 @@
 #include "D2_data.h"
 
 //FUNCTIONS
-string Setting();
+int Setting();
 void HandleKeyForSettings(int x, int y, KEY_EVENT_RECORD key);
 void BackgroundMusic();
-string ImportSettings();
-string ExportSettings();
+int ImportSettings();
+int ExportSettings();
 
 #endif

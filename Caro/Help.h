@@ -2,7 +2,8 @@
 #ifndef HELP_H
 #define HELP_H
 
-#include "data.h"
+#include "Data.h"
+#include "View.h"
 
 // Help Data
 #define D3_Help_Box_Left 43
@@ -19,7 +20,7 @@
 void DrawArrow();
 void DrawKey();
 void DrawEnter();
-void Help();
+int Help();
 void HandleKeyForHelp(int X, int Y, KEY_EVENT_RECORD key);
 
 #endif

@@ -1,6 +1,6 @@
 ﻿#include "About.h"
 
-void About() {
+int About() {
 	ShowCur(0);
 	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
 	int _pos_x = D2_X_ABOUT + 20;
@@ -110,6 +110,8 @@ void About() {
 
 	GotoXY(D2_X_ABOUT + 24, D2_Y_ABOUT + 28);
 	cout << "Press Enter to return to Main Menu";
+
+	return 0;
 }
 
 void HandleKeyForAbout(int X, int Y, KEY_EVENT_RECORD key) {

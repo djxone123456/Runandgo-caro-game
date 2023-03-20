@@ -6,7 +6,7 @@
 
 //FUNCTIONS
 void HandleKeyForChoosingChar(int x, int y, KEY_EVENT_RECORD key);
-string Store();
+int Store();
 void PrintCharacter(int code, int _x, int _y);
 
 #endif

@@ -37,7 +37,7 @@ static void D2_ClearCharacter(int _x, int _y, int _range) {
 }
 
 //Type name and choose character
-string Store() {
+int Store() {
 	ShowCur(0);
 	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
 	if (D2_PLAYER == 1) {
@@ -144,7 +144,7 @@ string Store() {
 	GotoXY(D2_X_NEWGAME + 24, D2_Y_NEWGAME + 23);
 	printf("Press Enter to confirm your choice");
 
-	return "0xD2STSC";   //Store succeeded
+	return 0;   //Store succeeded
 }
 
 

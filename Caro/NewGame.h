@@ -31,7 +31,7 @@ extern int D3_GameMode;
 extern int D3_Time;
 extern int D3_Y2;
 
-string NewGame();
+int NewGame();
 void HandleKeyForNewGame(int D3_X, int D3_Y, KEY_EVENT_RECORD key);
 
 #endif

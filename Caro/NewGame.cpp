@@ -4,7 +4,7 @@ int D3_Y2 = D3_NewGame_Box_Top + 7;
 int D3_GameMode = 0;
 int D3_Time = 0;
 
-string NewGame()
+int NewGame()
 {
 	ShowCur(0);
 
@@ -129,7 +129,7 @@ string NewGame()
 	GotoXY(D3_NewGame_Box_Left + D3_NewGame_Box_Max_i - 17, D3_NewGame_Box_Max_j - 3);
 	cout << "Apply";
 
-	return "0x8jkbfa8";
+	return 0;
 }
 
 static void D3_EraseConsole(int x1, int x2, int y)

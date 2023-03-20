@@ -70,26 +70,6 @@ void HandleKeyForBoard(int x, int y, KEY_EVENT_RECORD key) {
 	}
 }
 
-//Handle key for the Help Menu
-void HandleKeyForHelp(int X, int Y, KEY_EVENT_RECORD key) {
-	if (key.bKeyDown && key.wVirtualKeyCode == VK_RETURN) {
-		_MENU = 1;
-		_CURRENT_MENU = 0;
-		system("cls");
-		//...
-	}
-}
-
-// Handle key for The Info Menu
-void HandleKeyForInfo(int X, int Y, KEY_EVENT_RECORD key) {
-	if (key.bKeyDown && key.wVirtualKeyCode == VK_RETURN) {
-		_MENU = 1;
-		_CURRENT_MENU = 0;
-		system("cls");
-		//...
-	}
-}
-
 //Handle event
 void HandleEvent(int x, int y, void(*func)(int, int, KEY_EVENT_RECORD)) {
 	DWORD DWNumberOfEvents = 0;

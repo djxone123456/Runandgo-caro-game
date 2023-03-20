@@ -36,9 +36,10 @@ int main() {
 	/*while(1)
 		HandleEvent(D3_NewGame_Box_Left + 26, D3_NewGame_Box_Top + 7, HandleKeyForNewGame);
 	cin.get();*/
-	ControlMenu();
+	//ControlMenu();
 	/*About();
 	while (1)
 		HandleEvent(0, 0, HandleKeyForAbout);*/
+	Help();
 	return 0;
 }
