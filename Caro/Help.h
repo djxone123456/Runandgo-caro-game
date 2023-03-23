@@ -4,6 +4,7 @@
 
 #include "Data.h"
 #include "View.h"
+#include "Error.h"
 
 // Help Data
 #define D3_Help_Box_Left 43

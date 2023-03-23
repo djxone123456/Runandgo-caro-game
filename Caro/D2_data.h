@@ -3,6 +3,7 @@
 #include "Data.h"
 #include "Control.h"
 #include "View.h"
+#include "Error.h"
 
 //ASCII CODE
 #define D2_UPPER_FRAME char(223)
