@@ -111,7 +111,7 @@ int About() {
 	GotoXY(D2_X_ABOUT + 24, D2_Y_ABOUT + 28);
 	cout << "Press Enter to return to Main Menu";
 
-	return 0;
+	return 0x0000;
 }
 
 void HandleKeyForAbout(int X, int Y, KEY_EVENT_RECORD key) {

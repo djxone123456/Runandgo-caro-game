@@ -173,7 +173,7 @@ int Setting() {
 	GotoXY(D2_X_SETTING + 24, D2_Y_SETTING + 17);
 	printf("Press Enter to apply your settings");
 
-	return 0; //Setting succeeded
+	return 0x0000; //Setting succeeded
 }
 
 void BackgroundMusic() {
@@ -185,16 +185,16 @@ void BackgroundMusic() {
 
 int ExportSettings() {
 	ofstream _setting_out("settings.json", ios::out);
-	if (!_setting_out) return 20; //Setting file not found
+	if (!_setting_out) return ErrorPopUp(0x0020); //Setting file not found
 	_setting_out << D2_BACKGROUND_MUSIC << "\n" << D2_INGAME_MUSIC;
 	_setting_out.close();
-	return 0; //Setting file is successfully opened
+	return 0x0000; //Setting file is successfully opened
 }
 
 int ImportSettings() {
 	ifstream _setting_in("settings.json", ios::in);
-	if (!_setting_in) return 20; //Setting file not found
+	if (!_setting_in) return ErrorPopUp(0x0020); //Setting file not found
 	_setting_in >> D2_BACKGROUND_MUSIC >> D2_INGAME_MUSIC;
 	_setting_in.close();
-	return 0; //Setting file is successfully opened
+	return 0x0000; //Setting file is successfully opened
 }

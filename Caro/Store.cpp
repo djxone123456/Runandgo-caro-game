@@ -144,7 +144,7 @@ int Store() {
 	GotoXY(D2_X_NEWGAME + 24, D2_Y_NEWGAME + 23);
 	printf("Press Enter to confirm your choice");
 
-	return 0;   //Store succeeded
+	return 0x0000;   //Store succeeded
 }
 
 

@@ -129,7 +129,7 @@ int NewGame()
 	GotoXY(D3_NewGame_Box_Left + D3_NewGame_Box_Max_i - 17, D3_NewGame_Box_Max_j - 3);
 	cout << "Apply";
 
-	return 0;
+	return 0x0000;
 }
 
 static void D3_EraseConsole(int x1, int x2, int y)

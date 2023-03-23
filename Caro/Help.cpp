@@ -259,7 +259,7 @@ int Help()
 	DrawKey();
 	DrawEnter();
 
-	return 0;
+	return 0x0000;
 }
 
 //Handle key for the Help Menu
