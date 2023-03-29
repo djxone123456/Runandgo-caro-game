@@ -1,5 +1,6 @@
 #include "NewGame.h"
 
+
 int D3_Y2 = D3_NewGame_Box_Top + 7;
 int D3_GameMode = 0;
 int D3_Time = 0;
@@ -153,6 +154,9 @@ void HandleKeyForNewGame(int D3_X, int D3_Y, KEY_EVENT_RECORD key)
 		case VK_ESCAPE:
 			if (D2_INGAME_MUSIC) PlaySound(TEXT("sounds//select.wav"), NULL, SND_FILENAME | SND_ASYNC);
 			D3_Y2 = D3_NewGame_Box_Top + 7;
+			_KEYPRESSED = 1;
+			_MENU = 0;
+			_CURRENT_MENU = 0;
 			break;
 		case VK_RETURN: //Enter
 			if (D2_INGAME_MUSIC) PlaySound(TEXT("sounds//select.wav"), NULL, SND_FILENAME | SND_ASYNC);

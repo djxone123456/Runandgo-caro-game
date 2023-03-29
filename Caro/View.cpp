@@ -141,3 +141,22 @@ void DrawBoard(int pSize) {
 	GotoXY(FIRST_CELL_X, FIRST_CELL_Y); //Move pointer to the first cell
 	ShowCur(1);
 }
+
+// Install font
+void setFontInfo()
+{
+	static HANDLE consoleOutput;
+	CONSOLE_FONT_INFOEX info;
+	info.cbSize = sizeof(info);
+	GetCurrentConsoleFontEx(consoleOutput, FALSE, &info);
+	info.dwFontSize.X = 12;
+	info.dwFontSize.Y = 24;
+	wcscpy_s(info.FaceName, L"Consolas");
+	SetCurrentConsoleFontEx(consoleOutput, FALSE, &info);
+}
+
+//Close Console
+void Exit() {
+	HWND hwnd = GetConsoleWindow();
+	SendMessage(hwnd, WM_CLOSE, 0, 0);
+}

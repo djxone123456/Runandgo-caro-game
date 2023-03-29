@@ -1,5 +1,16 @@
 #include "Help.h"
 
+//Handle key for the Help Menu
+void HandleKeyForHelp(int X, int Y, KEY_EVENT_RECORD key) {
+	if (key.bKeyDown && key.wVirtualKeyCode == VK_RETURN) {
+		if (D2_INGAME_MUSIC) PlaySound(TEXT("sounds//select.wav"), NULL, SND_FILENAME | SND_ASYNC);
+		_KEYPRESSED = 1;
+		_MENU = 0;
+		_CURRENT_MENU = 0;
+		//Move back to main menu
+	}
+}
+
 //Draw parts in Help
 void DrawArrow() {
 	int x = D3_Help_Box_Left + D3_Help_Max_i - D3_Help_Max_i / 4, y = D3_Help_Box_Top + 4;
@@ -260,14 +271,4 @@ int Help()
 	DrawEnter();
 
 	return 0x0000;
-}
-
-//Handle key for the Help Menu
-void HandleKeyForHelp(int X, int Y, KEY_EVENT_RECORD key) {
-	if (key.bKeyDown && key.wVirtualKeyCode == VK_RETURN) {
-		_MENU = 1;
-		_CURRENT_MENU = 0;
-		system("cls");
-		//...
-	}
 }

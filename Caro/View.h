@@ -12,5 +12,6 @@ void PrintTextColor(const wstring& s, const int& color);
 void PrintTextColor(const string& s, const int& color);
 void PrintTextColor_Char(const char& s, const int& color);
 void TextColor(int color);
+void setFontInfo();
+void Exit();
 #endif
-

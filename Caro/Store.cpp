@@ -305,6 +305,13 @@ static void ClearCharacterName(int _x, int _y, int range) {
 }
 
 static void D2_VK_RIGHT_CASE(int& _player_char) {
+	GotoXY(D2_X_NEWGAME + 34, D2_Y_NEWGAME + 12);
+	TextColor(8);
+	cout << D2_SELECT_RIGHT;
+	Sleep(150);
+	GotoXY(D2_X_NEWGAME + 34, D2_Y_NEWGAME + 12);
+	TextColor(0);
+	cout << D2_SELECT_RIGHT;
 	_player_char++;
 	if (_player_char == 11) _player_char = 1;
 	ClearCharacterName(D2_X_NEWGAME + 17, D2_Y_NEWGAME + 12, 16);
@@ -331,6 +338,13 @@ static void D2_VK_RIGHT_CASE(int& _player_char) {
 
 
 static void D2_VK_LEFT_CASE(int& _player_char) {
+	GotoXY(D2_X_NEWGAME + 16, D2_Y_NEWGAME + 12);
+	TextColor(8);
+	cout << D2_SELECT_LEFT;
+	Sleep(150);
+	GotoXY(D2_X_NEWGAME + 16, D2_Y_NEWGAME + 12);
+	TextColor(0);
+	cout << D2_SELECT_LEFT;
 	_player_char--;
 	if (_player_char == 0) _player_char = 10;
 	ClearCharacterName(D2_X_NEWGAME + 17, D2_Y_NEWGAME + 12, 16);
@@ -371,7 +385,7 @@ void HandleKeyForChoosingChar(int x, int y, KEY_EVENT_RECORD key) {
 					system("cls");
 					Store();
 				}
-				
+
 			}
 			else {
 				//start game

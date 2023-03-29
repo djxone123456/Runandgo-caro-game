@@ -8,8 +8,8 @@ void HandleKeyForSettings(int x, int y, KEY_EVENT_RECORD key) {
 			system("cls");
 			D2_WHICH_SETTING = 0;
 			ExportSettings();
-
-			_MENU = 1;
+			_KEYPRESSED = 1;
+			_MENU = 0;
 			_CURRENT_MENU = 0;
 			system("cls");
 			//Draw main menu
@@ -18,6 +18,13 @@ void HandleKeyForSettings(int x, int y, KEY_EVENT_RECORD key) {
 		case VK_LEFT: case 0x41: //Left arrow
 			if (D2_INGAME_MUSIC) PlaySound(TEXT("sounds//switch-selection.wav"), NULL, SND_FILENAME | SND_ASYNC);
 			if (D2_WHICH_SETTING == 0) {
+				GotoXY(D2_X_SETTING + 53, D2_Y_SETTING + 5);
+				TextColor(8);
+				cout << D2_SELECT_LEFT;
+				Sleep(150);
+				GotoXY(D2_X_SETTING + 53, D2_Y_SETTING + 5);
+				TextColor(0);
+				cout << D2_SELECT_LEFT;
 				D2_BACKGROUND_MUSIC--;
 				if (D2_BACKGROUND_MUSIC < 0) D2_BACKGROUND_MUSIC = 1;
 				GotoXY(D2_X_SETTING + 57, D2_Y_SETTING + 5);
@@ -25,6 +32,13 @@ void HandleKeyForSettings(int x, int y, KEY_EVENT_RECORD key) {
 				BackgroundMusic();
 			}
 			else {
+				GotoXY(D2_X_SETTING + 53, D2_Y_SETTING + 7);
+				TextColor(8);
+				cout << D2_SELECT_LEFT;
+				Sleep(150);
+				GotoXY(D2_X_SETTING + 53, D2_Y_SETTING + 7);
+				TextColor(0);
+				cout << D2_SELECT_LEFT;
 				D2_INGAME_MUSIC--;
 				if (D2_INGAME_MUSIC < 0) D2_INGAME_MUSIC = 1;
 				GotoXY(D2_X_SETTING + 57, D2_Y_SETTING + 7);
@@ -34,6 +48,13 @@ void HandleKeyForSettings(int x, int y, KEY_EVENT_RECORD key) {
 		case VK_RIGHT: case 0x44: //Right arrow
 			if (D2_INGAME_MUSIC) PlaySound(TEXT("sounds//switch-selection.wav"), NULL, SND_FILENAME | SND_ASYNC);
 			if (D2_WHICH_SETTING == 0) {
+				GotoXY(D2_X_SETTING + 62, D2_Y_SETTING + 5);
+				TextColor(8);
+				cout << D2_SELECT_RIGHT;
+				Sleep(150);
+				GotoXY(D2_X_SETTING + 62, D2_Y_SETTING + 5);
+				TextColor(0);
+				cout << D2_SELECT_RIGHT;
 				D2_BACKGROUND_MUSIC++;
 				if (D2_BACKGROUND_MUSIC > 1) D2_BACKGROUND_MUSIC = 0;
 				GotoXY(D2_X_SETTING + 57, D2_Y_SETTING + 5);
@@ -41,6 +62,13 @@ void HandleKeyForSettings(int x, int y, KEY_EVENT_RECORD key) {
 				BackgroundMusic();
 			}
 			else {
+				GotoXY(D2_X_SETTING + 62, D2_Y_SETTING + 7);
+				TextColor(8);
+				cout << D2_SELECT_RIGHT;
+				Sleep(150);
+				GotoXY(D2_X_SETTING + 62, D2_Y_SETTING + 7);
+				TextColor(0);
+				cout << D2_SELECT_RIGHT;
 				D2_INGAME_MUSIC++;
 				if (D2_INGAME_MUSIC > 1) D2_INGAME_MUSIC = 0;
 				GotoXY(D2_X_SETTING + 57, D2_Y_SETTING + 7);

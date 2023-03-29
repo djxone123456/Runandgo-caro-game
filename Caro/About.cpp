@@ -117,7 +117,8 @@ int About() {
 void HandleKeyForAbout(int X, int Y, KEY_EVENT_RECORD key) {
 	if (key.bKeyDown && key.wVirtualKeyCode == VK_RETURN) {
 		if (D2_INGAME_MUSIC) PlaySound(TEXT("sounds//select.wav"), NULL, SND_FILENAME | SND_ASYNC);
-		_MENU = 1;
+		_KEYPRESSED = 1;
+		_MENU = 0;
 		_CURRENT_MENU = 0;
 		system("cls");
 		//Draw main menu
