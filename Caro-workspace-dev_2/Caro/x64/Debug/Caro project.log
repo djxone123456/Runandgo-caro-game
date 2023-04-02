@@ -1,0 +1,5 @@
+﻿  SavedGames.cpp
+C:\Users\IT_Guy\OneDrive\Desktop\Caro-workspace-dev_2\Caro\SavedGames.cpp(14,44): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  main.cpp
+  Generating Code...
+  Caro project.vcxproj -> C:\Users\IT_Guy\OneDrive\Desktop\Caro-workspace-dev_2\Caro\x64\Debug\Caro project.exe
