@@ -5,6 +5,15 @@ int D3_Y2 = D3_NewGame_Box_Top + 7;
 int D3_GameMode = 0;
 int D3_Time = 0;
 
+void D3_EraseConsole(int x1, int x2, int y)
+{
+	for (int i = x1; i < x2; i++)
+	{
+		GotoXY(i, y);
+		cout << " ";
+	}
+}
+
 int NewGame()
 {
 	ShowCur(0);
@@ -131,15 +140,6 @@ int NewGame()
 	cout << "Apply";
 
 	return 0x0000;
-}
-
-static void D3_EraseConsole(int x1, int x2, int y)
-{
-	for (int i = x1; i < x2; i++)
-	{
-		GotoXY(i, y);
-		cout << " ";
-	}
 }
 
 void HandleKeyForNewGame(int D3_X, int D3_Y, KEY_EVENT_RECORD key)

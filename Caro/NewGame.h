@@ -33,6 +33,7 @@ extern int D3_Y2;
 
 int NewGame();
 void HandleKeyForNewGame(int D3_X, int D3_Y, KEY_EVENT_RECORD key);
+void D3_EraseConsole(int x1, int x2, int y1);
 
 #endif
 

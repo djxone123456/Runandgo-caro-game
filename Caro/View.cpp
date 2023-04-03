@@ -157,6 +157,66 @@ void setFontInfo()
 
 //Close Console
 void Exit() {
+	ShowCur(0);
+	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
+	GotoXY(87 - D3_BYE_01.size()/2 + 5, 10);
+	wcout << D3_BYE_01;
+	GotoXY(87 - D3_BYE_01.size() / 2 + 5, 11);
+	wcout << D3_BYE_02;
+	GotoXY(87 - D3_BYE_01.size() / 2 + 5, 12);
+	wcout << D3_BYE_03;
+	GotoXY(87 - D3_BYE_01.size() / 2 + 5, 13);
+	wcout << D3_BYE_04;
+	GotoXY(87 - D3_BYE_01.size() / 2 + 5, 14);
+	wcout << D3_BYE_05;
+	GotoXY(87 - D3_BYE_01.size() / 2 + 5, 15);
+	wcout << D3_BYE_06;
+	GotoXY(87 - D3_BYE_01.size() / 2 + 5, 16);
+	wcout << D3_BYE_07;
+	GotoXY(87 - D3_BYE_01.size() / 2 + 5, 17);
+	wcout << D3_BYE_08;
+	GotoXY(87 - D3_BYE_01.size() / 2 + 5, 18);
+	wcout << D3_BYE_09;
+	for (int i = 0, j = 173 - D2_RUNANDGO_TEXT_01.size(); i <= 83 - D2_RUNANDGO_LOGO_01.size() || (j >= 91); i += 3, j -= 3)
+	{
+			GotoXY(i, 25);
+			wcout << D2_RUNANDGO_LOGO_01;
+			GotoXY(i, 26);
+			wcout << D2_RUNANDGO_LOGO_02;
+			GotoXY(i, 27);
+			wcout << D2_RUNANDGO_LOGO_03;
+			GotoXY(i, 28);
+			wcout << D2_RUNANDGO_LOGO_04;
+			GotoXY(i, 29);
+			wcout << D2_RUNANDGO_LOGO_05;
+			GotoXY(i, 30);
+			wcout << D2_RUNANDGO_LOGO_06;
+			GotoXY(i, 31);
+			wcout << D2_RUNANDGO_LOGO_07;
+			GotoXY(i, 32);
+			wcout << D2_RUNANDGO_LOGO_08;
+			GotoXY(i, 33);
+			wcout << D2_RUNANDGO_LOGO_09;
+			GotoXY(i, 34);
+			wcout << D2_RUNANDGO_LOGO_10;
+
+			GotoXY(j, 27);
+			wcout << D2_RUNANDGO_TEXT_01;
+			GotoXY(j, 28);
+			wcout << D2_RUNANDGO_TEXT_02;
+			GotoXY(j, 29);
+			wcout << D2_RUNANDGO_TEXT_03;
+			GotoXY(j, 30);
+			wcout << D2_RUNANDGO_TEXT_04;
+			GotoXY(j, 31);
+			wcout << D2_RUNANDGO_TEXT_05;
+			GotoXY(j, 32);
+			wcout << D2_RUNANDGO_TEXT_06;
+	}
+
+	cin.get();
+	int CurrentMode = _setmode(_fileno(stdout), OldMode);
+
 	HWND hwnd = GetConsoleWindow();
 	SendMessage(hwnd, WM_CLOSE, 0, 0);
 }
