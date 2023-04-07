@@ -133,7 +133,7 @@ void ControlMenu() {
 			HandleEvent(80, 22, HandleKeyForMainMenu);
 			break;
 		case 1:
-			HandleEvent(D3_NewGame_Box_Left + 26, D3_NewGame_Box_Top + 7, HandleKeyForNewGame);
+			HandleEvent(D3_NewGame_Box_Left + 39, D3_NewGame_Box_Top + 9, HandleKeyForNewGame);
 			break;
 		case 2:
 			break;

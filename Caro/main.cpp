@@ -21,16 +21,16 @@ int main() {
 	
 
 	ImportSettings();
-	//BackgroundMusic();
-	//
-	//_KEYPRESSED = 1;
-	//_MENU = 0;
-	//_CURRENT_MENU = 0;
+	BackgroundMusic();
+	
+	_KEYPRESSED = 1;
+	_MENU = 0;
+	_CURRENT_MENU = 0;
 
-	//ControlMenu();
+	ControlMenu();
 
-	Exit();
-
+	/*NewGame();
+	cin.get();*/
 	return 0;
 }
 

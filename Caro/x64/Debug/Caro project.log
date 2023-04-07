@@ -1,12 +1,14 @@
-﻿  View.cpp
-C:\Users\ADMON\OneDrive - VNU-HCMUS\Documents\GitHub\Caro-workspace\Caro\View.cpp(162,40): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\ADMON\OneDrive - VNU-HCMUS\Documents\GitHub\Caro-workspace\Caro\View.cpp(164,42): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\ADMON\OneDrive - VNU-HCMUS\Documents\GitHub\Caro-workspace\Caro\View.cpp(166,42): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\ADMON\OneDrive - VNU-HCMUS\Documents\GitHub\Caro-workspace\Caro\View.cpp(168,42): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\ADMON\OneDrive - VNU-HCMUS\Documents\GitHub\Caro-workspace\Caro\View.cpp(170,42): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\ADMON\OneDrive - VNU-HCMUS\Documents\GitHub\Caro-workspace\Caro\View.cpp(172,42): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\ADMON\OneDrive - VNU-HCMUS\Documents\GitHub\Caro-workspace\Caro\View.cpp(174,42): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\ADMON\OneDrive - VNU-HCMUS\Documents\GitHub\Caro-workspace\Caro\View.cpp(176,42): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\ADMON\OneDrive - VNU-HCMUS\Documents\GitHub\Caro-workspace\Caro\View.cpp(178,42): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\ADMON\OneDrive - VNU-HCMUS\Documents\GitHub\Caro-workspace\Caro\View.cpp(180,2): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+﻿  NewGame.cpp
+C:\Users\ADMON\OneDrive - VNU-HCMUS\Documents\GitHub\Caro-workspace\Caro\NewGame.cpp(24,40): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ADMON\OneDrive - VNU-HCMUS\Documents\GitHub\Caro-workspace\Caro\NewGame.cpp(26,40): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ADMON\OneDrive - VNU-HCMUS\Documents\GitHub\Caro-workspace\Caro\NewGame.cpp(28,40): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ADMON\OneDrive - VNU-HCMUS\Documents\GitHub\Caro-workspace\Caro\NewGame.cpp(30,40): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ADMON\OneDrive - VNU-HCMUS\Documents\GitHub\Caro-workspace\Caro\NewGame.cpp(32,40): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ADMON\OneDrive - VNU-HCMUS\Documents\GitHub\Caro-workspace\Caro\NewGame.cpp(34,40): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ADMON\OneDrive - VNU-HCMUS\Documents\GitHub\Caro-workspace\Caro\NewGame.cpp(37,66): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ADMON\OneDrive - VNU-HCMUS\Documents\GitHub\Caro-workspace\Caro\NewGame.cpp(39,66): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ADMON\OneDrive - VNU-HCMUS\Documents\GitHub\Caro-workspace\Caro\NewGame.cpp(41,66): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ADMON\OneDrive - VNU-HCMUS\Documents\GitHub\Caro-workspace\Caro\NewGame.cpp(43,66): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ADMON\OneDrive - VNU-HCMUS\Documents\GitHub\Caro-workspace\Caro\NewGame.cpp(45,66): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ADMON\OneDrive - VNU-HCMUS\Documents\GitHub\Caro-workspace\Caro\NewGame.cpp(47,66): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
   Caro project.vcxproj -> C:\Users\ADMON\OneDrive - VNU-HCMUS\Documents\GitHub\Caro-workspace\Caro\x64\Debug\Caro project.exe
