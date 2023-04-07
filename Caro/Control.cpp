@@ -73,14 +73,14 @@ void HandleKeyForBoard(int x, int y, KEY_EVENT_RECORD key) {
 //Handle event
 void HandleEvent(int x, int y, void(*func)(int, int, KEY_EVENT_RECORD)) {
 	DWORD DWNumberOfEvents = 0;
-	DWORD DWNumberOfEventsRead = 0; 
-	HANDLE HConsoleInput = GetStdHandle(STD_INPUT_HANDLE); 
-	GetNumberOfConsoleInputEvents(HConsoleInput, &DWNumberOfEvents); 
+	DWORD DWNumberOfEventsRead = 0;
+	HANDLE HConsoleInput = GetStdHandle(STD_INPUT_HANDLE);
+	GetNumberOfConsoleInputEvents(HConsoleInput, &DWNumberOfEvents);
 	if (DWNumberOfEvents) {
 		INPUT_RECORD* IREventBuffer = new INPUT_RECORD[DWNumberOfEvents];
 		ReadConsoleInput(HConsoleInput, IREventBuffer, DWNumberOfEvents, &DWNumberOfEventsRead);
 		for (DWORD i = 0; i < DWNumberOfEvents; ++i) {
-			if (IREventBuffer[i].EventType == KEY_EVENT) 
+			if (IREventBuffer[i].EventType == KEY_EVENT)
 				func(x, y, IREventBuffer[i].Event.KeyEvent);
 		}
 	}
@@ -133,7 +133,11 @@ void ControlMenu() {
 			HandleEvent(80, 22, HandleKeyForMainMenu);
 			break;
 		case 1:
+<<<<<<< Updated upstream
 			HandleEvent(D3_NewGame_Box_Left + 39, D3_NewGame_Box_Top + 9, HandleKeyForNewGame);
+=======
+			HandleEvent(D3_NewGame_Box_Left + 41, D3_NewGame_Box_Top + 8, HandleKeyForNewGame);
+>>>>>>> Stashed changes
 			break;
 		case 2:
 			break;
