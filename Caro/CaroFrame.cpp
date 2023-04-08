@@ -779,8 +779,14 @@ void HandleKeyForSaveGame(int x, int y, KEY_EVENT_RECORD key)
 				_CURRENT_MENU = 9;
 			}
 			if (Choose == 0) {
-				SaveNameFile();
-				SaveInforFile(FileName);
+				if (isLoadFile) {
+					SaveInforFile(loadedFileName);
+					isLoadFile = 0;
+				}
+				else {
+					SaveNameFile();
+					SaveInforFile(FileName);
+				}
 				_KEYPRESSED = 1;
 				_MENU = 0;
 				_CURRENT_MENU = 0;
@@ -824,8 +830,14 @@ void HandleKeyForSaveGame_ESC(int x, int y, KEY_EVENT_RECORD key)
 				_CURRENT_MENU = 9;
 			}
 			if (Choose == 0) {
-				SaveNameFile();
-				SaveInforFile(FileName);
+				if (isLoadFile) {
+					SaveInforFile(loadedFileName);
+					isLoadFile = 0;
+				}
+				else {
+					SaveNameFile();
+					SaveInforFile(FileName);
+				}
 				_KEYPRESSED = 1;
 				_MENU = 0;
 				_CURRENT_MENU = 0;

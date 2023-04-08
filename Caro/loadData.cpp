@@ -13,3 +13,6 @@ string Name[10];
 int Numb_of_file;
 
 int Locate = 1;
+
+bool isLoadFile = 0;
+string loadedFileName = "";

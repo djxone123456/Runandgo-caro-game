@@ -22,4 +22,8 @@ extern string Name[10];
 // So file da luu
 extern int Numb_of_file;
 
+//Process to update saved files
+extern bool isLoadFile;
+extern string loadedFileName;
+
 #endif

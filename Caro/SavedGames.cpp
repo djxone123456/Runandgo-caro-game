@@ -368,6 +368,9 @@ void HandleKeyForLoad(int x, int y, KEY_EVENT_RECORD key)
 			StartGame();
 			Locate = 1;
 			_CURRENT_MENU = 9;
+			isLoadFile = 1;
+			loadedFileName = Name[Locate - 1];
+			for (int i = 0; i < 4; i++) loadedFileName.pop_back();
 			break;
 			//Then load data from struct Load to play board
 		case VK_DOWN: case 0x53:
