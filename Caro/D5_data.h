@@ -1,4 +1,6 @@
 #pragma once
+#ifndef D5_DATA_H
+#define D5_DATA_H
 
 //Color
 #define BLACK 0
@@ -29,3 +31,5 @@
 #define LTop 25
 #define LMax_i 82
 #define LMax_j 38
+
+#endif

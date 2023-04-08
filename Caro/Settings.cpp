@@ -132,7 +132,7 @@ int Setting() {
 	ShowCur(0);
 	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
 	int _pos_x = D2_X_SETTING + 9;
-	for (size_t i = 0; i < D2_SETTINGS_1.size() - 1 - i; i += 2) {
+	for (int i = 0; i < D2_SETTINGS_1.size() - 1 - i; i += 2) {
 		GotoXY(_pos_x + i, D2_Y_SETTING - 10);
 		wcout << D2_SETTINGS_1[i] << D2_SETTINGS_1[i + 1];
 		GotoXY(_pos_x + i, D2_Y_SETTING - 9);
@@ -146,24 +146,24 @@ int Setting() {
 		GotoXY(_pos_x + i, D2_Y_SETTING - 5);
 		wcout << D2_SETTINGS_6[i] << D2_SETTINGS_6[i + 1];
 
-		GotoXY(_pos_x + D2_SETTINGS_1.size() - i - 2, D2_Y_SETTING - 10);
+		GotoXY(_pos_x + int(D2_SETTINGS_1.size()) - i - 2, D2_Y_SETTING - 10);
 		wcout << D2_SETTINGS_1[D2_SETTINGS_1.size() - 2 - i] << D2_SETTINGS_1[D2_SETTINGS_1.size() - 1 - i];
-		GotoXY(_pos_x + D2_SETTINGS_1.size() - i - 2, D2_Y_SETTING - 9);
+		GotoXY(_pos_x + int(D2_SETTINGS_1.size()) - i - 2, D2_Y_SETTING - 9);
 		wcout << D2_SETTINGS_2[D2_SETTINGS_1.size() - 2 - i] << D2_SETTINGS_2[D2_SETTINGS_1.size() - 1 - i];
-		GotoXY(_pos_x + D2_SETTINGS_1.size() - i - 2, D2_Y_SETTING - 8);
+		GotoXY(_pos_x + int(D2_SETTINGS_1.size()) - i - 2, D2_Y_SETTING - 8);
 		wcout << D2_SETTINGS_3[D2_SETTINGS_1.size() - 2 - i] << D2_SETTINGS_3[D2_SETTINGS_1.size() - 1 - i];
-		GotoXY(_pos_x + D2_SETTINGS_1.size() - i - 2, D2_Y_SETTING - 7);
+		GotoXY(_pos_x + int(D2_SETTINGS_1.size()) - i - 2, D2_Y_SETTING - 7);
 		wcout << D2_SETTINGS_4[D2_SETTINGS_1.size() - 2 - i] << D2_SETTINGS_4[D2_SETTINGS_1.size() - 1 - i];
-		GotoXY(_pos_x + D2_SETTINGS_1.size() - i - 2, D2_Y_SETTING - 6);
+		GotoXY(_pos_x + int(D2_SETTINGS_1.size()) - i - 2, D2_Y_SETTING - 6);
 		wcout << D2_SETTINGS_5[D2_SETTINGS_1.size() - 2 - i] << D2_SETTINGS_5[D2_SETTINGS_1.size() - 1 - i];
-		GotoXY(_pos_x + D2_SETTINGS_1.size() - i - 2, D2_Y_SETTING - 5);
+		GotoXY(_pos_x + int(D2_SETTINGS_1.size()) - i - 2, D2_Y_SETTING - 5);
 		wcout << D2_SETTINGS_6[D2_SETTINGS_1.size() - 2 - i] << D2_SETTINGS_6[D2_SETTINGS_1.size() - 1 - i];
 
 		Sleep(10);
 	}
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
 
-	for (size_t i = 0; i < 82; i += 2) {
+	for (int i = 0; i < 82; i += 2) {
 		GotoXY(D2_X_SETTING + i, D2_Y_SETTING);
 		cout << D2_LOWER_FRAME << D2_LOWER_FRAME;
 		GotoXY(D2_X_SETTING + 80 - i, D2_Y_SETTING + 19);
@@ -171,7 +171,7 @@ int Setting() {
 		Sleep(10);
 	}
 
-	for (size_t i = 1; i < 19; i += 2) {
+	for (int i = 1; i < 19; i += 2) {
 		GotoXY(D2_X_SETTING + 81, D2_Y_SETTING + i);
 		cout << D2_VERTICAL_FRAME;
 		GotoXY(D2_X_SETTING + 81, D2_Y_SETTING + i + 1);

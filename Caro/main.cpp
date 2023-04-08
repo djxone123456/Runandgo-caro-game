@@ -1,7 +1,6 @@
 #include "View.h"
 #include "Control.h"
 #include "Data.h"
-#include "Model.h"
 
 #include "Error.h"
 #include "Help.h"
@@ -16,10 +15,6 @@
 
 int main() {
 	CreateConsoleWindow(WIDTH, HEIGHT);
-	
-	//Do something here
-	
-
 	ImportSettings();
 	BackgroundMusic();
 	

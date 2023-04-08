@@ -1,4 +1,6 @@
 #pragma once
+#ifndef LOADDATA_H
+#define LOADDATA_H
 
 #include "Data.h"
 #include "Control.h"
@@ -19,3 +21,5 @@ extern string Name[10];
 
 // So file da luu
 extern int Numb_of_file;
+
+#endif

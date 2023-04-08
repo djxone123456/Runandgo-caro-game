@@ -1,7 +1,7 @@
 #pragma once
 #ifndef SAVEDGAMES_H
 #define SAVEDGAMES_H
-#include "LoadData.h"
+#include "loadData.h"
 
 struct Load
 {
@@ -24,7 +24,7 @@ void DrawButton();
 void PrintFileName(string Name[]);
 void LoadGame(Load& File, string Name);
 void HandleKeyForLoad(int x, int y, KEY_EVENT_RECORD key);
-void PrintFirstFileInfo();
+//void PrintFirstFileInfo();
 void DeleteInfo();
 
 #endif

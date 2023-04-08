@@ -1,6 +1,7 @@
 #pragma once
 #ifndef ERROR_H
 #define ERROR_H
+
 #include "Control.h"
 #include "View.h"
 #include "Data.h"

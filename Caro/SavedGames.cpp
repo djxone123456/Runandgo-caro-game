@@ -11,7 +11,7 @@ void DrawSavedBoard()
 	wstring l5 = L"███████║██║  ██║ ╚████╔╝ ███████╗██████╔╝    ╚██████╔╝██║  ██║██║ ╚═╝ ██║███████╗  \n";
 	wstring l6 = L"╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚══════╝╚═════╝      ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝  \n";
 
-	int x = 45, y = 4, x_last = 45 + l1.size();
+	int x = 45, y = 4, x_last = 45 + int(l1.size());
 	for (int i = 0; i <= l1.size() - 1 - i; i++) {
 		GotoXY(++x, y);
 		wcout << l1[i];
@@ -204,10 +204,10 @@ void PrintFileInfo(int x, int y, string Name)
 		//GotoXY(Info_X, 16);
 		//cout << "Name: ";
 		getline(FileName, str);// Name Player 1
-		GotoXY(Info_X + 18 - str.size()/2.0f, 16);
+		GotoXY(Info_X + 18 - int(str.size()/2.0f), 16);
 		cout << str;
 		getline(FileName, str);// Name Player 2
-		GotoXY(Info_X + 39 - str.size() / 2.0f, 16);
+		GotoXY(Info_X + 39 - int(str.size() / 2.0f), 16);
 		cout << str;
 		/*GotoXY(Info_X, 20);
 		cout << "Point: ";*/

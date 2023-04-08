@@ -1,7 +1,6 @@
-﻿#ifndef DATA_H
+﻿#pragma once
+#ifndef DATA_H
 #define DATA_H
-
-#pragma once
 #pragma comment(lib, "winmm.lib")
 
 //Library

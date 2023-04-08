@@ -4,7 +4,7 @@ int About() {
 	ShowCur(0);
 	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
 	int _pos_x = D2_X_ABOUT + 20;
-	for (size_t i = 0; i < D2_ABOUT_1.size() - 1 - i; i += 2) {
+	for (int i = 0; i < D2_ABOUT_1.size() - 1 - i; i += 2) {
 		GotoXY(_pos_x + i, D2_Y_ABOUT - 7);
 		wcout << D2_ABOUT_1[i] << D2_ABOUT_1[i + 1];
 		GotoXY(_pos_x + i, D2_Y_ABOUT - 6);
@@ -18,17 +18,17 @@ int About() {
 		GotoXY(_pos_x + i, D2_Y_ABOUT - 2);
 		wcout << D2_ABOUT_6[i] << D2_ABOUT_6[i + 1];
 
-		GotoXY(_pos_x + D2_ABOUT_1.size() - i - 2, D2_Y_ABOUT - 7);
+		GotoXY(_pos_x + int(D2_ABOUT_1.size()) - i - 2, D2_Y_ABOUT - 7);
 		wcout << D2_ABOUT_1[D2_ABOUT_1.size() - 2 - i] << D2_ABOUT_1[D2_ABOUT_1.size() - 1 - i];
-		GotoXY(_pos_x + D2_ABOUT_1.size() - i - 2, D2_Y_ABOUT - 6);
-		wcout << D2_ABOUT_2[D2_ABOUT_1.size() - 2 - i] << D2_ABOUT_2[D2_ABOUT_1.size() - 1 - i];
-		GotoXY(_pos_x + D2_ABOUT_1.size() - i - 2, D2_Y_ABOUT - 5);
+		GotoXY(_pos_x + int(D2_ABOUT_1.size()) - i - 2, D2_Y_ABOUT - 6);
+		wcout << D2_ABOUT_2[int(D2_ABOUT_1.size()) - 2 - i] << D2_ABOUT_2[D2_ABOUT_1.size() - 1 - i];
+		GotoXY(_pos_x + int(D2_ABOUT_1.size()) - i - 2, D2_Y_ABOUT - 5);
 		wcout << D2_ABOUT_3[D2_ABOUT_1.size() - 2 - i] << D2_ABOUT_3[D2_ABOUT_1.size() - 1 - i];
-		GotoXY(_pos_x + D2_ABOUT_1.size() - i - 2, D2_Y_ABOUT - 4);
+		GotoXY(_pos_x + int(D2_ABOUT_1.size()) - i - 2, D2_Y_ABOUT - 4);
 		wcout << D2_ABOUT_4[D2_ABOUT_1.size() - 2 - i] << D2_ABOUT_4[D2_ABOUT_1.size() - 1 - i];
-		GotoXY(_pos_x + D2_ABOUT_1.size() - i - 2, D2_Y_ABOUT - 3);
+		GotoXY(_pos_x + int(D2_ABOUT_1.size()) - i - 2, D2_Y_ABOUT - 3);
 		wcout << D2_ABOUT_5[D2_ABOUT_1.size() - 2 - i] << D2_ABOUT_5[D2_ABOUT_1.size() - 1 - i];
-		GotoXY(_pos_x + D2_ABOUT_1.size() - i - 2, D2_Y_ABOUT - 2);
+		GotoXY(_pos_x + int(D2_ABOUT_1.size()) - i - 2, D2_Y_ABOUT - 2);
 		wcout << D2_ABOUT_6[D2_ABOUT_1.size() - 2 - i] << D2_ABOUT_6[D2_ABOUT_1.size() - 1 - i];
 
 		Sleep(10);
@@ -37,7 +37,7 @@ int About() {
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
 
 
-	for (size_t i = 0; i < 82; i += 2) {
+	for (int i = 0; i < 82; i += 2) {
 		GotoXY(D2_X_ABOUT + i, D2_Y_ABOUT);
 		cout << D2_LOWER_FRAME << D2_LOWER_FRAME;
 		GotoXY(D2_X_ABOUT + 80 - i, D2_Y_ABOUT + 31);
@@ -45,7 +45,7 @@ int About() {
 		Sleep(10);
 	}
 
-	for (size_t i = 1; i < 31; i += 2) {
+	for (int i = 1; i < 31; i += 2) {
 		GotoXY(D2_X_ABOUT + 81, D2_Y_ABOUT + i);
 		cout << D2_VERTICAL_FRAME;
 		GotoXY(D2_X_ABOUT + 81, D2_Y_ABOUT + i + 1);

@@ -17,7 +17,7 @@ int NewGame()
 
 	//Draw Logo "NEW GAME"
 	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
-	for (size_t i = 0; i < D2_NEWGAME_1.size() - 1 - i; i += 2) {
+	for (int i = 0; i < D2_NEWGAME_1.size() - 1 - i; i += 2) {
 		GotoXY(D3_NewGame_Box_Left + 8 + i, 4);
 		wcout << D2_NEWGAME_1[i] << D2_NEWGAME_1[i + 1];
 		GotoXY(D3_NewGame_Box_Left + 8 + i, 5);
@@ -31,17 +31,17 @@ int NewGame()
 		GotoXY(D3_NewGame_Box_Left + 8 + i, 9);
 		wcout << D2_NEWGAME_6[i] << D2_NEWGAME_6[i + 1];
 
-		GotoXY(D3_NewGame_Box_Left + 8 + D2_NEWGAME_1.size() - i - 2, 4);
+		GotoXY(D3_NewGame_Box_Left + 8 + int(D2_NEWGAME_1.size()) - i - 2, 4);
 		wcout << D2_NEWGAME_1[D2_NEWGAME_1.size() - 2 - i] << D2_NEWGAME_1[D2_NEWGAME_1.size() - 1 - i];
-		GotoXY(D3_NewGame_Box_Left + 8 + D2_NEWGAME_1.size() - i - 2, 5);
+		GotoXY(D3_NewGame_Box_Left + 8 + int(D2_NEWGAME_1.size()) - i - 2, 5);
 		wcout << D2_NEWGAME_2[D2_NEWGAME_1.size() - 2 - i] << D2_NEWGAME_2[D2_NEWGAME_1.size() - 1 - i];
-		GotoXY(D3_NewGame_Box_Left + 8 + D2_NEWGAME_1.size() - i - 2, 6);
+		GotoXY(D3_NewGame_Box_Left + 8 + int(D2_NEWGAME_1.size()) - i - 2, 6);
 		wcout << D2_NEWGAME_3[D2_NEWGAME_1.size() - 2 - i] << D2_NEWGAME_3[D2_NEWGAME_1.size() - 1 - i];
-		GotoXY(D3_NewGame_Box_Left + 8 + D2_NEWGAME_1.size() - i - 2, 7);
+		GotoXY(D3_NewGame_Box_Left + 8 + int(D2_NEWGAME_1.size()) - i - 2, 7);
 		wcout << D2_NEWGAME_4[D2_NEWGAME_1.size() - 2 - i] << D2_NEWGAME_4[D2_NEWGAME_1.size() - 1 - i];
-		GotoXY(D3_NewGame_Box_Left + 8 + D2_NEWGAME_1.size() - i - 2, 8);
+		GotoXY(D3_NewGame_Box_Left + 8 + int(D2_NEWGAME_1.size()) - i - 2, 8);
 		wcout << D2_NEWGAME_5[D2_NEWGAME_1.size() - 2 - i] << D2_NEWGAME_5[D2_NEWGAME_1.size() - 1 - i];
-		GotoXY(D3_NewGame_Box_Left + 8 + D2_NEWGAME_1.size() - i - 2, 9);
+		GotoXY(D3_NewGame_Box_Left + 8 + int(D2_NEWGAME_1.size()) - i - 2, 9);
 		wcout << D2_NEWGAME_6[D2_NEWGAME_1.size() - 2 - i] << D2_NEWGAME_6[D2_NEWGAME_1.size() - 1 - i];
 
 		Sleep(10);
@@ -152,7 +152,7 @@ void HandleKeyForNewGame(int D3_X, int D3_Y, KEY_EVENT_RECORD key)
 		{
 		case VK_ESCAPE:
 			if (D2_INGAME_MUSIC) PlaySound(TEXT("sounds//select.wav"), NULL, SND_FILENAME | SND_ASYNC);
-			D3_Y2 = D3_NewGame_Box_Top + 7;
+			D3_Y2 = D3_NewGame_Box_Top + 8;
 			_KEYPRESSED = 1;
 			_MENU = 0;
 			_CURRENT_MENU = 0;

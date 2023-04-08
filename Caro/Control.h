@@ -4,7 +4,6 @@
 
 #include "data.h"
 #include "view.h"
-#include "model.h"
 
 #include "Error.h"
 #include "Help.h"

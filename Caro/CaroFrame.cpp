@@ -243,7 +243,7 @@ void HandleKeyForBoard(int x, int y, KEY_EVENT_RECORD key) {
 //--------------------------------------------------------------------------------
 
 void BotRandom(char _MATRIX[BOARD_SIZE][BOARD_SIZE]) {
-	srand(time(NULL));
+	srand(unsigned int(time(NULL)));
 	while (1) {
 		int x = rand() % BOARD_SIZE + 0;
 		int y = rand() % BOARD_SIZE + 0;
@@ -268,7 +268,6 @@ void HandleKeyForBoardBot(int x, int y, KEY_EVENT_RECORD key) {
 		Count++;
 		Turn++;
 		BotRandom(_MATRIX);
-		if (D2_INGAME_MUSIC) PlaySound(TEXT("sounds//put-x-o.wav"), NULL, SND_FILENAME | SND_ASYNC);
 		GotoXY(_X, _Y);
 		if (Check_Win('o')) {
 			Turn = 0; Score2++;
@@ -589,9 +588,9 @@ void DrawAvatarBattle(int player1, int player2) {
 	PrintCharacter(player1, FLeft + 5, FTop + 3);
 	PrintCharacter(player2, FLeft + 58, FTop + 3);
 
-	GotoXY(FLeft + 16 - D2_PLAYER01_NAME.size() / 2.0f, FTop + 9);
+	GotoXY(FLeft + 16 - int(D2_PLAYER01_NAME.size() / 2.0f), FTop + 9);
 	cout << D2_PLAYER01_NAME;
-	GotoXY(FLeft + 69 - D2_PLAYER02_NAME.size() / 2.0f, FTop + 9);
+	GotoXY(FLeft + 69 - int(D2_PLAYER02_NAME.size() / 2.0f), FTop + 9);
 	cout << D2_PLAYER02_NAME;
 }
 
@@ -874,6 +873,7 @@ void SaveNameFile() {
 	cout << "=> ";
 	ShowCur(1);
 	getline(cin, FileName);
+	if (D2_INGAME_MUSIC) PlaySound(TEXT("sounds//select.wav"), NULL, SND_FILENAME | SND_ASYNC);
 	ofstream File;
 	File.open("SavedFiles\\fileLoad.json", ios::app);
 	File << FileName <<".txt" << "\n";

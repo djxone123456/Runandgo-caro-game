@@ -1,6 +1,7 @@
 #pragma once
 #ifndef MAINMENU_H
 #define MAINMENU_H
+
 #include "Control.h"
 #include "View.h"
 #include "Data.h"
@@ -20,7 +21,7 @@ static int CurrentPoint = 0;
 
 //FUNCTIONS HERE
 static void Logo();
-static int ItemList(bool);
+//static int ItemList(bool);
 static void MenuDefault();
 static void DrawCursor(int, int);
 static void EraseCursor(int, int);

@@ -14,6 +14,7 @@ static void D2_InputPlayerName(string& name) {
 			GotoXY(D2_X_NEWGAME + 4, D2_Y_NEWGAME + 2);
 			printf("Welcome ");
 			cout << name;
+			if (D2_INGAME_MUSIC) PlaySound(TEXT("sounds//select.wav"), NULL, SND_FILENAME | SND_ASYNC);
 			printf(", please choose your character!");
 			break;
 		}
@@ -42,7 +43,7 @@ int Store() {
 	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
 	if (D2_PLAYER == 1) {
 		int _pos_x = D2_X_NEWGAME + 8;
-		for (size_t i = 0; i < D2_PLAYER01_1.size() - 1 - i; i += 2) {
+		for (int i = 0; i < D2_PLAYER01_1.size() - 1 - i; i += 2) {
 			GotoXY(_pos_x + i, D2_Y_NEWGAME - 8);
 			wcout << D2_PLAYER01_1[i] << D2_PLAYER01_1[i + 1];
 			GotoXY(_pos_x + i, D2_Y_NEWGAME - 7);
@@ -56,17 +57,17 @@ int Store() {
 			GotoXY(_pos_x + i, D2_Y_NEWGAME - 3);
 			wcout << D2_PLAYER01_6[i] << D2_PLAYER01_6[i + 1];
 
-			GotoXY(_pos_x + D2_PLAYER01_1.size() - i - 2, D2_Y_NEWGAME - 8);
+			GotoXY(_pos_x + int(D2_PLAYER01_1.size()) - i - 2, D2_Y_NEWGAME - 8);
 			wcout << D2_PLAYER01_1[D2_PLAYER01_1.size() - 2 - i] << D2_PLAYER01_1[D2_PLAYER01_1.size() - 1 - i];
-			GotoXY(_pos_x + D2_PLAYER01_1.size() - i - 2, D2_Y_NEWGAME - 7);
+			GotoXY(_pos_x + int(D2_PLAYER01_1.size()) - i - 2, D2_Y_NEWGAME - 7);
 			wcout << D2_PLAYER01_2[D2_PLAYER01_1.size() - 2 - i] << D2_PLAYER01_2[D2_PLAYER01_1.size() - 1 - i];
-			GotoXY(_pos_x + D2_PLAYER01_1.size() - i - 2, D2_Y_NEWGAME - 6);
+			GotoXY(_pos_x + int(D2_PLAYER01_1.size()) - i - 2, D2_Y_NEWGAME - 6);
 			wcout << D2_PLAYER01_3[D2_PLAYER01_1.size() - 2 - i] << D2_PLAYER01_3[D2_PLAYER01_1.size() - 1 - i];
-			GotoXY(_pos_x + D2_PLAYER01_1.size() - i - 2, D2_Y_NEWGAME - 5);
+			GotoXY(_pos_x + int(D2_PLAYER01_1.size()) - i - 2, D2_Y_NEWGAME - 5);
 			wcout << D2_PLAYER01_4[D2_PLAYER01_1.size() - 2 - i] << D2_PLAYER01_4[D2_PLAYER01_1.size() - 1 - i];
-			GotoXY(_pos_x + D2_PLAYER01_1.size() - i - 2, D2_Y_NEWGAME - 4);
+			GotoXY(_pos_x + int(D2_PLAYER01_1.size()) - i - 2, D2_Y_NEWGAME - 4);
 			wcout << D2_PLAYER01_5[D2_PLAYER01_1.size() - 2 - i] << D2_PLAYER01_5[D2_PLAYER01_1.size() - 1 - i];
-			GotoXY(_pos_x + D2_PLAYER01_1.size() - i - 2, D2_Y_NEWGAME - 3);
+			GotoXY(_pos_x + int(D2_PLAYER01_1.size()) - i - 2, D2_Y_NEWGAME - 3);
 			wcout << D2_PLAYER01_6[D2_PLAYER01_1.size() - 2 - i] << D2_PLAYER01_6[D2_PLAYER01_1.size() - 1 - i];
 
 			Sleep(10);
@@ -74,7 +75,7 @@ int Store() {
 	}
 	else {
 		int _pos_x = D2_X_NEWGAME + 6;
-		for (size_t i = 0; i < D2_PLAYER02_1.size() - 1 - i; i += 2) {
+		for (int i = 0; i < D2_PLAYER02_1.size() - 1 - i; i += 2) {
 			GotoXY(_pos_x + i, D2_Y_NEWGAME - 8);
 			wcout << D2_PLAYER02_1[i] << D2_PLAYER02_1[i + 1];
 			GotoXY(_pos_x + i, D2_Y_NEWGAME - 7);
@@ -88,17 +89,17 @@ int Store() {
 			GotoXY(_pos_x + i, D2_Y_NEWGAME - 3);
 			wcout << D2_PLAYER02_6[i] << D2_PLAYER02_6[i + 1];
 
-			GotoXY(_pos_x + D2_PLAYER02_1.size() - i - 2, D2_Y_NEWGAME - 8);
+			GotoXY(_pos_x + int(D2_PLAYER02_1.size()) - i - 2, D2_Y_NEWGAME - 8);
 			wcout << D2_PLAYER02_1[D2_PLAYER02_1.size() - 2 - i] << D2_PLAYER02_1[D2_PLAYER02_1.size() - 1 - i];
-			GotoXY(_pos_x + D2_PLAYER02_1.size() - i - 2, D2_Y_NEWGAME - 7);
+			GotoXY(_pos_x + int(D2_PLAYER02_1.size()) - i - 2, D2_Y_NEWGAME - 7);
 			wcout << D2_PLAYER02_2[D2_PLAYER02_1.size() - 2 - i] << D2_PLAYER02_2[D2_PLAYER02_1.size() - 1 - i];
-			GotoXY(_pos_x + D2_PLAYER02_1.size() - i - 2, D2_Y_NEWGAME - 6);
+			GotoXY(_pos_x + int(D2_PLAYER02_1.size()) - i - 2, D2_Y_NEWGAME - 6);
 			wcout << D2_PLAYER02_3[D2_PLAYER02_1.size() - 2 - i] << D2_PLAYER02_3[D2_PLAYER02_1.size() - 1 - i];
-			GotoXY(_pos_x + D2_PLAYER02_1.size() - i - 2, D2_Y_NEWGAME - 5);
+			GotoXY(_pos_x + int(D2_PLAYER02_1.size()) - i - 2, D2_Y_NEWGAME - 5);
 			wcout << D2_PLAYER02_4[D2_PLAYER02_1.size() - 2 - i] << D2_PLAYER02_4[D2_PLAYER02_1.size() - 1 - i];
-			GotoXY(_pos_x + D2_PLAYER02_1.size() - i - 2, D2_Y_NEWGAME - 4);
+			GotoXY(_pos_x + int(D2_PLAYER02_1.size()) - i - 2, D2_Y_NEWGAME - 4);
 			wcout << D2_PLAYER02_5[D2_PLAYER02_1.size() - 2 - i] << D2_PLAYER02_5[D2_PLAYER02_1.size() - 1 - i];
-			GotoXY(_pos_x + D2_PLAYER02_1.size() - i - 2, D2_Y_NEWGAME - 3);
+			GotoXY(_pos_x + int(D2_PLAYER02_1.size()) - i - 2, D2_Y_NEWGAME - 3);
 			wcout << D2_PLAYER02_6[D2_PLAYER02_1.size() - 2 - i] << D2_PLAYER02_6[D2_PLAYER02_1.size() - 1 - i];
 
 			Sleep(10);
@@ -106,7 +107,7 @@ int Store() {
 	}
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
 
-	for (size_t i = 0; i < 82; i += 2) {
+	for (int i = 0; i < 82; i += 2) {
 		GotoXY(D2_X_NEWGAME + i, D2_Y_NEWGAME);
 		cout << D2_LOWER_FRAME << D2_LOWER_FRAME;
 		GotoXY(D2_X_NEWGAME + 80 - i, D2_Y_NEWGAME + 25);
@@ -114,7 +115,7 @@ int Store() {
 		Sleep(10);
 	}
 
-	for (size_t i = 1; i < 25; i += 2) {
+	for (int i = 1; i < 25; i += 2) {
 		GotoXY(D2_X_NEWGAME + 81, D2_Y_NEWGAME + i);
 		cout << D2_VERTICAL_FRAME;
 		GotoXY(D2_X_NEWGAME + 81, D2_Y_NEWGAME + i + 1);

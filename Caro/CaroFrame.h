@@ -1,7 +1,10 @@
 #pragma once
+#ifndef CAROFRAME_H
+#define CAROFRAME_H
+
 #include "data.h"
 #include "view.h"
-#include "model.h"
+
 void ClearMatrix();
 bool Check_Win(const char symbol);
 void HandleKeyForBoard(int x, int y, KEY_EVENT_RECORD key);
@@ -23,3 +26,5 @@ void SaveInforFile(string FileName);
 void SaveNameFile();
 void HandleKeyForSaveGame_ESC(int x, int y, KEY_EVENT_RECORD key);
 void PrintDataBoard();
+
+#endif

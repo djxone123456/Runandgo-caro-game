@@ -27,7 +27,6 @@
 
 const string D3_NewGame_Mode[] = { "Play with Robot", "Play with Human" };
 extern int D3_GameMode;
-extern int D3_Time;
 extern int D3_Y2;
 
 int NewGame();
