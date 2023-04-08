@@ -159,23 +159,24 @@ void setFontInfo()
 void Exit() {
 	ShowCur(0);
 	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
-	GotoXY(87 - D3_BYE_01.size()/2 + 5, 10);
+	int x = 87 - D3_BYE_01.size() / 2 + 5;
+	GotoXY(x, 10);
 	wcout << D3_BYE_01;
-	GotoXY(87 - D3_BYE_01.size() / 2 + 5, 11);
+	GotoXY(x, 11);
 	wcout << D3_BYE_02;
-	GotoXY(87 - D3_BYE_01.size() / 2 + 5, 12);
+	GotoXY(x, 12);
 	wcout << D3_BYE_03;
-	GotoXY(87 - D3_BYE_01.size() / 2 + 5, 13);
+	GotoXY(x, 13);
 	wcout << D3_BYE_04;
-	GotoXY(87 - D3_BYE_01.size() / 2 + 5, 14);
+	GotoXY(x, 14);
 	wcout << D3_BYE_05;
-	GotoXY(87 - D3_BYE_01.size() / 2 + 5, 15);
+	GotoXY(x, 15);
 	wcout << D3_BYE_06;
-	GotoXY(87 - D3_BYE_01.size() / 2 + 5, 16);
+	GotoXY(x, 16);
 	wcout << D3_BYE_07;
-	GotoXY(87 - D3_BYE_01.size() / 2 + 5, 17);
+	GotoXY(x, 17);
 	wcout << D3_BYE_08;
-	GotoXY(87 - D3_BYE_01.size() / 2 + 5, 18);
+	GotoXY(x, 18);
 	wcout << D3_BYE_09;
 	for (int i = 0, j = 173 - D2_RUNANDGO_TEXT_01.size(); i <= 83 - D2_RUNANDGO_LOGO_01.size() || (j >= 91); i += 3, j -= 3)
 	{
@@ -214,9 +215,9 @@ void Exit() {
 			wcout << D2_RUNANDGO_TEXT_06;
 	}
 
-	cin.get();
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
 
+	Sleep(700);
 	HWND hwnd = GetConsoleWindow();
 	SendMessage(hwnd, WM_CLOSE, 0, 0);
 }
