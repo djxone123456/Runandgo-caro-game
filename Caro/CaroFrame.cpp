@@ -4,11 +4,6 @@
 #include "D2_data.h"
 #include "Data.h"
 
-//--------------------------------------------------------------------------------
-//Matrix simulates the chess board
-char _MATRIX[18][18]{};
-
-
 void ClearMatrix() {
 	for (int i = 0; i < BOARD_SIZE; i++) {
 		for (int j = 0; j < BOARD_SIZE; j++) {
@@ -146,6 +141,7 @@ void HandleKeyForBoard(int x, int y, KEY_EVENT_RECORD key) {
 		switch (key.wVirtualKeyCode)
 		{
 		case VK_RETURN: //Enter
+			if (D2_INGAME_MUSIC) PlaySound(TEXT("Sounds//put-x-o.wav"), NULL, SND_FILENAME | SND_ASYNC);
 			//Check Turn
 			if (_MATRIX[_Y / 2 - int(FIRST_CELL_Y) / 2][_X / 4 - int(FIRST_CELL_X) / 4] == 'x' || _MATRIX[_Y / 2 - int(FIRST_CELL_Y) / 2][_X / 4 - int(FIRST_CELL_X) / 4] == 'o') {
 				return;
@@ -161,19 +157,11 @@ void HandleKeyForBoard(int x, int y, KEY_EVENT_RECORD key) {
 				cout << "X";
 				if (Check_Win('x')) {
 					Turn = 0; Score1++;
-					Finish = 1;
 					DrawScore(Score1, Score2);
 					DrawWin(-1);
+					Finish = 1;
 					DrawSaveAndContinue();
-					while (1) {
-						HandleEvent(4, 2, HandleKeyForSaveGame);
-						if (Temp == 100) break;
-					}
-					Temp = 0;
-					ClearMatrix();
-					ClearBoard(BOARD_SIZE);
-					DrawLogoHcmus();
-					DrawBoard(BOARD_SIZE);
+					_CURRENT_MENU = 8;
 
 				}
 			}
@@ -183,50 +171,28 @@ void HandleKeyForBoard(int x, int y, KEY_EVENT_RECORD key) {
 				cout << "O";
 				if (Check_Win('o')) {
 					Turn = 0; Score2++;
-					Finish = 1;
 					DrawScore(Score1, Score2);
 					DrawWin(1);
+					Finish = 1;
 					DrawSaveAndContinue();
-					while (1) {
-						HandleEvent(4, 2, HandleKeyForSaveGame);
-						if (Temp == 100) break;
-					}
-					Temp = 0;
-					ClearMatrix();
-					ClearBoard(BOARD_SIZE);
-					DrawLogoHcmus();
-					DrawBoard(BOARD_SIZE);
+					_CURRENT_MENU = 8;
 				}
 			}
 			if (Count == BOARD_SIZE * BOARD_SIZE) {
 				Turn = 0; Draw++;
 				Finish = 1;
+				DrawWin(0);
 				DrawSaveAndContinue();
-				while (1) {
-					HandleEvent(4, 2, HandleKeyForSaveGame);
-					if (Temp == 100) break;
-				}
-				Temp = 0;
-				ClearMatrix();
-				ClearBoard(BOARD_SIZE);
-				DrawLogoHcmus();
-				DrawBoard(BOARD_SIZE);
+				_CURRENT_MENU = 8;
 			}
 			break;
 		case VK_ESCAPE: //Esc
+			if (D2_INGAME_MUSIC) PlaySound(TEXT("sounds//select.wav"), NULL, SND_FILENAME | SND_ASYNC);
 			DrawSaveAndContinue();
-			while (1) {
-				HandleEvent(4, 2, HandleKeyForSaveGame);
-				if (Temp == 100) break;
-			}
-			Temp = 0;
-			DrawLogoHcmus();
-			//Back to Main Menu
-
+			_CURRENT_MENU = 10;
 			break;
 		case VK_LEFT: case 0x41: //Left arrow
-			/*if (sound_mode)
-				PlaySound(TEXT("Sounds//move-in-board.wav"), NULL, SND_FILENAME | SND_ASYNC);*/
+			if (D2_INGAME_MUSIC) PlaySound(TEXT("sounds//move-in-board.wav"), NULL, SND_FILENAME | SND_ASYNC);
 			if (_X == FIRST_CELL_X) {
 				_X += (BOARD_SIZE - 1) * x;
 				GotoXY(_X, _Y);
@@ -237,8 +203,7 @@ void HandleKeyForBoard(int x, int y, KEY_EVENT_RECORD key) {
 			}
 			break;
 		case VK_RIGHT: case 0x44: //Right arrow
-			/*if (sound_mode)
-				PlaySound(TEXT("Sounds//move-in-board.wav"), NULL, SND_FILENAME | SND_ASYNC);*/
+			if (D2_INGAME_MUSIC) PlaySound(TEXT("sounds//move-in-board.wav"), NULL, SND_FILENAME | SND_ASYNC);
 			if (_X == FIRST_CELL_X + (BOARD_SIZE - 1) * x) {
 				_X = FIRST_CELL_X;
 				GotoXY(_X, _Y);
@@ -249,8 +214,7 @@ void HandleKeyForBoard(int x, int y, KEY_EVENT_RECORD key) {
 			}
 			break;
 		case VK_DOWN: case 0x53: //Down arrow
-			/*if (sound_mode)
-				PlaySound(TEXT("Sounds//move-in-board.wav"), NULL, SND_FILENAME | SND_ASYNC);*/
+			if (D2_INGAME_MUSIC) PlaySound(TEXT("sounds//move-in-board.wav"), NULL, SND_FILENAME | SND_ASYNC);
 			if (_Y == FIRST_CELL_Y + (BOARD_SIZE - 1) * y) {
 				_Y = FIRST_CELL_Y;
 				GotoXY(_X, _Y);
@@ -261,8 +225,7 @@ void HandleKeyForBoard(int x, int y, KEY_EVENT_RECORD key) {
 			}
 			break;
 		case VK_UP: case 0x57: //Up arrow
-			/*if (sound_mode)
-				PlaySound(TEXT("Sounds//move-in-board.wav"), NULL, SND_FILENAME | SND_ASYNC);*/
+			if (D2_INGAME_MUSIC) PlaySound(TEXT("sounds//move-in-board.wav"), NULL, SND_FILENAME | SND_ASYNC);
 			if (_Y == FIRST_CELL_Y) {
 				_Y += (BOARD_SIZE - 1) * y;
 				GotoXY(_X, _Y);
@@ -302,22 +265,18 @@ void HandleKeyForBoardBot(int x, int y, KEY_EVENT_RECORD key) {
 
 	//Bot
 	if (Turn % 2 == 1) {
+		Count++;
 		Turn++;
 		BotRandom(_MATRIX);
+		if (D2_INGAME_MUSIC) PlaySound(TEXT("sounds//put-x-o.wav"), NULL, SND_FILENAME | SND_ASYNC);
+		GotoXY(_X, _Y);
 		if (Check_Win('o')) {
 			Turn = 0; Score2++;
 			DrawScore(Score1, Score2);
 			DrawWin(1);
+			Finish = 1;
 			DrawSaveAndContinue();
-			while (1) {
-				HandleEvent(4, 2, HandleKeyForSaveGame);
-				if (Temp == 100) break;
-			}
-			Temp = 0;
-			ClearMatrix();
-			ClearBoard(BOARD_SIZE);
-			DrawLogoHcmus();
-			DrawBoard(BOARD_SIZE);
+			_CURRENT_MENU = 8;
 		}
 	}
 
@@ -330,9 +289,7 @@ void HandleKeyForBoardBot(int x, int y, KEY_EVENT_RECORD key) {
 			if (_MATRIX[_Y / 2 - int(FIRST_CELL_Y) / 2][_X / 4 - int(FIRST_CELL_X) / 4] == 'x' || _MATRIX[_Y / 2 - int(FIRST_CELL_Y) / 2][_X / 4 - int(FIRST_CELL_X) / 4] == 'o') {
 				return;
 			}
-			//Source
-			/*if (sound_mode)
-				PlaySound(TEXT("Sounds//put-x-o.wav"), NULL, SND_FILENAME | SND_ASYNC);*/
+			if (D2_INGAME_MUSIC) PlaySound(TEXT("sounds//put-x-o.wav"), NULL, SND_FILENAME | SND_ASYNC);
 			Count++;
 			if (Turn % 2 == 0) {
 				Turn++;
@@ -342,37 +299,26 @@ void HandleKeyForBoardBot(int x, int y, KEY_EVENT_RECORD key) {
 					Turn = 0; Score1++;
 					DrawScore(Score1, Score2);
 					DrawWin(-1);
-					while (1) {
-						HandleEvent(4, 2, HandleKeyForSaveGame);
-						if (Temp == 100) break;
-					}
-					Temp = 0;
-					ClearMatrix();
-					ClearBoard(BOARD_SIZE);
-					DrawBoard(BOARD_SIZE);
+					Finish = 1;
+					DrawSaveAndContinue();
+					_CURRENT_MENU = 8;
 				}
 			}
 			if (Count == BOARD_SIZE * BOARD_SIZE) {
 				Turn = 0; Draw++;
 				Finish = 1;
+				DrawWin(0);
 				DrawSaveAndContinue();
-				while (1) {
-					HandleEvent(4, 2, HandleKeyForSaveGame);
-					if (Temp == 100) break;
-				}
-				Temp = 0;
-				ClearMatrix();
-				ClearBoard(BOARD_SIZE);
-				DrawLogoHcmus();
-				DrawBoard(BOARD_SIZE);
+				_CURRENT_MENU = 8;
 			}
 			break;
 		case VK_ESCAPE: //Esc
+			if (D2_INGAME_MUSIC) PlaySound(TEXT("Sounds//put-x-o.wav"), NULL, SND_FILENAME | SND_ASYNC);
 			DrawSaveAndContinue();
+			_CURRENT_MENU = 10;
 			break;
 		case VK_LEFT: case 0x41: //Left arrow
-		/*	if (sound_mode)
-				PlaySound(TEXT("Sounds//move-in-board.wav"), NULL, SND_FILENAME | SND_ASYNC);*/
+			if (D2_INGAME_MUSIC) PlaySound(TEXT("sounds//move-in-board.wav"), NULL, SND_FILENAME | SND_ASYNC);
 			if (_X == FIRST_CELL_X) {
 				_X += (BOARD_SIZE - 1) * x;
 				GotoXY(_X, _Y);
@@ -383,8 +329,7 @@ void HandleKeyForBoardBot(int x, int y, KEY_EVENT_RECORD key) {
 			}
 			break;
 		case VK_RIGHT: case 0x44: //Right arrow
-			/*if (sound_mode)
-				PlaySound(TEXT("Sounds//move-in-board.wav"), NULL, SND_FILENAME | SND_ASYNC);*/
+			if (D2_INGAME_MUSIC) PlaySound(TEXT("sounds//move-in-board.wav"), NULL, SND_FILENAME | SND_ASYNC);
 			if (_X == FIRST_CELL_X + (BOARD_SIZE - 1) * x) {
 				_X = FIRST_CELL_X;
 				GotoXY(_X, _Y);
@@ -395,8 +340,7 @@ void HandleKeyForBoardBot(int x, int y, KEY_EVENT_RECORD key) {
 			}
 			break;
 		case VK_DOWN: case 0x53: //Down arrow
-			/*if (sound_mode)
-				PlaySound(TEXT("Sounds//move-in-board.wav"), NULL, SND_FILENAME | SND_ASYNC);*/
+			if (D2_INGAME_MUSIC) PlaySound(TEXT("sounds//move-in-board.wav"), NULL, SND_FILENAME | SND_ASYNC);
 			if (_Y == FIRST_CELL_Y + (BOARD_SIZE - 1) * y) {
 				_Y = FIRST_CELL_Y;
 				GotoXY(_X, _Y);
@@ -407,8 +351,7 @@ void HandleKeyForBoardBot(int x, int y, KEY_EVENT_RECORD key) {
 			}
 			break;
 		case VK_UP: case 0x57: //Up arrow
-			/*if (sound_mode)
-				PlaySound(TEXT("Sounds//move-in-board.wav"), NULL, SND_FILENAME | SND_ASYNC);*/
+			if (D2_INGAME_MUSIC) PlaySound(TEXT("sounds//move-in-board.wav"), NULL, SND_FILENAME | SND_ASYNC);
 			if (_Y == FIRST_CELL_Y) {
 				_Y += (BOARD_SIZE - 1) * y;
 				GotoXY(_X, _Y);
@@ -475,7 +418,6 @@ void DrawBoard(int pSize) {
 				if (j % 4 == 0) cout << VERTICAL_LINE;
 				else cout << " ";
 			}
-
 		}
 	}
 	GotoXY(FIRST_CELL_X, FIRST_CELL_Y); //Move pointer to the first cell
@@ -575,11 +517,11 @@ void DrawLogoHcmus() {
 
 	for (int i = 0; i < 5; i++)
 	{
-		GotoXY(LLeft + 28, LTop + 2 + i);
+		GotoXY(LLeft + 28, LTop + 4 + i);
 		wcout << Logo[i];
 	}
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
-	GotoXY(LLeft + 32, LTop + 9);
+	GotoXY(LLeft + 32, LTop + 11);
 	cout << "Press ESC to Save Game";
 
 }
@@ -613,7 +555,7 @@ void DrawWin(int n) {
 	OWin[4] = L"╚██████╔╝    ╚███╔███╔╝██║██║ ╚████║";
 	OWin[5] = L" ╚═════╝      ╚══╝╚══╝ ╚═╝╚═╝  ╚═══╝";
 
-	PlaySound(TEXT("win.wav"), NULL, SND_FILENAME | SND_ASYNC);
+	if (D2_INGAME_MUSIC) PlaySound(TEXT("sounds//win.wav"), NULL, SND_FILENAME | SND_ASYNC);
 	int Color[3] = { RED, GREEN, BLUE };
 	for (int i = 0; i < 3; i++) {
 		for (int j = 0; j < 6; j++)
@@ -646,6 +588,11 @@ void DrawWin(int n) {
 void DrawAvatarBattle(int player1, int player2) {
 	PrintCharacter(player1, FLeft + 5, FTop + 3);
 	PrintCharacter(player2, FLeft + 58, FTop + 3);
+
+	GotoXY(FLeft + 16 - D2_PLAYER01_NAME.size() / 2.0f, FTop + 9);
+	cout << D2_PLAYER01_NAME;
+	GotoXY(FLeft + 69 - D2_PLAYER02_NAME.size() / 2.0f, FTop + 9);
+	cout << D2_PLAYER02_NAME;
 }
 
 
@@ -775,12 +722,12 @@ void DrawTurn(int n) {
 	if (n == 1) {
 		TextColor(12);
 		for (int i = 0; i < 6; i++) {
-			GotoXY(FLeft + 10, FTop + 13 + i);
+			GotoXY(FLeft + 12, FTop + 13 + i);
 			wcout << X[i];
 		}
 		TextColor(8);
 		for (int i = 0; i < 6; i++) {
-			GotoXY(FLeft + 67, FTop + 13 + i);
+			GotoXY(FLeft + 65, FTop + 13 + i);
 			wcout << O[i];
 		}
 		TextColor(0);
@@ -788,12 +735,12 @@ void DrawTurn(int n) {
 	else if (n == 0) {
 		TextColor(12);
 		for (int i = 0; i < 6; i++) {
-			GotoXY(FLeft + 67, FTop + 13 + i);
+			GotoXY(FLeft + 65, FTop + 13 + i);
 			wcout << O[i];
 		}
 		TextColor(8);
 		for (int i = 0; i < 6; i++) {
-			GotoXY(FLeft + 10, FTop + 13 + i);
+			GotoXY(FLeft + 12, FTop + 13 + i);
 			wcout << X[i];
 		}
 		TextColor(0);
@@ -814,28 +761,85 @@ void DrawSaveAndContinue() {
 	cout << "NO";
 }
 
+int Choose = 1;
 
 void HandleKeyForSaveGame(int x, int y, KEY_EVENT_RECORD key)
 {
 	ShowCur(0);
-	static int Choose;
 	if (key.bKeyDown) //Key pressed
 		switch (key.wVirtualKeyCode) {
 		case VK_RETURN: //Enter
-			PlaySound(TEXT("Sounds//select.wav"), NULL, SND_FILENAME | SND_ASYNC);
+			if (D2_INGAME_MUSIC) PlaySound(TEXT("Sounds//select.wav"), NULL, SND_FILENAME | SND_ASYNC);
 			if (Choose == 1) {
-				Temp = 100;
-				return;
+				ClearMatrix();
+				ClearBoard(BOARD_SIZE);
+				DrawLogoHcmus();
+				DrawBoard(BOARD_SIZE);
+				_X = FIRST_CELL_X;
+				_Y = FIRST_CELL_Y;
+				_CURRENT_MENU = 9;
 			}
 			if (Choose == 0) {
 				SaveNameFile();
 				SaveInforFile(FileName);
-				Temp = 100;
-				return;
+				_KEYPRESSED = 1;
+				_MENU = 0;
+				_CURRENT_MENU = 0;
+				_X = FIRST_CELL_X;
+				_Y = FIRST_CELL_Y;
+				Choose = 1;
+				Score1 = Score2 = Draw = 0;
+				ClearMatrix();
+				InitGame();
 			}
 			break;
 		case VK_LEFT: case 0x41: //Left arrow
-			PlaySound(TEXT("Sounds//select.wav"), NULL, SND_FILENAME | SND_ASYNC);
+			if (D2_INGAME_MUSIC) PlaySound(TEXT("Sounds//switch-selection.wav"), NULL, SND_FILENAME | SND_ASYNC);
+			GotoXY(LLeft + 63, LTop + 8);
+			cout << " ";
+			GotoXY(LLeft + 18, LTop + 8);
+			cout << D2_SELECT_RIGHT;
+			Choose = 1;
+			break;
+		case VK_RIGHT: case 0x44: //Right arrow
+			if (D2_INGAME_MUSIC) PlaySound(TEXT("Sounds//switch-selection.wav"), NULL, SND_FILENAME | SND_ASYNC);
+			GotoXY(LLeft + 18, LTop + 8);
+			cout << " ";
+			GotoXY(LLeft + 63, LTop + 8);
+			cout << D2_SELECT_RIGHT;
+			Choose = 0;
+			break;
+		}
+}
+
+void HandleKeyForSaveGame_ESC(int x, int y, KEY_EVENT_RECORD key)
+{
+	ShowCur(0);
+	if (key.bKeyDown) //Key pressed
+		switch (key.wVirtualKeyCode) {
+		case VK_RETURN: //Enter
+			if (D2_INGAME_MUSIC) PlaySound(TEXT("Sounds//select.wav"), NULL, SND_FILENAME | SND_ASYNC);
+			if (Choose == 1) {
+				DrawLogoHcmus();
+				GotoXY(_X, _Y);
+				_CURRENT_MENU = 9;
+			}
+			if (Choose == 0) {
+				SaveNameFile();
+				SaveInforFile(FileName);
+				_KEYPRESSED = 1;
+				_MENU = 0;
+				_CURRENT_MENU = 0;
+				_X = FIRST_CELL_X;
+				_Y = FIRST_CELL_Y;
+				Choose = 1;
+				Score1 = Score2 = Draw = 0;
+				ClearMatrix();
+				InitGame();
+			}
+			break;
+		case VK_LEFT: case 0x41: //Left arrow
+			if (D2_INGAME_MUSIC) PlaySound(TEXT("sounds//switch-selection.wav"), NULL, SND_FILENAME | SND_ASYNC);
 			//ShowCur(0);
 			GotoXY(LLeft + 63, LTop + 8);
 			cout << " ";
@@ -844,7 +848,7 @@ void HandleKeyForSaveGame(int x, int y, KEY_EVENT_RECORD key)
 			Choose = 1;
 			break;
 		case VK_RIGHT: case 0x44: //Right arrow
-			PlaySound(TEXT("Sounds//select.wav"), NULL, SND_FILENAME | SND_ASYNC);
+			if (D2_INGAME_MUSIC) PlaySound(TEXT("sounds//switch-selection.wav"), NULL, SND_FILENAME | SND_ASYNC);
 			//ShowCur(0);
 			GotoXY(LLeft + 18, LTop + 8);
 			cout << " ";
@@ -853,6 +857,10 @@ void HandleKeyForSaveGame(int x, int y, KEY_EVENT_RECORD key)
 			Choose = 0;
 			break;
 		case VK_ESCAPE: //Esc
+			if (D2_INGAME_MUSIC) PlaySound(TEXT("sounds//select.wav"), NULL, SND_FILENAME | SND_ASYNC);
+			DrawLogoHcmus();
+			GotoXY(_X, _Y);
+			_CURRENT_MENU = 9;
 			break;
 		}
 }
@@ -868,7 +876,7 @@ void SaveNameFile() {
 	getline(cin, FileName);
 	ofstream File;
 	File.open("SavedFiles\\fileLoad.json", ios::app);
-	File << "\n" << FileName;
+	File << FileName <<".txt" << "\n";
 	return;
 }
 
@@ -876,7 +884,8 @@ void SaveInforFile(string FileName) {
 	ofstream File;
 	File.open("SavedFiles\\" + FileName + ".txt", ios::out);
 	File << D2_PLAYER01_NAME << endl;
-	File << D2_PLAYER02_NAME << endl;
+	if (D3_GameMode == 0) File << "Mega Roboto" << endl;
+	else File << D2_PLAYER02_NAME << endl;
 	File << Score1 << endl;
 	File << Score2 << endl;
 	File << Draw << endl;
@@ -892,7 +901,23 @@ void SaveInforFile(string FileName) {
 	}
 }
 
-
+void PrintDataBoard() {
+	if (Finish == 1) {
+		ClearMatrix();
+		return;
+	}
+	else if (Finish == 0) {
+		for (int i = 0; i < BOARD_SIZE; i++) {
+			for (int j = 0; j < BOARD_SIZE; j++) {
+				if (_MATRIX[i][j] == '-') continue;
+				else {
+					GotoXY(4 * j + int(FIRST_CELL_X), 2 * i + int(FIRST_CELL_Y));
+					cout << char(_MATRIX[i][j] - 32);
+				}
+			}
+		}
+	}
+}
 
 
 

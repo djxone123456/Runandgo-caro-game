@@ -21,3 +21,5 @@ void DrawSaveAndContinue();
 void HandleKeyForSaveGame(int x, int y, KEY_EVENT_RECORD key);
 void SaveInforFile(string FileName);
 void SaveNameFile();
+void HandleKeyForSaveGame_ESC(int x, int y, KEY_EVENT_RECORD key);
+void PrintDataBoard();

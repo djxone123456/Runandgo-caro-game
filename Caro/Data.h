@@ -22,7 +22,7 @@ using namespace std;
 
 //Game Data
 #define BOARD_SIZE 18
-#define LEFT 5 
+#define LEFT 5
 #define TOP 2
 #define FIRST_CELL_X LEFT + 2
 #define FIRST_CELL_Y TOP + 1
@@ -295,18 +295,6 @@ const wstring D2_LOSE_5 = L"███████╝╚██████═╝�
 const wstring D1_TOPPLAYERS_1 = L"▀▀█▀▀  █▀▀█  █▀▀█    █▀▀█  █    █▀▀▄  █   █  █▀▀▀  █▀▀▄  █▀▀▀█";
 const wstring D1_TOPPLAYERS_2 = L"  █    █  █  █▄▄█    █▄▄█  █    █▄▄█  ▀▄▄▄▀  █▀▀▀  █▄▄▀  ▀▀▀▄▄";
 const wstring D1_TOPPLAYERS_3 = L"  █    █▄▄█  █       █     █▄▄█ █  █    █    █▄▄▄  █  █  █▄▄▄█";
-
-const wstring D1_DANCINGCATRIGHT_1 = L"  ∧＿∧　 ♪ ";
-const wstring D1_DANCINGCATRIGHT_2 = L"（´・ω・)∩   ";
-const wstring D1_DANCINGCATRIGHT_3 = L"o　　　 ﾉ    ";
-const wstring D1_DANCINGCATRIGHT_4 = L"Ｏ＿　.ﾉ     ";
-const wstring D1_DANCINGCATRIGHT_5 = L"   (ノ      ";
-
-const wstring D1_DANCINGCATLEFT_1 =  L" ∧＿∧　♪   ";
-const wstring D1_DANCINGCATLEFT_2 =  L"∩・ω・｀）   ";
-const wstring D1_DANCINGCATLEFT_3 =  L"|   ⊂ﾉ     ";
-const wstring D1_DANCINGCATLEFT_4 =  L"｜　 _⊃　　♪";
-const wstring D1_DANCINGCATLEFT_5 =  L"し ⌒       ";
 
 
 const wstring D1_MENULOGO_1  =  L" ▄▄   ▄▄ ▄▄▄▄▄▄▄ ";

@@ -48,3 +48,5 @@ extern int Temp;
 extern string FileName;
 extern int Finish;
 extern int Count;
+
+extern char _MATRIX[18][18];

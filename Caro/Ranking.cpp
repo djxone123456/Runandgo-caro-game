@@ -198,14 +198,13 @@ static int InitRankingFile(const wstring dir, const wstring SystemFileName, TopR
 	input.open(dir + SystemFileName);
 	if (input.fail()) return ErrorPopUp(0x0001);
 	
-	int nItem;
-	input >> nItem;
+	/*int nItem;
+	input >> nItem;*/
 	
 	string FileDir;
-	while (nItem--)
+	while (input >> FileDir)
 	{
 		ifstream FileInput;
-		input >> FileDir;
 
 		wstring wsTmp(FileDir.begin(), FileDir.end());
 		FileInput.open(dir + wsTmp);

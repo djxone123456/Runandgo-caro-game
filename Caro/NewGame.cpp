@@ -2,7 +2,6 @@
 
 int D3_Y2 = D3_NewGame_Box_Top + 8;
 int D3_GameMode = 0;
-int D3_Time = 0;
 
 void D3_EraseConsole(int x1, int x2, int y)
 {

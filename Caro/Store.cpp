@@ -378,10 +378,12 @@ void HandleKeyForChoosingChar(int x, int y, KEY_EVENT_RECORD key) {
 			system("cls");
 			if (D2_PLAYER == 1) {
 				if (D3_GameMode == 0) {
+					D2_PLAYER02_CHARACTER = 0;
 					StartGame();
 				}
 				else {
 					D2_PLAYER = 2;
+
 					system("cls");
 					Store();
 				}

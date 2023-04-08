@@ -26,7 +26,6 @@
 #define D3_Lower_Right_Corner_Button_Line char(188)
 
 const string D3_NewGame_Mode[] = { "Play with Robot", "Play with Human" };
-const int D3_NewGame_Time[] = { 15,30,60 };
 extern int D3_GameMode;
 extern int D3_Time;
 extern int D3_Y2;

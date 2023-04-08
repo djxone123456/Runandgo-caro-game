@@ -8,10 +8,8 @@ int Name_Y = 14;
 int Info_X = 72;
 int Info_Y = 14;
 
-string Name[15];
+string Name[10];
 
 int Numb_of_file;
 
 int Locate = 1;
-
-

@@ -15,7 +15,7 @@ extern int Info_Y;
 
 extern int Locate;
 //ten file can load
-extern string Name[15];
+extern string Name[10];
 
 // So file da luu
 extern int Numb_of_file;

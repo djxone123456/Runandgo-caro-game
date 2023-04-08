@@ -10,12 +10,13 @@ struct Load
 	int Point_1;
 	int Point_2;
 	int Draw;
-	string Character_1;
-	string Character_2;
+	int Character_1;
+	int Character_2;
 	int Result;// 0 - chua xong; 1 - xong r -> van moi
-	string Turn; // x - o
-	char Table[16 * 16];// bang
+	int Turn; // x - o
+	char Table[BOARD_SIZE * BOARD_SIZE];// bang
 };
+
 
 //function
 void DrawSavedBoard();
