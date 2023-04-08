@@ -12,9 +12,9 @@ void ClearMatrix() {
 	}
 }
 //Usage: Check if there are 5 continuous <symbol>. If true return 1 (win), else return 0 (not win)
-bool Check_Win(const char symbol) {
-	int cur_row = _Y / 2 - int(FIRST_CELL_Y) / 2;
-	int cur_col = _X / 4 - int(FIRST_CELL_X) / 4;
+bool Check_Win(const char symbol, const int x_pos, const int y_pos) {
+	int cur_row = y_pos / 2 - int(FIRST_CELL_Y) / 2;
+	int cur_col = x_pos / 4 - int(FIRST_CELL_X) / 4;
 
 	int vertical_01 = 0;
 	int vertical_02 = 0;
@@ -43,7 +43,7 @@ bool Check_Win(const char symbol) {
 		ShowCur(0);
 		for (int k = 0; k < 20; k++) {
 			for (int i = 0; i < (horizontal_01 + horizontal_02) + 1; i++) {
-				GotoXY(_X - horizontal_02 * 4 + 4 * i, _Y);
+				GotoXY(x_pos - horizontal_02 * 4 + 4 * i, y_pos);
 				if (k % 2 == 0) PrintTextColor_Char(toupper(symbol), 4);
 				else PrintTextColor_Char(toupper(symbol), 6);
 			}
@@ -68,7 +68,7 @@ bool Check_Win(const char symbol) {
 		ShowCur(0);
 		for (int k = 0; k < 20; k++) {
 			for (int i = 0; i < (vertical_01 + vertical_02) + 1; i++) {
-				GotoXY(_X, _Y - vertical_02 * 2 + 2 * i);
+				GotoXY(x_pos, y_pos - vertical_02 * 2 + 2 * i);
 				if (k % 2 == 0) PrintTextColor_Char(toupper(symbol), 4);
 				else PrintTextColor_Char(toupper(symbol), 6);
 			}
@@ -93,7 +93,7 @@ bool Check_Win(const char symbol) {
 		ShowCur(0);
 		for (int k = 0; k < 20; k++) {
 			for (int i = 0; i < (main_cross_01 + main_cross_02) + 1; i++) {
-				GotoXY(_X - main_cross_02 * 4 + 4 * i, _Y - main_cross_02 * 2 + 2 * i);
+				GotoXY(x_pos - main_cross_02 * 4 + 4 * i, y_pos - main_cross_02 * 2 + 2 * i);
 				if (k % 2 == 0) PrintTextColor_Char(toupper(symbol), 4);
 				else PrintTextColor_Char(toupper(symbol), 6);
 			}
@@ -117,7 +117,7 @@ bool Check_Win(const char symbol) {
 		ShowCur(0);
 		for (int k = 0; k < 20; k++) {
 			for (int i = 0; i < (sub_cross_01 + sub_cross_02) + 1; i++) {
-				GotoXY(_X - sub_cross_02 * 4 + 4 * i, _Y + sub_cross_02 * 2 - 2 * i);
+				GotoXY(x_pos - sub_cross_02 * 4 + 4 * i, y_pos + sub_cross_02 * 2 - 2 * i);
 				if (k % 2 == 0) PrintTextColor_Char(toupper(symbol), 4);
 				else PrintTextColor_Char(toupper(symbol), 6);
 			}
@@ -155,11 +155,12 @@ void HandleKeyForBoard(int x, int y, KEY_EVENT_RECORD key) {
 				_MATRIX[_Y / 2 - int(FIRST_CELL_Y) / 2][_X / 4 - int(FIRST_CELL_X) / 4] = 'x';
 
 				cout << "X";
-				if (Check_Win('x')) {
+				if (Check_Win('x', _X, _Y)) {
 					Turn = 0; Score1++;
 					DrawScore(Score1, Score2);
 					DrawWin(-1);
 					Finish = 1;
+					ShowCur(0);
 					DrawSaveAndContinue();
 					_CURRENT_MENU = 8;
 
@@ -169,11 +170,12 @@ void HandleKeyForBoard(int x, int y, KEY_EVENT_RECORD key) {
 				Turn++;
 				_MATRIX[_Y / 2 - int(FIRST_CELL_Y) / 2][_X / 4 - int(FIRST_CELL_X) / 4] = 'o';
 				cout << "O";
-				if (Check_Win('o')) {
+				if (Check_Win('o', _X, _Y)) {
 					Turn = 0; Score2++;
 					DrawScore(Score1, Score2);
 					DrawWin(1);
 					Finish = 1;
+					ShowCur(0);
 					DrawSaveAndContinue();
 					_CURRENT_MENU = 8;
 				}
@@ -182,12 +184,14 @@ void HandleKeyForBoard(int x, int y, KEY_EVENT_RECORD key) {
 				Turn = 0; Draw++;
 				Finish = 1;
 				DrawWin(0);
+				ShowCur(0);
 				DrawSaveAndContinue();
 				_CURRENT_MENU = 8;
 			}
 			break;
 		case VK_ESCAPE: //Esc
 			if (D2_INGAME_MUSIC) PlaySound(TEXT("sounds//select.wav"), NULL, SND_FILENAME | SND_ASYNC);
+			ShowCur(0);
 			DrawSaveAndContinue();
 			_CURRENT_MENU = 10;
 			break;
@@ -241,20 +245,372 @@ void HandleKeyForBoard(int x, int y, KEY_EVENT_RECORD key) {
 	}
 }
 //--------------------------------------------------------------------------------
+int bot_x, bot_y;
+
+//void BotRandom(char _MATRIX[BOARD_SIZE][BOARD_SIZE]) {
+//
+//	int r_mat = 0;
+//	int c_mat = 0;
+//
+//	int cur_row = _Y / 2 - int(FIRST_CELL_Y) / 2;
+//	int cur_col = _X / 4 - int(FIRST_CELL_X) / 4;
+//
+//	int vertical_01 = 0;
+//	int vertical_02 = 0;
+//
+//	int horizontal_01 = 0;
+//	int horizontal_02 = 0;
+//
+//	int main_cross_01 = 0;
+//	int main_cross_02 = 0;
+//
+//	int sub_cross_01 = 0;
+//	int sub_cross_02 = 0;
+//
+//	//Horizontal check
+//	for (int i = cur_col + 1; i < BOARD_SIZE; i++) {
+//		if (_MATRIX[cur_row][i] != 'x') break;
+//		horizontal_01++;
+//	}
+//
+//	for (int i = cur_col - 1; i >= 0; i--) {
+//		if (_MATRIX[cur_row][i] != 'x') break;
+//		horizontal_02++;
+//	}
+//
+//	if ((horizontal_01 + horizontal_02) >= 1) {
+//		bot_x = _X - horizontal_02 * 4 - 4;
+//		bot_y = _Y;
+//		r_mat = (bot_y / 2 - int(FIRST_CELL_Y) / 2);
+//		c_mat = (bot_x / 4 - int(FIRST_CELL_X) / 4);
+//		if (c_mat >= 0)
+//			if (_MATRIX[r_mat][c_mat] != 'x' && _MATRIX[r_mat][c_mat] != 'o') {
+//				_MATRIX[r_mat][c_mat] = 'o';
+//				GotoXY(bot_x, bot_y);
+//				cout << "O";
+//				return;
+//			}
+//		bot_x = _X + horizontal_01 * 4 + 4;
+//		c_mat = (bot_x / 4 - int(FIRST_CELL_X) / 4);
+//		if (c_mat < BOARD_SIZE)
+//			if (_MATRIX[r_mat][c_mat] != 'x' && _MATRIX[r_mat][c_mat] != 'o') {
+//				_MATRIX[r_mat][c_mat] = 'o';
+//				GotoXY(bot_x, bot_y);
+//				cout << "O";
+//				return;
+//			}
+//	}
+//
+//
+//	//Vertical check
+//	for (int i = cur_row + 1; i < BOARD_SIZE; i++) {
+//		if (_MATRIX[i][cur_col] != 'x') break;
+//		vertical_01++;
+//	}
+//
+//	for (int i = cur_row - 1; i >= 0; i--) {
+//		if (_MATRIX[i][cur_col] != 'x') break;
+//		vertical_02++;
+//	}
+//
+//	if ((vertical_01 + vertical_02) >= 1) {
+//		bot_x = _X;
+//		bot_y = _Y - vertical_02 * 2 - 2;
+//		r_mat = (bot_y / 2 - int(FIRST_CELL_Y) / 2);
+//		c_mat = (bot_x / 4 - int(FIRST_CELL_X) / 4);
+//		if (r_mat >= 0)
+//			if (_MATRIX[r_mat][c_mat] != 'x' && _MATRIX[r_mat][c_mat] != 'o') {
+//				_MATRIX[r_mat][c_mat] = 'o';
+//				GotoXY(bot_x, bot_y);
+//				cout << "O";
+//				return;
+//			}
+//		bot_y = _Y + vertical_01 * 2 + 2;
+//		r_mat = (bot_y / 2 - int(FIRST_CELL_Y) / 2);
+//		if (r_mat < BOARD_SIZE)
+//			if (_MATRIX[r_mat][c_mat] != 'x' && _MATRIX[r_mat][c_mat] != 'o') {
+//				_MATRIX[r_mat][c_mat] = 'o';
+//				GotoXY(bot_x, bot_y);
+//				cout << "O";
+//				return;
+//			}
+//	}
+//
+//
+//	//Main cross check
+//	for (int i = cur_row + 1, j = cur_col + 1; i < BOARD_SIZE && j < BOARD_SIZE; i++, j++) {
+//		if (_MATRIX[i][j] != 'x') break;
+//		main_cross_01++;
+//	}
+//
+//	for (int i = cur_row - 1, j = cur_col - 1; i >= 0 && j >= 0; i--, j--) {
+//		if (_MATRIX[i][j] != 'x') break;
+//		main_cross_02++;
+//	}
+//
+//	if ((main_cross_01 + main_cross_02) >= 1) {
+//		bot_x = _X - main_cross_02 * 4 - 4;
+//		bot_y = _Y - main_cross_02 * 2 - 2;
+//		r_mat = (bot_y / 2 - int(FIRST_CELL_Y) / 2);
+//		c_mat = (bot_x / 4 - int(FIRST_CELL_X) / 4);
+//		if (r_mat >= 0 && c_mat >= 0)
+//			if (_MATRIX[r_mat][c_mat] != 'x' && _MATRIX[r_mat][c_mat] != 'o') {
+//				_MATRIX[r_mat][c_mat] = 'o';
+//				GotoXY(bot_x, bot_y);
+//				cout << "O";
+//				return;
+//			}
+//		bot_x = _X + main_cross_01 * 4 + 4;
+//		bot_y = _Y + main_cross_01 * 2 + 2;
+//		r_mat = (bot_y / 2 - int(FIRST_CELL_Y) / 2);
+//		c_mat = (bot_x / 4 - int(FIRST_CELL_X) / 4);
+//		if (r_mat < BOARD_SIZE && c_mat < BOARD_SIZE)
+//			if (_MATRIX[r_mat][c_mat] != 'x' && _MATRIX[r_mat][c_mat] != 'o') {
+//				_MATRIX[r_mat][c_mat] = 'o';
+//				GotoXY(bot_x, bot_y);
+//				cout << "O";
+//				return;
+//			}
+//	}
+//
+//	//Sub cross check
+//	for (int i = cur_row - 1, j = cur_col + 1; i >= 0 && j < BOARD_SIZE; i--, j++) {
+//		if (_MATRIX[i][j] != 'x') break;
+//		sub_cross_01++;
+//	}
+//
+//	for (int i = cur_row + 1, j = cur_col - 1; i < BOARD_SIZE && j >= 0; i++, j--) {
+//		if (_MATRIX[i][j] != 'x') break;
+//		sub_cross_02++;
+//	}
+//
+//	if ((sub_cross_01 + sub_cross_02) >= 1) {
+//		bot_x = _X - sub_cross_02 * 4 - 4;
+//		bot_y = _Y + sub_cross_02 * 2 + 2;
+//		r_mat = (bot_y / 2 - int(FIRST_CELL_Y) / 2);
+//		c_mat = (bot_x / 4 - int(FIRST_CELL_X) / 4);
+//		if (c_mat >= 0 && r_mat < BOARD_SIZE)
+//			if (_MATRIX[r_mat][c_mat] != 'x' && _MATRIX[r_mat][c_mat] != 'o') {
+//				_MATRIX[r_mat][c_mat] = 'o';
+//				GotoXY(bot_x, bot_y);
+//				cout << "O";
+//				return;
+//			}
+//		bot_x = _X + sub_cross_01 * 4 + 4;
+//		bot_y = _Y - sub_cross_01 * 2 - 2;
+//		r_mat = (bot_y / 2 - int(FIRST_CELL_Y) / 2);
+//		c_mat = (bot_x / 4 - int(FIRST_CELL_X) / 4);
+//		if (r_mat >= 0 && c_mat < BOARD_SIZE)
+//			if (_MATRIX[r_mat][c_mat] != 'x' && _MATRIX[r_mat][c_mat] != 'o') {
+//				_MATRIX[r_mat][c_mat] = 'o';
+//				GotoXY(bot_x, bot_y);
+//				cout << "O";
+//				return;
+//			}
+//	}
+//
+//	srand(unsigned int(time(NULL)));
+//	while (1) {
+//		bot_x = rand() % BOARD_SIZE + 0;
+//		bot_y = rand() % BOARD_SIZE + 0;
+//		if (_MATRIX[bot_x][bot_y] != 'x' && _MATRIX[bot_x][bot_y] != 'o') {
+//			GotoXY(4 * bot_y + int(FIRST_CELL_X), 2 * bot_x + int(FIRST_CELL_Y));
+//			_MATRIX[bot_x][bot_y] = 'o';
+//			cout << "O";
+//			return;
+//		}
+//	}
+//}
 
 void BotRandom(char _MATRIX[BOARD_SIZE][BOARD_SIZE]) {
+
+	int r_mat = 0;
+	int c_mat = 0;
+
+	int cur_row = _Y / 2 - int(FIRST_CELL_Y) / 2;
+	int cur_col = _X / 4 - int(FIRST_CELL_X) / 4;
+
+	int vertical_01 = 0;
+	int vertical_02 = 0;
+
+	int horizontal_01 = 0;
+	int horizontal_02 = 0;
+
+	int main_cross_01 = 0;
+	int main_cross_02 = 0;
+
+	int sub_cross_01 = 0;
+	int sub_cross_02 = 0;
+
+	//Horizontal check
+	for (int i = cur_col + 1; i < BOARD_SIZE; i++) {
+		if (_MATRIX[cur_row][i] != 'x') break;
+		horizontal_01++;
+	}
+
+	for (int i = cur_col - 1; i >= 0; i--) {
+		if (_MATRIX[cur_row][i] != 'x') break;
+		horizontal_02++;
+	}
+
+	//Vertical check
+	for (int i = cur_row + 1; i < BOARD_SIZE; i++) {
+		if (_MATRIX[i][cur_col] != 'x') break;
+		vertical_01++;
+	}
+
+	for (int i = cur_row - 1; i >= 0; i--) {
+		if (_MATRIX[i][cur_col] != 'x') break;
+		vertical_02++;
+	}
+
+	//Main cross check
+	for (int i = cur_row + 1, j = cur_col + 1; i < BOARD_SIZE && j < BOARD_SIZE; i++, j++) {
+		if (_MATRIX[i][j] != 'x') break;
+		main_cross_01++;
+	}
+
+	for (int i = cur_row - 1, j = cur_col - 1; i >= 0 && j >= 0; i--, j--) {
+		if (_MATRIX[i][j] != 'x') break;
+		main_cross_02++;
+	}
+
+	//Sub cross check
+	for (int i = cur_row - 1, j = cur_col + 1; i >= 0 && j < BOARD_SIZE; i--, j++) {
+		if (_MATRIX[i][j] != 'x') break;
+		sub_cross_01++;
+	}
+
+	for (int i = cur_row + 1, j = cur_col - 1; i < BOARD_SIZE && j >= 0; i++, j--) {
+		if (_MATRIX[i][j] != 'x') break;
+		sub_cross_02++;
+	}
+
+	int whichOne[4] = { 1, 2, 3, 4 };
+	int order[4] = { vertical_01 + vertical_02, horizontal_01 + horizontal_02, main_cross_01 + main_cross_02, sub_cross_01 + sub_cross_02 };
+	for (int i = 0; i < 3; i++)
+		for (int j = 0; j < 3 - i; j++)
+			if (order[j] < order[j + 1]) {
+				int tmp = order[j];
+				order[j] = order[j + 1];
+				order[j + 1] = tmp;
+				tmp = whichOne[j];
+				whichOne[j] = whichOne[j + 1];
+				whichOne[j + 1] = tmp;
+			}
+	for (int i = 0; i < 4; i++)
+		if (whichOne[i] == 1) {
+			if ((vertical_01 + vertical_02) >= 1) {
+				bot_x = _X;
+				bot_y = _Y - vertical_02 * 2 - 2;
+				r_mat = (bot_y / 2 - int(FIRST_CELL_Y) / 2);
+				c_mat = (bot_x / 4 - int(FIRST_CELL_X) / 4);
+				if (r_mat >= 0)
+					if (_MATRIX[r_mat][c_mat] != 'x' && _MATRIX[r_mat][c_mat] != 'o') {
+						_MATRIX[r_mat][c_mat] = 'o';
+						GotoXY(bot_x, bot_y);
+						cout << "O";
+						return;
+					}
+				bot_y = _Y + vertical_01 * 2 + 2;
+				r_mat = (bot_y / 2 - int(FIRST_CELL_Y) / 2);
+				if (r_mat < BOARD_SIZE)
+					if (_MATRIX[r_mat][c_mat] != 'x' && _MATRIX[r_mat][c_mat] != 'o') {
+						_MATRIX[r_mat][c_mat] = 'o';
+						GotoXY(bot_x, bot_y);
+						cout << "O";
+						return;
+					}
+			}
+		}
+		else if (whichOne[i] == 3) {
+			if ((main_cross_01 + main_cross_02) >= 1) {
+				bot_x = _X - main_cross_02 * 4 - 4;
+				bot_y = _Y - main_cross_02 * 2 - 2;
+				r_mat = (bot_y / 2 - int(FIRST_CELL_Y) / 2);
+				c_mat = (bot_x / 4 - int(FIRST_CELL_X) / 4);
+				if (r_mat >= 0 && c_mat >= 0)
+					if (_MATRIX[r_mat][c_mat] != 'x' && _MATRIX[r_mat][c_mat] != 'o') {
+						_MATRIX[r_mat][c_mat] = 'o';
+						GotoXY(bot_x, bot_y);
+						cout << "O";
+						return;
+					}
+				bot_x = _X + main_cross_01 * 4 + 4;
+				bot_y = _Y + main_cross_01 * 2 + 2;
+				r_mat = (bot_y / 2 - int(FIRST_CELL_Y) / 2);
+				c_mat = (bot_x / 4 - int(FIRST_CELL_X) / 4);
+				if (r_mat < BOARD_SIZE && c_mat < BOARD_SIZE)
+					if (_MATRIX[r_mat][c_mat] != 'x' && _MATRIX[r_mat][c_mat] != 'o') {
+						_MATRIX[r_mat][c_mat] = 'o';
+						GotoXY(bot_x, bot_y);
+						cout << "O";
+						return;
+					}
+			}
+		}
+		else if (whichOne[i] == 4) {
+			if ((sub_cross_01 + sub_cross_02) >= 1) {
+				bot_x = _X - sub_cross_02 * 4 - 4;
+				bot_y = _Y + sub_cross_02 * 2 + 2;
+				r_mat = (bot_y / 2 - int(FIRST_CELL_Y) / 2);
+				c_mat = (bot_x / 4 - int(FIRST_CELL_X) / 4);
+				if (c_mat >= 0 && r_mat < BOARD_SIZE)
+					if (_MATRIX[r_mat][c_mat] != 'x' && _MATRIX[r_mat][c_mat] != 'o') {
+						_MATRIX[r_mat][c_mat] = 'o';
+						GotoXY(bot_x, bot_y);
+						cout << "O";
+						return;
+					}
+				bot_x = _X + sub_cross_01 * 4 + 4;
+				bot_y = _Y - sub_cross_01 * 2 - 2;
+				r_mat = (bot_y / 2 - int(FIRST_CELL_Y) / 2);
+				c_mat = (bot_x / 4 - int(FIRST_CELL_X) / 4);
+				if (r_mat >= 0 && c_mat < BOARD_SIZE)
+					if (_MATRIX[r_mat][c_mat] != 'x' && _MATRIX[r_mat][c_mat] != 'o') {
+						_MATRIX[r_mat][c_mat] = 'o';
+						GotoXY(bot_x, bot_y);
+						cout << "O";
+						return;
+					}
+			}
+		}
+		else {
+			if ((horizontal_01 + horizontal_02) >= 1) {
+				bot_x = _X - horizontal_02 * 4 - 4;
+				bot_y = _Y;
+				r_mat = (bot_y / 2 - int(FIRST_CELL_Y) / 2);
+				c_mat = (bot_x / 4 - int(FIRST_CELL_X) / 4);
+				if (c_mat >= 0)
+					if (_MATRIX[r_mat][c_mat] != 'x' && _MATRIX[r_mat][c_mat] != 'o') {
+						_MATRIX[r_mat][c_mat] = 'o';
+						GotoXY(bot_x, bot_y);
+						cout << "O";
+						return;
+					}
+				bot_x = _X + horizontal_01 * 4 + 4;
+				c_mat = (bot_x / 4 - int(FIRST_CELL_X) / 4);
+				if (c_mat < BOARD_SIZE)
+					if (_MATRIX[r_mat][c_mat] != 'x' && _MATRIX[r_mat][c_mat] != 'o') {
+						_MATRIX[r_mat][c_mat] = 'o';
+						GotoXY(bot_x, bot_y);
+						cout << "O";
+						return;
+					}
+			}
+		}
+
 	srand(unsigned int(time(NULL)));
 	while (1) {
-		int x = rand() % BOARD_SIZE + 0;
-		int y = rand() % BOARD_SIZE + 0;
-		if (_MATRIX[x][y] != 'x' && _MATRIX[x][y] != 'o') {
-			GotoXY(4 * y + int(FIRST_CELL_X), 2 * x + int(FIRST_CELL_Y));
-			_MATRIX[x][y] = 'o';
+		bot_x = rand() % BOARD_SIZE + 0;
+		bot_y = rand() % BOARD_SIZE + 0;
+		if (_MATRIX[bot_x][bot_y] != 'x' && _MATRIX[bot_x][bot_y] != 'o') {
+			GotoXY(4 * bot_y + int(FIRST_CELL_X), 2 * bot_x + int(FIRST_CELL_Y));
+			_MATRIX[bot_x][bot_y] = 'o';
 			cout << "O";
 			return;
 		}
 	}
-
 }
 
 void HandleKeyForBoardBot(int x, int y, KEY_EVENT_RECORD key) {
@@ -269,11 +625,12 @@ void HandleKeyForBoardBot(int x, int y, KEY_EVENT_RECORD key) {
 		Turn++;
 		BotRandom(_MATRIX);
 		GotoXY(_X, _Y);
-		if (Check_Win('o')) {
+		if (Check_Win('o', bot_x, bot_y)) {
 			Turn = 0; Score2++;
 			DrawScore(Score1, Score2);
 			DrawWin(1);
 			Finish = 1;
+			ShowCur(0);
 			DrawSaveAndContinue();
 			_CURRENT_MENU = 8;
 		}
@@ -294,11 +651,12 @@ void HandleKeyForBoardBot(int x, int y, KEY_EVENT_RECORD key) {
 				Turn++;
 				_MATRIX[_Y / 2 - int(FIRST_CELL_Y) / 2][_X / 4 - int(FIRST_CELL_X) / 4] = 'x';
 				cout << "X";
-				if (Check_Win('x')) {
+				if (Check_Win('x', _X, _Y)) {
 					Turn = 0; Score1++;
 					DrawScore(Score1, Score2);
 					DrawWin(-1);
 					Finish = 1;
+					ShowCur(0);
 					DrawSaveAndContinue();
 					_CURRENT_MENU = 8;
 				}
@@ -307,12 +665,14 @@ void HandleKeyForBoardBot(int x, int y, KEY_EVENT_RECORD key) {
 				Turn = 0; Draw++;
 				Finish = 1;
 				DrawWin(0);
+				ShowCur(0);
 				DrawSaveAndContinue();
 				_CURRENT_MENU = 8;
 			}
 			break;
 		case VK_ESCAPE: //Esc
-			if (D2_INGAME_MUSIC) PlaySound(TEXT("Sounds//put-x-o.wav"), NULL, SND_FILENAME | SND_ASYNC);
+			if (D2_INGAME_MUSIC) PlaySound(TEXT("Sounds//select.wav"), NULL, SND_FILENAME | SND_ASYNC);
+			ShowCur(0);
 			DrawSaveAndContinue();
 			_CURRENT_MENU = 10;
 			break;
@@ -911,6 +1271,7 @@ void SaveInforFile(string FileName) {
 		}
 		File << endl;
 	}
+	File.close();
 }
 
 void PrintDataBoard() {

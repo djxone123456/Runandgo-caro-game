@@ -361,6 +361,9 @@ void HandleKeyForLoad(int x, int y, KEY_EVENT_RECORD key)
 		case VK_RETURN: //Enter
 			if (D2_INGAME_MUSIC) PlaySound(TEXT("Sounds//select.wav"), NULL, SND_FILENAME | SND_ASYNC);
 			LoadGame(File, Name[Locate - 1]);
+			isLoadFile = 1;
+			loadedFileName = Name[Locate - 1];
+			for (int i = 0; i < 4; i++) loadedFileName.pop_back();
 			system("cls");
 			ConvertData(File);
 			if (D2_PLAYER02_NAME == "Mega Roboto") D3_GameMode = 0;
@@ -368,9 +371,6 @@ void HandleKeyForLoad(int x, int y, KEY_EVENT_RECORD key)
 			StartGame();
 			Locate = 1;
 			_CURRENT_MENU = 9;
-			isLoadFile = 1;
-			loadedFileName = Name[Locate - 1];
-			for (int i = 0; i < 4; i++) loadedFileName.pop_back();
 			break;
 			//Then load data from struct Load to play board
 		case VK_DOWN: case 0x53:

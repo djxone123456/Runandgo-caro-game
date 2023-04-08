@@ -1,4 +1,4 @@
-#include "loadData.H"
+#include "loadData.h"
 
 // Toa do ten file
 int Name_X = 52;

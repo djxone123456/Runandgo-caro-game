@@ -6,7 +6,7 @@
 #include "view.h"
 
 void ClearMatrix();
-bool Check_Win(const char symbol);
+bool Check_Win(const char symbol, const int x_pos, const int y_pos);
 void HandleKeyForBoard(int x, int y, KEY_EVENT_RECORD key);
 void HandleKeyForBoardBot(int x, int y, KEY_EVENT_RECORD key);
 void DrawBoard(int pSize);
