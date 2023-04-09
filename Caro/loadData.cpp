@@ -1,10 +1,10 @@
 #include "loadData.h"
 
-// Toa do ten file
+//Position X and Y of file name
 int Name_X = 52;
 int Name_Y = 14;
 
-//toa do thong tin file
+//Position X and Y of info in file
 int Info_X = 72;
 int Info_Y = 14;
 

@@ -21,7 +21,6 @@ static int CurrentPoint = 0;
 
 //FUNCTIONS HERE
 static void Logo();
-//static int ItemList(bool);
 static void MenuDefault();
 static void DrawCursor(int, int);
 static void EraseCursor(int, int);

@@ -12,8 +12,6 @@ void HandleKeyForSettings(int x, int y, KEY_EVENT_RECORD key) {
 			_MENU = 0;
 			_CURRENT_MENU = 0;
 			system("cls");
-			//Draw main menu
-			//Set cursor to default position
 			break;
 		case VK_LEFT: case 0x41: //Left arrow
 			if (D2_INGAME_MUSIC) PlaySound(TEXT("sounds//switch-selection.wav"), NULL, SND_FILENAME | SND_ASYNC);

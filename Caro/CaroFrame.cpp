@@ -11,6 +11,7 @@ void ClearMatrix() {
 		}
 	}
 }
+
 //Usage: Check if there are 5 continuous <symbol>. If true return 1 (win), else return 0 (not win)
 bool Check_Win(const char symbol, const int x_pos, const int y_pos) {
 	int cur_row = y_pos / 2 - int(FIRST_CELL_Y) / 2;
@@ -52,7 +53,6 @@ bool Check_Win(const char symbol, const int x_pos, const int y_pos) {
 		return 1; //Win
 	}
 
-
 	//Vertical check
 	for (int i = cur_row + 1; i < BOARD_SIZE; i++) {
 		if (_MATRIX[i][cur_col] != symbol) break;
@@ -76,7 +76,6 @@ bool Check_Win(const char symbol, const int x_pos, const int y_pos) {
 		}
 		return 1; //Win
 	}
-
 
 	//Main cross check
 	for (int i = cur_row + 1, j = cur_col + 1; i < BOARD_SIZE && j < BOARD_SIZE; i++, j++) {

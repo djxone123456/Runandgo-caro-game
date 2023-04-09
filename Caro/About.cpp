@@ -36,7 +36,6 @@ int About() {
 
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
 
-
 	for (int i = 0; i < 82; i += 2) {
 		GotoXY(D2_X_ABOUT + i, D2_Y_ABOUT);
 		cout << D2_LOWER_FRAME << D2_LOWER_FRAME;
@@ -121,7 +120,5 @@ void HandleKeyForAbout(int X, int Y, KEY_EVENT_RECORD key) {
 		_MENU = 0;
 		_CURRENT_MENU = 0;
 		system("cls");
-		//Draw main menu
-		//Set cursor to default position
 	}
 }

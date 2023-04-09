@@ -2,8 +2,8 @@
 #ifndef CONTROL_H
 #define CONTROL_H
 
-#include "data.h"
-#include "view.h"
+#include "Data.h"
+#include "View.h"
 
 #include "Error.h"
 #include "Help.h"

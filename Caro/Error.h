@@ -7,10 +7,6 @@
 #include "Data.h"
 #include "Error.h"
 
-//DEFINES
-
-//VARIABLES
-
 //FUNCTIONS HERE
 static void AllignCenterString(const D1_POINT);
 static void AllignCenterWString(const D1_POINT);

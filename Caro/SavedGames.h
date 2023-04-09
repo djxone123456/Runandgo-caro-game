@@ -12,11 +12,10 @@ struct Load
 	int Draw;
 	int Character_1;
 	int Character_2;
-	int Result;// 0 - chua xong; 1 - xong r -> van moi
+	int Result;// 0 - not one; 1 - finished -> new game
 	int Turn; // x - o
-	char Table[BOARD_SIZE * BOARD_SIZE];// bang
+	char Table[BOARD_SIZE * BOARD_SIZE];// board
 };
-
 
 //function
 void DrawSavedBoard();
@@ -24,7 +23,6 @@ void DrawButton();
 void PrintFileName(string Name[]);
 void LoadGame(Load& File, string Name);
 void HandleKeyForLoad(int x, int y, KEY_EVENT_RECORD key);
-//void PrintFirstFileInfo();
 void DeleteInfo();
 
 #endif

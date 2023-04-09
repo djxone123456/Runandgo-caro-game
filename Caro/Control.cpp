@@ -13,7 +13,6 @@ void StartGame() {
 	DrawTurn(1);
 	GotoXY(FIRST_CELL_X, FIRST_CELL_Y);
 	ShowCur(1);
-	//ClearMatrix();
 	PrintDataBoard();
 	_CURRENT_MENU = 9;
 }
@@ -71,7 +70,6 @@ void ControlMenu() {
 				Help();
 				break;
 			case 6:
-				//Say goodbye and exit
 				Exit();
 				break;
 			}

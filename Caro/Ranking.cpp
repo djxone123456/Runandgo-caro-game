@@ -7,9 +7,7 @@ int Ranking()
 	#ifdef DEBUG_RANKING
 		Init(arr);  
 	#endif
-	//InputFile("SavedFiles\\");
 
-	//Just fix to run, cannot run with the under one.
 	InitRankingFile(L"SavedFiles//", L"fileLoad.json", arr);
 
 	//InitRankingFile(ExePath() + L"//SavedFiles//", L"fileLoad.json", arr);

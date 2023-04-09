@@ -106,10 +106,3 @@ void HandleKeyForError(int x, int y, KEY_EVENT_RECORD key)
 		exit(0);
 	}
 }
-/**♪
-  ∧＿∧　 ♪
-（´・ω・)∩
- o　　　,|
-  Ｏ＿　.ﾉ
-  　　(ノ
-*/

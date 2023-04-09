@@ -197,28 +197,14 @@ void PrintFileInfo(int x, int y, string Name)
 		string str;
 		ifstream FileName;
 		FileName.open("SavedFiles\\" + Name, ios::in);
-		//GotoXY(87, 14);
-		//cout << "PLAYER 1";
-		//GotoXY(107, 14);
-		//cout << "PLAYER 2";
-		//GotoXY(Info_X, 16);
-		//cout << "Name: ";
 		getline(FileName, str);// Name Player 1
 		GotoXY(Info_X + 18 - int(str.size()/2.0f), 16);
 		cout << str;
 		getline(FileName, str);// Name Player 2
 		GotoXY(Info_X + 39 - int(str.size() / 2.0f), 16);
 		cout << str;
-		/*GotoXY(Info_X, 20);
-		cout << "Point: ";*/
-		//GotoXY(Info_X + 18, 20);
-		//getline(FileName, str);//Point player 1
-		//cout << str;
 		FileName >> i;
 		DrawScore(i, Info_X + 16, 19);
-		//GotoXY(Info_X + 38, 20);
-		//getline(FileName, str);//Point player 2
-		//cout << str;
 		FileName >> i;
 		DrawScore(i, Info_X + 37, 19);
 		GotoXY(Info_X + 21, 24);
@@ -226,19 +212,6 @@ void PrintFileInfo(int x, int y, string Name)
 		GotoXY(Info_X + 34, 24);
 		FileName >> i;//Draw point
 		cout << i;
-		//GotoXY(Info_X, 18);
-		//cout << "Character: ";
-		//GotoXY(Info_X + 13, 18);
-		//getline(FileName, str);//Character 1
-		//cout << str;
-		//GotoXY(Info_X + 33, 18);
-		//getline(FileName, str);//Character 2
-		//cout << str;
-		//GotoXY(Info_X, 24);
-		//cout << "Turn: ";
-		//getline(FileName, str);//end or not
-		//getline(FileName, str);//Player turn
-		//cout << str;
 		FileName.close();
 		wstring Line = L"▀▀▀";
 		int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
@@ -248,11 +221,11 @@ void PrintFileInfo(int x, int y, string Name)
 	}
 }
 
-void PrintFileName(string Name[])// mang Name luu ten cac file de lay thong tin
+void PrintFileName(string Name[])// array of file name
 {
 	ifstream FileName;
 	FileName.open("SavedFiles\\fileLoad.json", ios::in);
-	int y = Name_Y;//toa do ten 
+	int y = Name_Y;//postion x, y of name
 	if (FileName.fail())
 	{
 		//error file 
@@ -308,8 +281,6 @@ void LoadGame(Load& File, string Name)
 	for (int j = 0; j < 18 * 18; j++)
 		FileName >> File.Table[j];
 	FileName.close();
-	//Load Data from struct Load File
-	//GameBoard()
 }
 
 void ConvertData(Load File) //Goto game play
@@ -338,11 +309,6 @@ void ConvertData(Load File) //Goto game play
 		}
 	}
 }
-
-//void PrintFirstFileInfo()
-//{
-//	PrintFileInfo(Info_X, Info_Y, Name[Locate - 1]);
-//}
 
 void DeleteInfo()
 {
