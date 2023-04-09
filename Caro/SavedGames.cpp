@@ -1,4 +1,4 @@
-﻿#include "SavedGames.h"
+﻿#include "Control.h"
 
 void DrawSavedBoard()
 {
@@ -11,7 +11,7 @@ void DrawSavedBoard()
 	wstring l5 = L"███████║██║  ██║ ╚████╔╝ ███████╗██████╔╝    ╚██████╔╝██║  ██║██║ ╚═╝ ██║███████╗  \n";
 	wstring l6 = L"╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚══════╝╚═════╝      ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝  \n";
 
-	int x = 45, y = 4, x_last = 45 + l1.size();
+	int x = 45, y = 4, x_last = 45 + int(l1.size());
 	for (int i = 0; i <= l1.size() - 1 - i; i++) {
 		GotoXY(++x, y);
 		wcout << l1[i];
@@ -189,27 +189,72 @@ void DrawScore(int i, int x, int y)
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
 }
 
-void PrintFileName(string Name[])// mang Name luu ten cac file de lay thong tin
+void PrintFileInfo(int x, int y, string Name)
 {
-	GotoXY(Name_X - 3, Name_Y);
-	cout << D2_SELECT_RIGHT;
+	if (Name != "")
+	{
+		int i = 0;
+		string str;
+		ifstream FileName;
+		FileName.open("SavedFiles\\" + Name, ios::in);
+		getline(FileName, str);// Name Player 1
+		GotoXY(Info_X + 18 - int(str.size()/2.0f), 16);
+		cout << str;
+		getline(FileName, str);// Name Player 2
+		GotoXY(Info_X + 39 - int(str.size() / 2.0f), 16);
+		cout << str;
+		FileName >> i;
+		DrawScore(i, Info_X + 16, 19);
+		FileName >> i;
+		DrawScore(i, Info_X + 37, 19);
+		GotoXY(Info_X + 21, 24);
+		cout << "Draw Point: ";
+		GotoXY(Info_X + 34, 24);
+		FileName >> i;//Draw point
+		cout << i;
+		FileName.close();
+		wstring Line = L"▀▀▀";
+		int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
+		GotoXY(Info_X + 27, 20);
+		wcout << Line;
+		int CurrentMode = _setmode(_fileno(stdout), OldMode);
+	}
+}
+
+void PrintFileName(string Name[])// array of file name
+{
 	ifstream FileName;
 	FileName.open("SavedFiles\\fileLoad.json", ios::in);
-	int y = Name_Y;//toa do ten 
+	int y = Name_Y;//postion x, y of name
 	if (FileName.fail())
 	{
 		//error file 
 	}
 	string str;
 	int i = 0;
-	FileName >> Numb_of_file;
 	getline(FileName, str);
-	while (getline(FileName, str))
+	if (str == "")
+		cout << "No file found !";
+	else
 	{
-		Name[i] = str;
+		GotoXY(Name_X - 3, Name_Y);
+		cout << D2_SELECT_RIGHT;
+		Name[0] = str;
+
+		PrintFileInfo(Info_X, Info_Y, Name[0]);
+
 		GotoXY(Name_X, y);
 		cout << str << endl;
 		y = y + 2; i++;
+		while (getline(FileName, str))
+		{
+			if (i == 9 || str == "\n") break;
+			Name[i] = str;
+			GotoXY(Name_X, y);
+			cout << str << endl;
+			y = y + 2; i++;
+		}
+		Numb_of_file = i;
 	}
 	FileName.close();
 }
@@ -228,114 +273,51 @@ void LoadGame(Load& File, string Name)
 	FileName >> File.Point_1;
 	FileName >> File.Point_2;
 	FileName >> File.Draw;
-	FileName.ignore();
-	getline(FileName, str);
-	File.Character_1 = str;
-	getline(FileName, str);
-	File.Character_2 = str;
+	FileName >> File.Character_1;
+	FileName >> File.Character_2;
 	FileName >> File.Result;
+	FileName >> File.Turn;
 	FileName.ignore();
-	getline(FileName, str);
-	File.Turn = str;
-	for (int j = 0; j < 16 * 16; j++)
+	for (int j = 0; j < 18 * 18; j++)
 		FileName >> File.Table[j];
 	FileName.close();
-	//Load Data from struct Load File
-	//GameBoard()
 }
 
-void PrintData(Load File) //Goto game play
+void ConvertData(Load File) //Goto game play
 {
 	system("cls");
-	GotoXY(0, 0);
-	cout << File.NamePL1 << endl;
-	cout << File.NamePL2 << endl;
-	cout << File.Point_1 << endl;
-	cout << File.Point_2 << endl;
-	cout << File.Draw << endl;
-	cout << File.Character_1 << endl;
-	cout << File.Character_1 << endl;
-	cout << File.Result << endl;
-	cout << File.Turn << endl;
-	int i = 0;
-	while (cout << File.Table[i])
-	{
-		i++;
-		if ((i) % 16 == 0)
-			cout << endl;
-		if (i + 1 == 16 * 16)
-			break;
+	D2_PLAYER01_NAME = File.NamePL1;
+	D2_PLAYER02_NAME = File.NamePL2;
+	Score1 = File.Point_1;
+	Score2 = File.Point_2;
+	Draw = File.Draw;
+	D2_PLAYER01_CHARACTER = File.Character_1;
+	D2_PLAYER02_CHARACTER = File.Character_2;
+	Turn = File.Turn;
+	Finish = File.Result;
+	int cnt = 0;
+	if (Finish == 1) {
+		ClearMatrix();
 	}
-
-}
-
-void PrintFileInfo(int x, int y, string Name)
-{
-	int i = 0;
-	string str;
-	ifstream FileName;
-	FileName.open("SavedFiles\\" + Name, ios::in);
-	//GotoXY(87, 14);
-	//cout << "PLAYER 1";
-	//GotoXY(107, 14);
-	//cout << "PLAYER 2";
-	//GotoXY(Info_X, 16);
-	//cout << "Name: ";
-	GotoXY(Info_X + 13, 16);
-	getline(FileName, str);// Name Player 1
-	cout << str;
-	GotoXY(Info_X + 33, 16);
-	getline(FileName, str);// Name Player 2
-	cout << str;
-	/*GotoXY(Info_X, 20);
-	cout << "Point: ";*/
-	//GotoXY(Info_X + 18, 20);
-	//getline(FileName, str);//Point player 1
-	//cout << str;
-	FileName >> i;
-	DrawScore(i, Info_X + 16, 19);
-	//GotoXY(Info_X + 38, 20);
-	//getline(FileName, str);//Point player 2
-	//cout << str;
-	FileName >> i;
-	DrawScore(i, Info_X + 37, 19);
-	GotoXY(Info_X + 21, 24);
-	cout << "Draw Point: ";
-	GotoXY(Info_X + 34, 24);
-	FileName >> i;//Draw point
-	cout << i;
-	//GotoXY(Info_X, 18);
-	//cout << "Character: ";
-	//GotoXY(Info_X + 13, 18);
-	//getline(FileName, str);//Character 1
-	//cout << str;
-	//GotoXY(Info_X + 33, 18);
-	//getline(FileName, str);//Character 2
-	//cout << str;
-	//GotoXY(Info_X, 24);
-	//cout << "Turn: ";
-	//getline(FileName, str);//end or not
-	//getline(FileName, str);//Player turn
-	//cout << str;
-	FileName.close();
-	wstring Line = L"▀▀▀";
-	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
-	GotoXY(Info_X + 27, 20);
-	wcout << Line;
-	int CurrentMode = _setmode(_fileno(stdout), OldMode);
-}
-
-void PrintFirstFileInfo()
-{
-	PrintFileInfo(Info_X, Info_Y, Name[Locate - 1]);
+	else if (Finish == 0) {
+		for (int i = 0; i < BOARD_SIZE; i++) {
+			for (int j = 0; j < BOARD_SIZE; j++) {
+				_MATRIX[i][j] = File.Table[cnt];
+				cnt++;
+				if (_MATRIX[i][j] != '-') Count++;
+			}
+		}
+	}
 }
 
 void DeleteInfo()
 {
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < 9; i++)
 	{
-		GotoXY(85, 16 + i);
-		cout << "                                        ";
+		GotoXY(Info_X, 16 + i);
+		
+		for (int j = 0; j <= HLeft; j++)
+			cout << " ";
 
 	}
 }
@@ -345,16 +327,24 @@ void HandleKeyForLoad(int x, int y, KEY_EVENT_RECORD key)
 	if (key.bKeyDown) //Key pressed
 		switch (key.wVirtualKeyCode) {
 		case VK_RETURN: //Enter
-			PlaySound(TEXT("Sounds//select.wav"), NULL, SND_FILENAME | SND_ASYNC);
+			if (D2_INGAME_MUSIC) PlaySound(TEXT("Sounds//select.wav"), NULL, SND_FILENAME | SND_ASYNC);
 			LoadGame(File, Name[Locate - 1]);
+			isLoadFile = 1;
+			loadedFileName = Name[Locate - 1];
+			for (int i = 0; i < 4; i++) loadedFileName.pop_back();
 			system("cls");
-			PrintData(File);
+			ConvertData(File);
+			if (D2_PLAYER02_NAME == "Mega Roboto") D3_GameMode = 0;
+			else D3_GameMode = 1;
+			StartGame();
+			Locate = 1;
+			_CURRENT_MENU = 9;
 			break;
 			//Then load data from struct Load to play board
 		case VK_DOWN: case 0x53:
 			GotoXY(Name_X - 3, Name_Y + 2 * Locate - 2);
 			cout << " ";
-			PlaySound(TEXT("Sounds//select.wav"), NULL, SND_FILENAME | SND_ASYNC);
+			if (D2_INGAME_MUSIC) PlaySound(TEXT("Sounds//switch-selection.wav"), NULL, SND_FILENAME | SND_ASYNC);
 			Locate++;
 			if (Locate == Numb_of_file + 1)
 				Locate = 1;
@@ -366,7 +356,7 @@ void HandleKeyForLoad(int x, int y, KEY_EVENT_RECORD key)
 		case VK_UP: case 0x57:
 			GotoXY(Name_X - 3, Name_Y + 2 * Locate - 2);
 			cout << " ";
-			PlaySound(TEXT("Sounds//select.wav"), NULL, SND_FILENAME | SND_ASYNC);
+			if (D2_INGAME_MUSIC) PlaySound(TEXT("Sounds//switch-selection.wav"), NULL, SND_FILENAME | SND_ASYNC);
 			Locate--;
 			if (Locate == 0)
 				Locate = Numb_of_file;
@@ -376,6 +366,8 @@ void HandleKeyForLoad(int x, int y, KEY_EVENT_RECORD key)
 			PrintFileInfo(Info_X, Info_Y, Name[Locate - 1]);
 			break;
 		case VK_ESCAPE: //Esc
+			if (D2_INGAME_MUSIC) PlaySound(TEXT("Sounds//select.wav"), NULL, SND_FILENAME | SND_ASYNC);
+			Locate = 1;
 			_KEYPRESSED = 1;
 			_MENU = 0;
 			_CURRENT_MENU = 0;

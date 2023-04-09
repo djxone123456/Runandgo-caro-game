@@ -57,7 +57,7 @@ static void Logo()
 	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
 
 	//Print & Effect
-	int x = 44, y = 1, x_last = 45 + D2_CAROCHESS_0.size();
+	int x = 44, y = 1, x_last = 45 + int(D2_CAROCHESS_0.size());
 	for (int i = 0; i < (int)D2_CAROCHESS_0.size() - i; i++) {
 		GotoXY(++x, y);
 		wcout << D2_CAROCHESS_0[i];

@@ -1,4 +1,7 @@
 #pragma once
+#ifndef D2_DATA_H
+#define D2_DATA_H
+
 
 #include "Data.h"
 #include "Control.h"
@@ -48,3 +51,7 @@ extern int Temp;
 extern string FileName;
 extern int Finish;
 extern int Count;
+
+extern char _MATRIX[18][18];
+
+#endif

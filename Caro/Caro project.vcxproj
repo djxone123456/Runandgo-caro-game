@@ -130,7 +130,6 @@
     <ClCompile Include="About.cpp" />
     <ClCompile Include="Control.cpp" />
     <ClCompile Include="D2_variables.cpp" />
-    <ClCompile Include="Data.cpp" />
     <ClCompile Include="loadData.cpp" />
     <ClCompile Include="loadData.h" />
     <ClCompile Include="main.cpp" />
@@ -138,7 +137,6 @@
     <ClCompile Include="Error.cpp" />
     <ClCompile Include="Help.cpp" />
     <ClCompile Include="MainMenu.cpp" />
-    <ClCompile Include="Model.cpp" />
     <ClCompile Include="NewGame.cpp" />
     <ClCompile Include="Ranking.cpp" />
     <ClCompile Include="SavedGames.cpp" />
@@ -157,7 +155,6 @@
     <ClInclude Include="Error.h" />
     <ClInclude Include="Help.h" />
     <ClInclude Include="MainMenu.h" />
-    <ClInclude Include="Model.h" />
     <ClInclude Include="NewGame.h" />
     <ClInclude Include="Ranking.h" />
     <ClInclude Include="SavedGames.h" />

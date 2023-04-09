@@ -2,9 +2,8 @@
 #ifndef CONTROL_H
 #define CONTROL_H
 
-#include "data.h"
-#include "view.h"
-#include "model.h"
+#include "Data.h"
+#include "View.h"
 
 #include "Error.h"
 #include "Help.h"
@@ -22,5 +21,7 @@ void HandleKeyForBoard(int x, int y, KEY_EVENT_RECORD key);
 void HandleEvent(int x, int y, void(*func)(int, int, KEY_EVENT_RECORD));
 void Exit();
 void ControlMenu();
+
+void InitGame();
 
 #endif

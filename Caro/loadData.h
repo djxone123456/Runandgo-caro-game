@@ -1,4 +1,6 @@
 #pragma once
+#ifndef LOADDATA_H
+#define LOADDATA_H
 
 #include "Data.h"
 #include "Control.h"
@@ -15,7 +17,13 @@ extern int Info_Y;
 
 extern int Locate;
 //ten file can load
-extern string Name[15];
+extern string Name[10];
 
 // So file da luu
 extern int Numb_of_file;
+
+//Process to update saved files
+extern bool isLoadFile;
+extern string loadedFileName;
+
+#endif

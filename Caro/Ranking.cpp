@@ -7,9 +7,7 @@ int Ranking()
 	#ifdef DEBUG_RANKING
 		Init(arr);  
 	#endif
-	//InputFile("SavedFiles\\");
 
-	//Just fix to run, cannot run with the under one.
 	InitRankingFile(L"SavedFiles//", L"fileLoad.json", arr);
 
 	//InitRankingFile(ExePath() + L"//SavedFiles//", L"fileLoad.json", arr);
@@ -198,14 +196,13 @@ static int InitRankingFile(const wstring dir, const wstring SystemFileName, TopR
 	input.open(dir + SystemFileName);
 	if (input.fail()) return ErrorPopUp(0x0001);
 	
-	int nItem;
-	input >> nItem;
+	/*int nItem;
+	input >> nItem;*/
 	
 	string FileDir;
-	while (nItem--)
+	while (getline(input, FileDir))
 	{
 		ifstream FileInput;
-		input >> FileDir;
 
 		wstring wsTmp(FileDir.begin(), FileDir.end());
 		FileInput.open(dir + wsTmp);

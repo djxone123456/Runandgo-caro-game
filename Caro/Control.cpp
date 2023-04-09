@@ -9,17 +9,12 @@ void StartGame() {
 	DrawLogoFrame();
 	DrawLogoHcmus();
 	DrawAvatarBattle(D2_PLAYER01_CHARACTER, D2_PLAYER02_CHARACTER);
-	DrawScore(0, 0);
+	DrawScore(Score1, Score2);
 	DrawTurn(1);
 	GotoXY(FIRST_CELL_X, FIRST_CELL_Y);
 	ShowCur(1);
-	ClearMatrix();
-	while (1) {
-		if (D3_GameMode == 1)
-			HandleEvent(4, 2, HandleKeyForBoard);
-		else 
-			HandleEvent(4, 2, HandleKeyForBoardBot);
-	}
+	PrintDataBoard();
+	_CURRENT_MENU = 9;
 }
 
 //Handle event
@@ -64,11 +59,9 @@ void ControlMenu() {
 				DrawSavedBoard();
 				DrawButton();
 				PrintFileName(Name);
-				PrintFirstFileInfo();
 				break;
 			case 3:
 				Setting();
-
 				break;
 			case 4:
 				About();
@@ -77,7 +70,6 @@ void ControlMenu() {
 				Help();
 				break;
 			case 6:
-				//Say goodbye and exit
 				Exit();
 				break;
 			}
@@ -104,6 +96,34 @@ void ControlMenu() {
 		case 7:
 			HandleEvent(0, 0, HandleKeyForChoosingChar);
 			break;
+		case 8:
+			HandleEvent(4, 2, HandleKeyForSaveGame);
+			break;
+		case 9:
+			if (D3_GameMode == 1)
+				HandleEvent(4, 2, HandleKeyForBoard);
+			else
+				HandleEvent(4, 2, HandleKeyForBoardBot);
+			break;
+		case 10:
+			HandleEvent(4, 2, HandleKeyForSaveGame_ESC);
+			break;
 		}
 	}
+}
+
+void InitGame() {
+	Turn = 0;
+	Score1 = 0;
+	Score2 = 0;
+	Draw = 0;
+	Count = 0;
+	FileName = "";
+	D2_PLAYER = 1;
+	D2_PLAYER01_NAME = "";
+	D2_PLAYER02_NAME = "Mega Roboto";
+	D2_PLAYER01_CHARACTER = 1;
+	D2_PLAYER02_CHARACTER = 1;
+	D3_GameMode = 0;
+	D3_Y2 = D3_NewGame_Box_Top + 8;
 }

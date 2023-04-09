@@ -214,7 +214,7 @@ int Help()
 	ShowCur(false);
 
 	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
-	for (size_t i = 0; i < D2_HELP_1.size() - 1 - i; i += 2) {
+	for (int i = 0; i < D2_HELP_1.size() - 1 - i; i += 2) {
 		GotoXY(D3_Help_Box_Left + 27 + i, 3);
 		wcout << D2_HELP_1[i] << D2_HELP_1[i + 1];
 		GotoXY(D3_Help_Box_Left + 27 + i, 4);
@@ -228,17 +228,17 @@ int Help()
 		GotoXY(D3_Help_Box_Left + 27 + i, 8);
 		wcout << D2_HELP_6[i] << D2_HELP_6[i + 1];
 
-		GotoXY(D3_Help_Box_Left + 27 + D2_HELP_1.size() - i - 2, 3);
+		GotoXY(D3_Help_Box_Left + 27 + int(D2_HELP_1.size()) - i - 2, 3);
 		wcout << D2_HELP_1[D2_HELP_1.size() - 2 - i] << D2_HELP_1[D2_HELP_1.size() - 1 - i];
-		GotoXY(D3_Help_Box_Left + 27 + D2_HELP_1.size() - i - 2, 4);
+		GotoXY(D3_Help_Box_Left + 27 + int(D2_HELP_1.size()) - i - 2, 4);
 		wcout << D2_HELP_2[D2_HELP_1.size() - 2 - i] << D2_HELP_2[D2_HELP_1.size() - 1 - i];
-		GotoXY(D3_Help_Box_Left + 27 + D2_HELP_1.size() - i - 2, 5);
+		GotoXY(D3_Help_Box_Left + 27 + int(D2_HELP_1.size()) - i - 2, 5);
 		wcout << D2_HELP_3[D2_HELP_1.size() - 2 - i] << D2_HELP_3[D2_HELP_1.size() - 1 - i];
-		GotoXY(D3_Help_Box_Left + 27 + D2_HELP_1.size() - i - 2, 6);
+		GotoXY(D3_Help_Box_Left + 27 + int(D2_HELP_1.size()) - i - 2, 6);
 		wcout << D2_HELP_4[D2_HELP_1.size() - 2 - i] << D2_HELP_4[D2_HELP_1.size() - 1 - i];
-		GotoXY(D3_Help_Box_Left + 27 + D2_HELP_1.size() - i - 2, 7);
+		GotoXY(D3_Help_Box_Left + 27 + int(D2_HELP_1.size()) - i - 2, 7);
 		wcout << D2_HELP_5[D2_HELP_1.size() - 2 - i] << D2_HELP_5[D2_HELP_1.size() - 1 - i];
-		GotoXY(D3_Help_Box_Left + 27 + D2_HELP_1.size() - i - 2, 8);
+		GotoXY(D3_Help_Box_Left + 27 + int(D2_HELP_1.size()) - i - 2, 8);
 		wcout << D2_HELP_6[D2_HELP_1.size() - 2 - i] << D2_HELP_6[D2_HELP_1.size() - 1 - i];
 
 		Sleep(10);

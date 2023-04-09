@@ -2,7 +2,6 @@
 
 int D3_Y2 = D3_NewGame_Box_Top + 8;
 int D3_GameMode = 0;
-int D3_Time = 0;
 
 void D3_EraseConsole(int x1, int x2, int y)
 {
@@ -18,7 +17,7 @@ int NewGame()
 
 	//Draw Logo "NEW GAME"
 	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
-	for (size_t i = 0; i < D2_NEWGAME_1.size() - 1 - i; i += 2) {
+	for (int i = 0; i < D2_NEWGAME_1.size() - 1 - i; i += 2) {
 		GotoXY(D3_NewGame_Box_Left + 8 + i, 4);
 		wcout << D2_NEWGAME_1[i] << D2_NEWGAME_1[i + 1];
 		GotoXY(D3_NewGame_Box_Left + 8 + i, 5);
@@ -32,17 +31,17 @@ int NewGame()
 		GotoXY(D3_NewGame_Box_Left + 8 + i, 9);
 		wcout << D2_NEWGAME_6[i] << D2_NEWGAME_6[i + 1];
 
-		GotoXY(D3_NewGame_Box_Left + 8 + D2_NEWGAME_1.size() - i - 2, 4);
+		GotoXY(D3_NewGame_Box_Left + 8 + int(D2_NEWGAME_1.size()) - i - 2, 4);
 		wcout << D2_NEWGAME_1[D2_NEWGAME_1.size() - 2 - i] << D2_NEWGAME_1[D2_NEWGAME_1.size() - 1 - i];
-		GotoXY(D3_NewGame_Box_Left + 8 + D2_NEWGAME_1.size() - i - 2, 5);
+		GotoXY(D3_NewGame_Box_Left + 8 + int(D2_NEWGAME_1.size()) - i - 2, 5);
 		wcout << D2_NEWGAME_2[D2_NEWGAME_1.size() - 2 - i] << D2_NEWGAME_2[D2_NEWGAME_1.size() - 1 - i];
-		GotoXY(D3_NewGame_Box_Left + 8 + D2_NEWGAME_1.size() - i - 2, 6);
+		GotoXY(D3_NewGame_Box_Left + 8 + int(D2_NEWGAME_1.size()) - i - 2, 6);
 		wcout << D2_NEWGAME_3[D2_NEWGAME_1.size() - 2 - i] << D2_NEWGAME_3[D2_NEWGAME_1.size() - 1 - i];
-		GotoXY(D3_NewGame_Box_Left + 8 + D2_NEWGAME_1.size() - i - 2, 7);
+		GotoXY(D3_NewGame_Box_Left + 8 + int(D2_NEWGAME_1.size()) - i - 2, 7);
 		wcout << D2_NEWGAME_4[D2_NEWGAME_1.size() - 2 - i] << D2_NEWGAME_4[D2_NEWGAME_1.size() - 1 - i];
-		GotoXY(D3_NewGame_Box_Left + 8 + D2_NEWGAME_1.size() - i - 2, 8);
+		GotoXY(D3_NewGame_Box_Left + 8 + int(D2_NEWGAME_1.size()) - i - 2, 8);
 		wcout << D2_NEWGAME_5[D2_NEWGAME_1.size() - 2 - i] << D2_NEWGAME_5[D2_NEWGAME_1.size() - 1 - i];
-		GotoXY(D3_NewGame_Box_Left + 8 + D2_NEWGAME_1.size() - i - 2, 9);
+		GotoXY(D3_NewGame_Box_Left + 8 + int(D2_NEWGAME_1.size()) - i - 2, 9);
 		wcout << D2_NEWGAME_6[D2_NEWGAME_1.size() - 2 - i] << D2_NEWGAME_6[D2_NEWGAME_1.size() - 1 - i];
 
 		Sleep(10);
@@ -81,13 +80,6 @@ int NewGame()
 	cout << D3_NewGame_Mode[0];
 	GotoXY(D3_NewGame_Box_Left + 44, D3_NewGame_Box_Top + 12);
 	cout << D3_NewGame_Mode[1];
-	/*GotoXY(D3_NewGame_Box_Left + 57, D3_NewGame_Box_Top + 7);
-	cout << D3_Right_Arrow;*/
-
-	/*GotoXY(D3_NewGame_Box_Left + 26, D3_NewGame_Box_Top + 11);
-	cout << "Time: ";
-	GotoXY(D3_NewGame_Box_Left + 43, D3_NewGame_Box_Top + 11);
-	cout << D3_NewGame_Time[D3_Time] << " second";*/
 
 	//Draw Esc Button
 	GotoXY(D3_NewGame_Box_Left + 4, D3_NewGame_Box_Max_j - 2);
@@ -144,16 +136,13 @@ int NewGame()
 
 void HandleKeyForNewGame(int D3_X, int D3_Y, KEY_EVENT_RECORD key)
 {
-	// D3_X = D3_NewGame_Box_Left + 41
-	// D3_Y = D3_NewGame_Box_Top + 8
-
 	if (key.bKeyDown) //Key pressed
 	{
 		switch (key.wVirtualKeyCode)
 		{
 		case VK_ESCAPE:
 			if (D2_INGAME_MUSIC) PlaySound(TEXT("sounds//select.wav"), NULL, SND_FILENAME | SND_ASYNC);
-			D3_Y2 = D3_NewGame_Box_Top + 7;
+			D3_Y2 = D3_NewGame_Box_Top + 8;
 			_KEYPRESSED = 1;
 			_MENU = 0;
 			_CURRENT_MENU = 0;
@@ -164,57 +153,13 @@ void HandleKeyForNewGame(int D3_X, int D3_Y, KEY_EVENT_RECORD key)
 			Store();
 			_CURRENT_MENU = 7; //###################
 			break;
-			//case VK_LEFT: case 0x41: //Left arrow
-			//	if (D2_INGAME_MUSIC) PlaySound(TEXT("sounds//switch-selection.wav"), NULL, SND_FILENAME | SND_ASYNC);
-			//	GotoXY(D3_X + 11, D3_Y2);
-			//	TextColor(8);
-			//	cout << D3_Left_Arrow;
-			//	Sleep(150);
-			//	GotoXY(D3_X + 11, D3_Y2);
-			//	TextColor(0);
-			//	cout << D3_Left_Arrow;
-			//	if (D3_Y2 == D3_Y)
-			//	{
-			//		GotoXY(D3_X + 14, D3_Y2);
-			//		cout << D3_NewGame_Mode[D3_GameMode = D3_GameMode == 0 ? 1 : 0];
-			//	}
-			//	else if (D3_Y2 == D3_Y + 4)
-			//	{
-			//		GotoXY(D3_X + 17, D3_Y2);
-			//		cout << D3_NewGame_Time[D3_Time = D3_Time == 0 ? 2 : (D3_Time == 1 ? 0 : 1)];
-			//	}
-			//	break;
-			//case VK_RIGHT: case 0x44: //Right arrow
-			//	if (D2_INGAME_MUSIC) PlaySound(TEXT("sounds//switch-selection.wav"), NULL, SND_FILENAME | SND_ASYNC);
-			//	GotoXY(D3_X + 31, D3_Y2);
-			//	TextColor(8);
-			//	cout << D3_Right_Arrow;
-			//	Sleep(150);
-			//	GotoXY(D3_X + 31, D3_Y2);
-			//	TextColor(0);
-			//	cout << D3_Right_Arrow;
-			//	if (D3_Y2 == D3_Y)
-			//	{
-			//		GotoXY(D3_X + 14, D3_Y2);
-			//		cout << D3_NewGame_Mode[D3_GameMode = D3_GameMode == 0 ? 1 : 0];
-			//	}
-			//	else if (D3_Y2 == D3_Y + 4)
-			//	{
-			//		GotoXY(D3_X + 17, D3_Y2);
-			//		cout << D3_NewGame_Time[D3_Time = D3_Time == 0 ? 1 : (D3_Time == 1 ? 2 : 0)];
-			//	}
-			//	break;
+			
 		case VK_DOWN: case 0x53: //Down arrow
 			if (D2_INGAME_MUSIC) PlaySound(TEXT("sounds//switch-selection.wav"), NULL, SND_FILENAME | SND_ASYNC);
 			if (D3_Y2 != D3_Y + 4)
 			{
 				D3_EraseConsole(D3_X, D3_X, D3_Y2);
-				/*D3_EraseConsole(D3_X, D3_X, D3_Y2);*/
 				D3_Y2 += 4;
-				/*GotoXY(D3_X + 11, D3_Y2);
-				cout << D3_Left_Arrow;
-				GotoXY(D3_X + 31, D3_Y2);
-				cout << D3_Right_Arrow;*/
 				GotoXY(D3_X, D3_Y2);
 				cout << D3_Right_Arrow;
 				D3_GameMode = 1;
@@ -222,12 +167,7 @@ void HandleKeyForNewGame(int D3_X, int D3_Y, KEY_EVENT_RECORD key)
 			else if (D3_Y2 == D3_Y + 4)
 			{
 				D3_EraseConsole(D3_X, D3_X, D3_Y2);
-				/*D3_EraseConsole(D3_X + 30, D3_X + 32, D3_Y2);*/
 				D3_Y2 = D3_Y;
-				/*GotoXY(D3_X + 11, D3_Y2);
-				cout << D3_Left_Arrow;
-				GotoXY(D3_X + 31, D3_Y2);
-				cout << D3_Right_Arrow;*/
 				GotoXY(D3_X, D3_Y2);
 				cout << D3_Right_Arrow;
 				D3_GameMode = 0;
@@ -238,12 +178,7 @@ void HandleKeyForNewGame(int D3_X, int D3_Y, KEY_EVENT_RECORD key)
 			if (D3_Y2 != D3_Y)
 			{
 				D3_EraseConsole(D3_X, D3_X, D3_Y2);
-				//D3_EraseConsole(D3_X + 30, D3_X + 32, D3_Y2);
 				D3_Y2 = D3_Y;
-				/*GotoXY(D3_X + 11, D3_Y2);
-				cout << D3_Left_Arrow;
-				GotoXY(D3_X + 31, D3_Y2);
-				cout << D3_Right_Arrow;*/
 				GotoXY(D3_X, D3_Y2);
 				cout << D3_Right_Arrow;
 				D3_GameMode = 0;
@@ -251,12 +186,7 @@ void HandleKeyForNewGame(int D3_X, int D3_Y, KEY_EVENT_RECORD key)
 			else if (D3_Y2 == D3_Y)
 			{
 				D3_EraseConsole(D3_X, D3_X, D3_Y2);
-				//D3_EraseConsole(D3_X + 30, D3_X + 32, D3_Y2);
 				D3_Y2 += 4;
-				/*GotoXY(D3_X + 11, D3_Y2);
-				cout << D3_Left_Arrow;
-				GotoXY(D3_X + 31, D3_Y2);
-				cout << D3_Right_Arrow;*/
 				GotoXY(D3_X, D3_Y2);
 				cout << D3_Right_Arrow;
 				D3_GameMode = 1;
