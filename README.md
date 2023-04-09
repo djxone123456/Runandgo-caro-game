@@ -1,6 +1,7 @@
 # Caro Game
 ## Introduction
 <p>This is our project at <a href="https://www.hcmus.edu.vn/">university</a>. It's just a small caro chess game.</p>
+<img src="hcmus-logo.png">
 
 ## Instructor
 <p>PhD. Truong Toan Thinh</p>
