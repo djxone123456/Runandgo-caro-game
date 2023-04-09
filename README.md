@@ -1,3 +1,5 @@
 # Caro Game
-<p> This is our project at university </p><br>
-<p> If bug, go to loadFile.cpp, delete anything and then replace it to original. </p>
+## Introduction
+<p>This is our project at university. It's just a small caro chess game.</p>
+## Contributors
+<l> <a href="https://github.com/djxone123456">Nguyen Dinh Nhan</a></l>
