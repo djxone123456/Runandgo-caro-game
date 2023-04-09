@@ -129,8 +129,6 @@ bool Check_Win(const char symbol, const int x_pos, const int y_pos) {
 	return 0; //Not Win
 }
 
-//Just pay attention to the row starts and ends with ---------------------------------
-//Handle key for the chess board
 void HandleKeyForBoard(int x, int y, KEY_EVENT_RECORD key) {
 	Finish = 0;
 	if (Turn % 2 == 0) DrawTurn(1);
@@ -146,9 +144,6 @@ void HandleKeyForBoard(int x, int y, KEY_EVENT_RECORD key) {
 			if (_MATRIX[_Y / 2 - int(FIRST_CELL_Y) / 2][_X / 4 - int(FIRST_CELL_X) / 4] == 'x' || _MATRIX[_Y / 2 - int(FIRST_CELL_Y) / 2][_X / 4 - int(FIRST_CELL_X) / 4] == 'o') {
 				return;
 			}
-			//Source
-			/*if (sound_mode)
-				PlaySound(TEXT("Sounds//put-x-o.wav"), NULL, SND_FILENAME | SND_ASYNC);*/
 			Count++;
 			if (Turn % 2 == 0) {
 				Turn++;
@@ -244,183 +239,8 @@ void HandleKeyForBoard(int x, int y, KEY_EVENT_RECORD key) {
 		}
 	}
 }
-//--------------------------------------------------------------------------------
-int bot_x, bot_y;
 
-//void BotRandom(char _MATRIX[BOARD_SIZE][BOARD_SIZE]) {
-//
-//	int r_mat = 0;
-//	int c_mat = 0;
-//
-//	int cur_row = _Y / 2 - int(FIRST_CELL_Y) / 2;
-//	int cur_col = _X / 4 - int(FIRST_CELL_X) / 4;
-//
-//	int vertical_01 = 0;
-//	int vertical_02 = 0;
-//
-//	int horizontal_01 = 0;
-//	int horizontal_02 = 0;
-//
-//	int main_cross_01 = 0;
-//	int main_cross_02 = 0;
-//
-//	int sub_cross_01 = 0;
-//	int sub_cross_02 = 0;
-//
-//	//Horizontal check
-//	for (int i = cur_col + 1; i < BOARD_SIZE; i++) {
-//		if (_MATRIX[cur_row][i] != 'x') break;
-//		horizontal_01++;
-//	}
-//
-//	for (int i = cur_col - 1; i >= 0; i--) {
-//		if (_MATRIX[cur_row][i] != 'x') break;
-//		horizontal_02++;
-//	}
-//
-//	if ((horizontal_01 + horizontal_02) >= 1) {
-//		bot_x = _X - horizontal_02 * 4 - 4;
-//		bot_y = _Y;
-//		r_mat = (bot_y / 2 - int(FIRST_CELL_Y) / 2);
-//		c_mat = (bot_x / 4 - int(FIRST_CELL_X) / 4);
-//		if (c_mat >= 0)
-//			if (_MATRIX[r_mat][c_mat] != 'x' && _MATRIX[r_mat][c_mat] != 'o') {
-//				_MATRIX[r_mat][c_mat] = 'o';
-//				GotoXY(bot_x, bot_y);
-//				cout << "O";
-//				return;
-//			}
-//		bot_x = _X + horizontal_01 * 4 + 4;
-//		c_mat = (bot_x / 4 - int(FIRST_CELL_X) / 4);
-//		if (c_mat < BOARD_SIZE)
-//			if (_MATRIX[r_mat][c_mat] != 'x' && _MATRIX[r_mat][c_mat] != 'o') {
-//				_MATRIX[r_mat][c_mat] = 'o';
-//				GotoXY(bot_x, bot_y);
-//				cout << "O";
-//				return;
-//			}
-//	}
-//
-//
-//	//Vertical check
-//	for (int i = cur_row + 1; i < BOARD_SIZE; i++) {
-//		if (_MATRIX[i][cur_col] != 'x') break;
-//		vertical_01++;
-//	}
-//
-//	for (int i = cur_row - 1; i >= 0; i--) {
-//		if (_MATRIX[i][cur_col] != 'x') break;
-//		vertical_02++;
-//	}
-//
-//	if ((vertical_01 + vertical_02) >= 1) {
-//		bot_x = _X;
-//		bot_y = _Y - vertical_02 * 2 - 2;
-//		r_mat = (bot_y / 2 - int(FIRST_CELL_Y) / 2);
-//		c_mat = (bot_x / 4 - int(FIRST_CELL_X) / 4);
-//		if (r_mat >= 0)
-//			if (_MATRIX[r_mat][c_mat] != 'x' && _MATRIX[r_mat][c_mat] != 'o') {
-//				_MATRIX[r_mat][c_mat] = 'o';
-//				GotoXY(bot_x, bot_y);
-//				cout << "O";
-//				return;
-//			}
-//		bot_y = _Y + vertical_01 * 2 + 2;
-//		r_mat = (bot_y / 2 - int(FIRST_CELL_Y) / 2);
-//		if (r_mat < BOARD_SIZE)
-//			if (_MATRIX[r_mat][c_mat] != 'x' && _MATRIX[r_mat][c_mat] != 'o') {
-//				_MATRIX[r_mat][c_mat] = 'o';
-//				GotoXY(bot_x, bot_y);
-//				cout << "O";
-//				return;
-//			}
-//	}
-//
-//
-//	//Main cross check
-//	for (int i = cur_row + 1, j = cur_col + 1; i < BOARD_SIZE && j < BOARD_SIZE; i++, j++) {
-//		if (_MATRIX[i][j] != 'x') break;
-//		main_cross_01++;
-//	}
-//
-//	for (int i = cur_row - 1, j = cur_col - 1; i >= 0 && j >= 0; i--, j--) {
-//		if (_MATRIX[i][j] != 'x') break;
-//		main_cross_02++;
-//	}
-//
-//	if ((main_cross_01 + main_cross_02) >= 1) {
-//		bot_x = _X - main_cross_02 * 4 - 4;
-//		bot_y = _Y - main_cross_02 * 2 - 2;
-//		r_mat = (bot_y / 2 - int(FIRST_CELL_Y) / 2);
-//		c_mat = (bot_x / 4 - int(FIRST_CELL_X) / 4);
-//		if (r_mat >= 0 && c_mat >= 0)
-//			if (_MATRIX[r_mat][c_mat] != 'x' && _MATRIX[r_mat][c_mat] != 'o') {
-//				_MATRIX[r_mat][c_mat] = 'o';
-//				GotoXY(bot_x, bot_y);
-//				cout << "O";
-//				return;
-//			}
-//		bot_x = _X + main_cross_01 * 4 + 4;
-//		bot_y = _Y + main_cross_01 * 2 + 2;
-//		r_mat = (bot_y / 2 - int(FIRST_CELL_Y) / 2);
-//		c_mat = (bot_x / 4 - int(FIRST_CELL_X) / 4);
-//		if (r_mat < BOARD_SIZE && c_mat < BOARD_SIZE)
-//			if (_MATRIX[r_mat][c_mat] != 'x' && _MATRIX[r_mat][c_mat] != 'o') {
-//				_MATRIX[r_mat][c_mat] = 'o';
-//				GotoXY(bot_x, bot_y);
-//				cout << "O";
-//				return;
-//			}
-//	}
-//
-//	//Sub cross check
-//	for (int i = cur_row - 1, j = cur_col + 1; i >= 0 && j < BOARD_SIZE; i--, j++) {
-//		if (_MATRIX[i][j] != 'x') break;
-//		sub_cross_01++;
-//	}
-//
-//	for (int i = cur_row + 1, j = cur_col - 1; i < BOARD_SIZE && j >= 0; i++, j--) {
-//		if (_MATRIX[i][j] != 'x') break;
-//		sub_cross_02++;
-//	}
-//
-//	if ((sub_cross_01 + sub_cross_02) >= 1) {
-//		bot_x = _X - sub_cross_02 * 4 - 4;
-//		bot_y = _Y + sub_cross_02 * 2 + 2;
-//		r_mat = (bot_y / 2 - int(FIRST_CELL_Y) / 2);
-//		c_mat = (bot_x / 4 - int(FIRST_CELL_X) / 4);
-//		if (c_mat >= 0 && r_mat < BOARD_SIZE)
-//			if (_MATRIX[r_mat][c_mat] != 'x' && _MATRIX[r_mat][c_mat] != 'o') {
-//				_MATRIX[r_mat][c_mat] = 'o';
-//				GotoXY(bot_x, bot_y);
-//				cout << "O";
-//				return;
-//			}
-//		bot_x = _X + sub_cross_01 * 4 + 4;
-//		bot_y = _Y - sub_cross_01 * 2 - 2;
-//		r_mat = (bot_y / 2 - int(FIRST_CELL_Y) / 2);
-//		c_mat = (bot_x / 4 - int(FIRST_CELL_X) / 4);
-//		if (r_mat >= 0 && c_mat < BOARD_SIZE)
-//			if (_MATRIX[r_mat][c_mat] != 'x' && _MATRIX[r_mat][c_mat] != 'o') {
-//				_MATRIX[r_mat][c_mat] = 'o';
-//				GotoXY(bot_x, bot_y);
-//				cout << "O";
-//				return;
-//			}
-//	}
-//
-//	srand(unsigned int(time(NULL)));
-//	while (1) {
-//		bot_x = rand() % BOARD_SIZE + 0;
-//		bot_y = rand() % BOARD_SIZE + 0;
-//		if (_MATRIX[bot_x][bot_y] != 'x' && _MATRIX[bot_x][bot_y] != 'o') {
-//			GotoXY(4 * bot_y + int(FIRST_CELL_X), 2 * bot_x + int(FIRST_CELL_Y));
-//			_MATRIX[bot_x][bot_y] = 'o';
-//			cout << "O";
-//			return;
-//		}
-//	}
-//}
+int bot_x, bot_y;
 
 void BotRandom(char _MATRIX[BOARD_SIZE][BOARD_SIZE]) {
 
@@ -500,7 +320,7 @@ void BotRandom(char _MATRIX[BOARD_SIZE][BOARD_SIZE]) {
 			}
 	for (int i = 0; i < 4; i++)
 		if (whichOne[i] == 1) {
-			if ((vertical_01 + vertical_02) >= 1) {
+			if ((vertical_01 + vertical_02) >= 0) {
 				bot_x = _X;
 				bot_y = _Y - vertical_02 * 2 - 2;
 				r_mat = (bot_y / 2 - int(FIRST_CELL_Y) / 2);
@@ -524,7 +344,7 @@ void BotRandom(char _MATRIX[BOARD_SIZE][BOARD_SIZE]) {
 			}
 		}
 		else if (whichOne[i] == 3) {
-			if ((main_cross_01 + main_cross_02) >= 1) {
+			if ((main_cross_01 + main_cross_02) >= 0) {
 				bot_x = _X - main_cross_02 * 4 - 4;
 				bot_y = _Y - main_cross_02 * 2 - 2;
 				r_mat = (bot_y / 2 - int(FIRST_CELL_Y) / 2);
@@ -550,7 +370,7 @@ void BotRandom(char _MATRIX[BOARD_SIZE][BOARD_SIZE]) {
 			}
 		}
 		else if (whichOne[i] == 4) {
-			if ((sub_cross_01 + sub_cross_02) >= 1) {
+			if ((sub_cross_01 + sub_cross_02) >= 0) {
 				bot_x = _X - sub_cross_02 * 4 - 4;
 				bot_y = _Y + sub_cross_02 * 2 + 2;
 				r_mat = (bot_y / 2 - int(FIRST_CELL_Y) / 2);
@@ -576,7 +396,7 @@ void BotRandom(char _MATRIX[BOARD_SIZE][BOARD_SIZE]) {
 			}
 		}
 		else {
-			if ((horizontal_01 + horizontal_02) >= 1) {
+			if ((horizontal_01 + horizontal_02) >= 0) {
 				bot_x = _X - horizontal_02 * 4 - 4;
 				bot_y = _Y;
 				r_mat = (bot_y / 2 - int(FIRST_CELL_Y) / 2);
@@ -725,7 +545,7 @@ void HandleKeyForBoardBot(int x, int y, KEY_EVENT_RECORD key) {
 		}
 	}
 }
-//--------------------------------------------------------------------------------
+
 //Draw the Caro board
 void DrawBoard(int pSize) {
 	ShowCur(0);
@@ -942,8 +762,7 @@ void DrawWin(int n) {
 }
 
 //Draw Avatar In Battle
-
-//Hàm PrintCharacter Của D2 (Player1: (FLeft + 5, FTop + 3) / Player2: FLeft + 60, FTop + 3)
+//Function PrintCharacter of D2 (Player1: (FLeft + 5, FTop + 3) / Player2: FLeft + 60, FTop + 3)
 void DrawAvatarBattle(int player1, int player2) {
 	PrintCharacter(player1, FLeft + 5, FTop + 3);
 	PrintCharacter(player2, FLeft + 58, FTop + 3);
@@ -1057,7 +876,6 @@ void DrawScore(int player1, int player2) {
 }
 
 //Draw Turn (1: X Turn / 0: O Turn)
-
 void DrawTurn(int n) {
 	ShowCur(0);
 	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
@@ -1291,7 +1109,3 @@ void PrintDataBoard() {
 		}
 	}
 }
-
-
-
-
