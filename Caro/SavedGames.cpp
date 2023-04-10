@@ -316,7 +316,7 @@ void DeleteInfo()
 	{
 		GotoXY(Info_X, 16 + i);
 		
-		for (int j = 0; j <= HLeft; j++)
+		for (int j = 0; j <= HLeft + 1; j++)
 			cout << " ";
 
 	}

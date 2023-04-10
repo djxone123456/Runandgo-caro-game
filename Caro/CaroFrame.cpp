@@ -137,7 +137,7 @@ void HandleKeyForBoard(int x, int y, KEY_EVENT_RECORD key) {
 	{
 		switch (key.wVirtualKeyCode)
 		{
-		case VK_RETURN: //Enter
+		case VK_RETURN: case VK_SPACE: //Enter & Space
 			if (D2_INGAME_MUSIC) PlaySound(TEXT("Sounds//put-x-o.wav"), NULL, SND_FILENAME | SND_ASYNC);
 			//Check Turn
 			if (_MATRIX[_Y / 2 - int(FIRST_CELL_Y) / 2][_X / 4 - int(FIRST_CELL_X) / 4] == 'x' || _MATRIX[_Y / 2 - int(FIRST_CELL_Y) / 2][_X / 4 - int(FIRST_CELL_X) / 4] == 'o') {
@@ -147,8 +147,8 @@ void HandleKeyForBoard(int x, int y, KEY_EVENT_RECORD key) {
 			if (Turn % 2 == 0) {
 				Turn++;
 				_MATRIX[_Y / 2 - int(FIRST_CELL_Y) / 2][_X / 4 - int(FIRST_CELL_X) / 4] = 'x';
-
-				cout << "X";
+				PrintTextColor_Char('X', 1);
+				//cout << "X";
 				if (Check_Win('x', _X, _Y)) {
 					Turn = 0; Score1++;
 					DrawScore(Score1, Score2);
@@ -163,7 +163,8 @@ void HandleKeyForBoard(int x, int y, KEY_EVENT_RECORD key) {
 			else if (Turn % 2 == 1) {
 				Turn++;
 				_MATRIX[_Y / 2 - int(FIRST_CELL_Y) / 2][_X / 4 - int(FIRST_CELL_X) / 4] = 'o';
-				cout << "O";
+				PrintTextColor_Char('O', 2);
+				//cout << "O";
 				if (Check_Win('o', _X, _Y)) {
 					Turn = 0; Score2++;
 					DrawScore(Score1, Score2);
@@ -328,7 +329,8 @@ void BotRandom(char _MATRIX[BOARD_SIZE][BOARD_SIZE]) {
 					if (_MATRIX[r_mat][c_mat] != 'x' && _MATRIX[r_mat][c_mat] != 'o') {
 						_MATRIX[r_mat][c_mat] = 'o';
 						GotoXY(bot_x, bot_y);
-						cout << "O";
+						//cout << "O";
+						PrintTextColor_Char('O', 2);
 						return;
 					}
 				bot_y = _Y + vertical_01 * 2 + 2;
@@ -337,7 +339,8 @@ void BotRandom(char _MATRIX[BOARD_SIZE][BOARD_SIZE]) {
 					if (_MATRIX[r_mat][c_mat] != 'x' && _MATRIX[r_mat][c_mat] != 'o') {
 						_MATRIX[r_mat][c_mat] = 'o';
 						GotoXY(bot_x, bot_y);
-						cout << "O";
+						//cout << "O";
+						PrintTextColor_Char('O', 2);
 						return;
 					}
 			}
@@ -352,7 +355,8 @@ void BotRandom(char _MATRIX[BOARD_SIZE][BOARD_SIZE]) {
 					if (_MATRIX[r_mat][c_mat] != 'x' && _MATRIX[r_mat][c_mat] != 'o') {
 						_MATRIX[r_mat][c_mat] = 'o';
 						GotoXY(bot_x, bot_y);
-						cout << "O";
+						//cout << "O";
+						PrintTextColor_Char('O', 2);
 						return;
 					}
 				bot_x = _X + main_cross_01 * 4 + 4;
@@ -363,7 +367,8 @@ void BotRandom(char _MATRIX[BOARD_SIZE][BOARD_SIZE]) {
 					if (_MATRIX[r_mat][c_mat] != 'x' && _MATRIX[r_mat][c_mat] != 'o') {
 						_MATRIX[r_mat][c_mat] = 'o';
 						GotoXY(bot_x, bot_y);
-						cout << "O";
+						//cout << "O";
+						PrintTextColor_Char('O', 2);
 						return;
 					}
 			}
@@ -378,7 +383,8 @@ void BotRandom(char _MATRIX[BOARD_SIZE][BOARD_SIZE]) {
 					if (_MATRIX[r_mat][c_mat] != 'x' && _MATRIX[r_mat][c_mat] != 'o') {
 						_MATRIX[r_mat][c_mat] = 'o';
 						GotoXY(bot_x, bot_y);
-						cout << "O";
+						//cout << "O";
+						PrintTextColor_Char('O', 2);
 						return;
 					}
 				bot_x = _X + sub_cross_01 * 4 + 4;
@@ -389,7 +395,8 @@ void BotRandom(char _MATRIX[BOARD_SIZE][BOARD_SIZE]) {
 					if (_MATRIX[r_mat][c_mat] != 'x' && _MATRIX[r_mat][c_mat] != 'o') {
 						_MATRIX[r_mat][c_mat] = 'o';
 						GotoXY(bot_x, bot_y);
-						cout << "O";
+						//cout << "O";
+						PrintTextColor_Char('O', 2);
 						return;
 					}
 			}
@@ -404,7 +411,8 @@ void BotRandom(char _MATRIX[BOARD_SIZE][BOARD_SIZE]) {
 					if (_MATRIX[r_mat][c_mat] != 'x' && _MATRIX[r_mat][c_mat] != 'o') {
 						_MATRIX[r_mat][c_mat] = 'o';
 						GotoXY(bot_x, bot_y);
-						cout << "O";
+						//cout << "O";
+						PrintTextColor_Char('O', 2);
 						return;
 					}
 				bot_x = _X + horizontal_01 * 4 + 4;
@@ -413,7 +421,8 @@ void BotRandom(char _MATRIX[BOARD_SIZE][BOARD_SIZE]) {
 					if (_MATRIX[r_mat][c_mat] != 'x' && _MATRIX[r_mat][c_mat] != 'o') {
 						_MATRIX[r_mat][c_mat] = 'o';
 						GotoXY(bot_x, bot_y);
-						cout << "O";
+						//cout << "O";
+						PrintTextColor_Char('O', 2);
 						return;
 					}
 			}
@@ -426,7 +435,8 @@ void BotRandom(char _MATRIX[BOARD_SIZE][BOARD_SIZE]) {
 		if (_MATRIX[bot_x][bot_y] != 'x' && _MATRIX[bot_x][bot_y] != 'o') {
 			GotoXY(4 * bot_y + int(FIRST_CELL_X), 2 * bot_x + int(FIRST_CELL_Y));
 			_MATRIX[bot_x][bot_y] = 'o';
-			cout << "O";
+			//cout << "O";
+			PrintTextColor_Char('O', 2);
 			return;
 		}
 	}
@@ -459,7 +469,7 @@ void HandleKeyForBoardBot(int x, int y, KEY_EVENT_RECORD key) {
 	{
 		switch (key.wVirtualKeyCode)
 		{
-		case VK_RETURN: //Enter
+		case VK_RETURN: case VK_SPACE: //Enter & Space
 			//Check Turn
 			if (_MATRIX[_Y / 2 - int(FIRST_CELL_Y) / 2][_X / 4 - int(FIRST_CELL_X) / 4] == 'x' || _MATRIX[_Y / 2 - int(FIRST_CELL_Y) / 2][_X / 4 - int(FIRST_CELL_X) / 4] == 'o') {
 				return;
@@ -469,7 +479,8 @@ void HandleKeyForBoardBot(int x, int y, KEY_EVENT_RECORD key) {
 			if (Turn % 2 == 0) {
 				Turn++;
 				_MATRIX[_Y / 2 - int(FIRST_CELL_Y) / 2][_X / 4 - int(FIRST_CELL_X) / 4] = 'x';
-				cout << "X";
+				//cout << "X";
+				PrintTextColor_Char('X', 1);
 				if (Check_Win('x', _X, _Y)) {
 					Turn = 0; Score1++;
 					DrawScore(Score1, Score2);
@@ -1104,7 +1115,9 @@ void PrintDataBoard() {
 				if (_MATRIX[i][j] == '-') continue;
 				else {
 					GotoXY(4 * j + int(FIRST_CELL_X), 2 * i + int(FIRST_CELL_Y));
-					cout << char(_MATRIX[i][j] - 32);
+					if (_MATRIX[i][j] == 'x') PrintTextColor_Char('X', 1);
+					else PrintTextColor_Char('O', 2);
+					//cout << char(_MATRIX[i][j] - 32);
 				}
 			}
 		}
