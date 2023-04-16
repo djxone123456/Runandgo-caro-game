@@ -2,7 +2,7 @@
 #ifndef VIEW_H
 #define VIEW_H
 
-#include "data.h"
+#include "Data.h"
 
 void CreateConsoleWindow(int width, int height);
 void GotoXY(int x, int y);

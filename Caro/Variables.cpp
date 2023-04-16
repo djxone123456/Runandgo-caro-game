@@ -1,4 +1,4 @@
-#include "data.h"
+#include "Data.h"
 
 //Global Variables
 _POINT _A[BOARD_SIZE][BOARD_SIZE];

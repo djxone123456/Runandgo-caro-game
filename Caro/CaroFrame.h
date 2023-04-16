@@ -2,8 +2,8 @@
 #ifndef CAROFRAME_H
 #define CAROFRAME_H
 
-#include "data.h"
-#include "view.h"
+#include "Data.h"
+#include "View.h"
 
 void ClearMatrix();
 bool Check_Win(const char symbol, const int x_pos, const int y_pos);

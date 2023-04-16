@@ -89,25 +89,25 @@ void PrintTextColor_Char(const char& s, const int& color) {
 void Exit() {
 	ShowCur(0);
 	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
-	int x = 87 - int(D3_BYE_01.size() / 2.0f) + 5;
+	int x = 87 - int(D3_EXIT_01.size() / 2.0f) + 5;
 	GotoXY(x, 10);
-	wcout << D3_BYE_01;
+	wcout << D3_EXIT_01;
 	GotoXY(x, 11);
-	wcout << D3_BYE_02;
+	wcout << D3_EXIT_02;
 	GotoXY(x, 12);
-	wcout << D3_BYE_03;
+	wcout << D3_EXIT_03;
 	GotoXY(x, 13);
-	wcout << D3_BYE_04;
+	wcout << D3_EXIT_04;
 	GotoXY(x, 14);
-	wcout << D3_BYE_05;
+	wcout << D3_EXIT_05;
 	GotoXY(x, 15);
-	wcout << D3_BYE_06;
-	GotoXY(x, 16);
-	wcout << D3_BYE_07;
-	GotoXY(x, 17);
-	wcout << D3_BYE_08;
-	GotoXY(x, 18);
-	wcout << D3_BYE_09;
+	wcout << D3_EXIT_06;
+	//GotoXY(x, 16);
+	//wcout << D3_EXIT_07;
+	//GotoXY(x, 17);
+	//wcout << D3_EXIT_08;
+	//GotoXY(x, 18);
+	//wcout << D3_EXIT_09;
 	for (int i = 0, j = 173 - int(D2_RUNANDGO_TEXT_01.size()); i <= 83 - int(D2_RUNANDGO_LOGO_01.size()) || (j >= 91); i += 3, j -= 3)
 	{
 		GotoXY(i, 25);
@@ -146,7 +146,7 @@ void Exit() {
 	}
 
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
-
+	cin.get();
 	Sleep(800);
 	HWND hwnd = GetConsoleWindow();
 	SendMessage(hwnd, WM_CLOSE, 0, 0);
