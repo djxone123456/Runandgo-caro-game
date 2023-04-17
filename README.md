@@ -19,5 +19,5 @@
 ## Used languages
 <p> C++ and a little bit C.</p>
 
-##References
+## References
 <p>Updating</p>
