@@ -146,7 +146,6 @@ void Exit() {
 	}
 
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
-	cin.get();
 	Sleep(800);
 	HWND hwnd = GetConsoleWindow();
 	SendMessage(hwnd, WM_CLOSE, 0, 0);
