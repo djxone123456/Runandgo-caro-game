@@ -1,4 +1,4 @@
-dkdk
+Player 01
 Mega Roboto
 3
 0
@@ -7,21 +7,21 @@ Mega Roboto
 1
 0
 4
-- - - - - - - - - - - - - - - - - - 
-- o - - - - - - - - - - - - - - - - 
-- - x - - - - - - - - - - - - - - - 
-- - - x - - - - - - - - - - - - - - 
-- - - - - - - - - - - - - - - - - - 
-- - - - - - - - - - - - - - - - - - 
-- - - - - - - - - - - - - - - - o - 
-- - - - - - - - - - - - - - - - - - 
-- - - - - - - - - - - - - - - - - - 
-- - - - - - - - - - - - - - - - - - 
-- - - - - - - - - - - - - - - - - - 
-- - - - - - - - - - - - - - - - - - 
-- - - - - - - - - - - - - - - - - - 
-- - - - - - - - - - - - - - - - - - 
-- - - - - - - - - - - - - - - - - - 
-- - - - - - - - - - - - - - - - - - 
-- - - - - - - - - - - - - - - - - - 
-- - - - - - - - - - - - - - - - - - 
+x o x o x o x o x o x o x o x o x o
+x o x o x o x o x o x o x o x o x o
+x o x o x o x o x o x o x o x o x o
+x o x o x o x o x o x o x o x o x o
+o x o x o x o x o x o x o x o x o x
+o x o x o x o x o x o x o x o x o x
+o x o x o x o x o x o x o x o x o x
+o x o x o x o x o x o x o x o x o x
+x o x o x o x o x o x o x o x o x o
+x o x o x o x o x o x o x o x o x o
+x o x o x o x o x o x o x o x o x o
+x o x o x o x o x o x o x o x o x o
+o x o x o x o x o x o x o x o x o x
+o x o x o x o x o x o x o x o x o x
+o x o x o x o x o x o x o x o x o x
+o x o x o x o x o x o x o x o x o x
+x o x o x o x o x o x o x o x o x o
+x o x o x o x o x o x o x o - - - -

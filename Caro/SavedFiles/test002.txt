@@ -1,27 +1,27 @@
-Nhan
-Mega Roboto
+Player 01
+Player 02
 1
 0
 0
 3
+6
+1
 0
-0
-0
-- - - - - - - - - - - - - - - - - - 
-- - - - - - - - - - - - - - - - - - 
-- - - - - - - - - - - - - - - - - - 
-- - - - - - - - - - - - - - - - - - 
-- - - - - - - - - - - - - - - - - - 
-- - - - - - - - - - - - - - - - - - 
-- - - - - - - - - - - - - - - - - - 
-- - - - - - - - - - - - - - - - - - 
-- - - - - - - - - - - - - - - - - - 
-- - - - - - - - - - - - - - - - - - 
-- - - - - - - - - - - - - - - - - - 
-- - - - - - - - - - - - - - - - - - 
-- - - - - - - - - - - - - - - - - - 
-- - - - - - - - - - - - - - - - - - 
-- - - - - - - - - - - - - - - - - - 
-- - - - - - - - - - - - - - - - - - 
-- - - - - - - - - - - - - - - - - - 
-- - - - - - - - - - - - - - - - - - 
+x o x o x o x o x o x o x o x o x o
+x o x o x o x o x o x o x o x o x o
+x o x o x o x o x o x o x o x o x o
+x o x o x o x o x o x o x o x o x o
+o x o x o x o x o x o x o x o x o x
+o x o x o x o x o x o x o x o x o x
+o x o x o x o x o x o x o x o x o x
+o x o x o x o x o x o x o x o x o x
+x o x o x o x o x o x o x o x o x o
+x o x o x o x o x o x o x o x o x o
+x o x o x o x o x o x o x o x o x o
+x o x o x o x o x o x o x o x o x o
+o x o x o x o x o x o x o x o x o x
+o x o x o x o x o x o x o x o x o x
+o x o x o x o x o x o x o x o x o x
+o x o x o x o x o x o x o x o x o x
+x o x o x o x o x o x o x o x o x o
+x o x o x o x o x o x o x o - - - -

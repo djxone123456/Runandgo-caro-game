@@ -465,6 +465,15 @@ void HandleKeyForBoardBot(int x, int y, KEY_EVENT_RECORD key) {
 		}
 	}
 
+	if (Count == BOARD_SIZE * BOARD_SIZE) {
+		Turn = 0; Draw++;
+		Finish = 1;
+		DrawWin(0);
+		ShowCur(0);
+		DrawSaveAndContinue();
+		_CURRENT_MENU = 8;
+	}
+
 	if (key.bKeyDown) //Key pressed
 	{
 		switch (key.wVirtualKeyCode)
