@@ -15,7 +15,10 @@
 
 ## Demo
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/aPHBaU3-KK0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<video width="320" height="240" controls>
+  <source src="https://www.youtube.com/watch?v=aPHBaU3-KK0" type="video/mp4">
+Your browser does not support the video tag.
+</video>
 
 ## Used languages
 <p> C++ and a little bit C.</p>
