@@ -15,9 +15,11 @@
 
 ## Demo
 <div align="center">
-  
-[![](https://markdown-videos.deta.dev/youtube/aPHBaU3-KK0)](https://youtu.be/aPHBaU3-KK0)
-  
+  <a href="https://www.youtube.com/watch?v=aPHBaU3-KK0" title="Caro Chess Demo">
+   <p align="center">
+     <img width="100%" src="https://markdown-videos.deta.dev/youtube/aPHBaU3-KK0" alt="Caro Chess Demo"/>
+   </p>
+  </a>
 </div>
 
 ## Used languages
