@@ -15,7 +15,9 @@
 
 ## Demo
 
-[![Everything Is AWESOME](https://yt-embed.herokuapp.com/embed?v=StTqXEQ2l-Y)](https://www.youtube.com/watch?v=StTqXEQ2l-Y "Everything Is AWESOME")
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=nTQUwghvy5Q" target="_blank">
+ <img src="http://img.youtube.com/vi/nTQUwghvy5Q/mqdefault.jpg" alt="Watch the video" width="240" height="180" border="10" />
+</a>
 
 ## Used languages
 <p> C++ and a little bit C.</p>
