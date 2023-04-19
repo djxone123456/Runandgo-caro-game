@@ -18,7 +18,6 @@
 
 void StartGame();
 void HandleEvent(int x, int y, void(*func)(int, int, KEY_EVENT_RECORD));
-void Exit();
 void ControlMenu();
 void InitGame();
 
