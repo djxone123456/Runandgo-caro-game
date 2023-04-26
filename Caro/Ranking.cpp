@@ -188,6 +188,17 @@ static int StringToInt(const string& n)
 	return val;
 }
 
+static bool Compare(TopRanking i, TopRanking j)
+{
+	if (i.Wins != j.Wins)
+		return (i.Wins > j.Wins);
+	if (i.Draws != j.Draws)
+		return (i.Draws > j.Draws);
+	if (i.Loses != j.Loses)
+		return (i.Loses < j.Loses);
+	return (i.Name < j.Name);
+}
+
 static int InitRankingFile(const wstring dir, const wstring SystemFileName, TopRanking*& arr)
 {
 	RankMap.clear();
@@ -213,19 +224,19 @@ static int InitRankingFile(const wstring dir, const wstring SystemFileName, TopR
 		}
 
 		string Player[2];
-		string PlayerPoint[2];
+		string PlayerPoint[3];
 		
 		for (int i = 0; i < 2; i++)
 			getline(FileInput, Player[i]);
 
 		if (FileInput.eof()) continue;
 
-		for (int i = 0; i < 2; i++)
+		for (int i = 0; i < 3; i++)
 			FileInput >> PlayerPoint[i];
 
 		for (int i = 0; i < 2; i++)
 		{
-			UpdatePlayer(Player[i], StringToInt(PlayerPoint[i]), StringToInt(PlayerPoint[1 - i]));
+			UpdatePlayer(Player[i], StringToInt(PlayerPoint[i]), StringToInt(PlayerPoint[1 - i]), StringToInt(PlayerPoint[2]));
 		}
 
 		FileInput.close();

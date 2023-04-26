@@ -25,8 +25,6 @@ struct TopRanking
 	}
 };
 
-static bool Compare(TopRanking i, TopRanking j) { return (i.Wins > j.Wins); }
-
 const wstring GraySquareBox = L"▓";
 const wstring DarkSquareBox = L"█";
 const wstring DarkBottomHalf = L"▄";
@@ -44,12 +42,13 @@ static void Init(TopRanking* arr);
 #endif
 
 //FUNCTIONS HERE
+static bool Compare(TopRanking i, TopRanking j);
 static wstring ExePath();
 static int StringToInt(const string&);
 static void UpdatePlayer(const string, int, int, int);
 static int InitRankingFile(const wstring, const wstring, TopRanking*&);
 static void AllignCenter(const D1_POINT);
-static void SplittingLine(int, int);
+static void SplittingLine(int, int); 
 static void TopPlayerLogo(int, int);
 static void CreateBar(int, int, int, int);
 static void CreateRankingStep(int, int, int, int, int, int, TopRanking*);
