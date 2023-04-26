@@ -103,6 +103,7 @@ void HandleKeyForError(int x, int y, KEY_EVENT_RECORD key)
 	if (key.bKeyDown) //Key pressed
 	{
 		system("cls");
-		exit(0);
+		HWND hwnd = GetConsoleWindow();
+		SendMessage(hwnd, WM_CLOSE, 0, 0);
 	}
 }
