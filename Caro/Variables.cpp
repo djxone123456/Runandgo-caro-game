@@ -7,6 +7,6 @@ int _COMMAND;
 int _X = FIRST_CELL_X, _Y = FIRST_CELL_Y;
 
 //Menu Control
-bool _KEYPRESSED = 0;
-int _MENU = 1;
+bool _KEYPRESSED = 1;
+int _MENU = 0;
 int _CURRENT_MENU = 0;
