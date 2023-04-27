@@ -16,7 +16,7 @@
 
 ## Demo
 <div align="center">
-  <a href="https://www.youtube.com/watch?v=aPHBaU3-KK0" title="Caro Chess Demo">
+  <a href="[https://www.youtube.com/watch?v=aPHBaU3-KK0](https://www.youtube.com/watch?v=IdO1lEniXE8)" title="Caro Chess Demo">
    <p align="center">
      <img width="50%" src="https://www.youtube.com/watch?v=IdO1lEniXE8" alt="Caro Chess Demo"/>
    </p>
