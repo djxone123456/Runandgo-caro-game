@@ -14,7 +14,7 @@
 - <a href="https://github.com/NguyenPTN">Nguyễn Minh Nguyên</a>
 - <a href="https://github.com/nhan925">Nguyễn Trọng Nhân</a>
 
-## Demo
+## Video demo
 <div align="center">
   <a href="https://www.youtube.com/watch?v=IdO1lEniXE8" title="Caro Chess Demo">
    <p align="center">
