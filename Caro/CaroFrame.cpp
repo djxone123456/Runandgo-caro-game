@@ -45,8 +45,8 @@ bool Check_Win(const char symbol, const int x_pos, const int y_pos) {
 		for (int k = 0; k < 20; k++) {
 			for (int i = 0; i < (horizontal_01 + horizontal_02) + 1; i++) {
 				GotoXY(x_pos - horizontal_02 * 4 + 4 * i, y_pos);
-				if (k % 2 == 0) PrintTextColor_Char(toupper(symbol), 4);
-				else PrintTextColor_Char(toupper(symbol), 6);
+				if (k % 2 == 0) PrintTextColor_Char(toupper(symbol), 6);
+				else PrintTextColor_Char(toupper(symbol), 4);
 			}
 			Sleep(50);
 		}
@@ -69,8 +69,8 @@ bool Check_Win(const char symbol, const int x_pos, const int y_pos) {
 		for (int k = 0; k < 20; k++) {
 			for (int i = 0; i < (vertical_01 + vertical_02) + 1; i++) {
 				GotoXY(x_pos, y_pos - vertical_02 * 2 + 2 * i);
-				if (k % 2 == 0) PrintTextColor_Char(toupper(symbol), 4);
-				else PrintTextColor_Char(toupper(symbol), 6);
+				if (k % 2 == 0) PrintTextColor_Char(toupper(symbol), 6);
+				else PrintTextColor_Char(toupper(symbol), 4);
 			}
 			Sleep(50);
 		}
@@ -93,8 +93,8 @@ bool Check_Win(const char symbol, const int x_pos, const int y_pos) {
 		for (int k = 0; k < 20; k++) {
 			for (int i = 0; i < (main_cross_01 + main_cross_02) + 1; i++) {
 				GotoXY(x_pos - main_cross_02 * 4 + 4 * i, y_pos - main_cross_02 * 2 + 2 * i);
-				if (k % 2 == 0) PrintTextColor_Char(toupper(symbol), 4);
-				else PrintTextColor_Char(toupper(symbol), 6);
+				if (k % 2 == 0) PrintTextColor_Char(toupper(symbol), 6);
+				else PrintTextColor_Char(toupper(symbol), 4);
 			}
 			Sleep(50);
 		}
@@ -117,8 +117,8 @@ bool Check_Win(const char symbol, const int x_pos, const int y_pos) {
 		for (int k = 0; k < 20; k++) {
 			for (int i = 0; i < (sub_cross_01 + sub_cross_02) + 1; i++) {
 				GotoXY(x_pos - sub_cross_02 * 4 + 4 * i, y_pos + sub_cross_02 * 2 - 2 * i);
-				if (k % 2 == 0) PrintTextColor_Char(toupper(symbol), 4);
-				else PrintTextColor_Char(toupper(symbol), 6);
+				if (k % 2 == 0) PrintTextColor_Char(toupper(symbol), 6);
+				else PrintTextColor_Char(toupper(symbol), 4);
 			}
 			Sleep(50);
 		}
