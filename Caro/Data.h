@@ -27,8 +27,8 @@ using namespace std;
 #define FIRST_CELL_Y TOP + 1
 
 //Console size
-#define HEIGHT 720
-#define WIDTH 1280
+#define HEIGHT 42
+#define WIDTH 172
 
 //ASCII Code For Board (Single Line)
 #define VERTICAL_LINE_LIGHT char(179) //│

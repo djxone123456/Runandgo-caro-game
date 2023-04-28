@@ -11,7 +11,7 @@ void DrawSavedBoard()
 	wstring l5 = L"███████║██║  ██║ ╚████╔╝ ███████╗██████╔╝    ╚██████╔╝██║  ██║██║ ╚═╝ ██║███████╗  \n";
 	wstring l6 = L"╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚══════╝╚═════╝      ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝  \n";
 
-	int x = 45, y = 4, x_last = 45 + int(l1.size());
+	int x = 44, y = 4, x_last = 44 + int(l1.size());
 	for (int i = 0; i <= l1.size() - 1 - i; i++) {
 		GotoXY(++x, y);
 		wcout << l1[i];

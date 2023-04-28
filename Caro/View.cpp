@@ -8,14 +8,24 @@ static void FixConsoleWindow() {
 	SetWindowLong(consoleWindow, GWL_STYLE, style);
 }
 
-//Set the size of the console window
-static void SetWindowSize(int width, int height) {
-	HWND consoleWindow = GetConsoleWindow();
-	RECT r;
-	HANDLE hConsole;
-	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	GetWindowRect(consoleWindow, &r);
-	MoveWindow(consoleWindow, 0, 0, width, height, TRUE);
+//Set the console's buffer
+static void SetScreenBufferSize(SHORT width, SHORT height) {
+	HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
+	COORD NewSize;
+	NewSize.X = width;
+	NewSize.Y = height;
+	SetConsoleScreenBufferSize(hStdout, NewSize);
+}
+
+//Set the size of console window
+static void SetWindowSize(SHORT width, SHORT height) {
+	HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
+	SMALL_RECT WindowSize;
+	WindowSize.Top = 0;
+	WindowSize.Left = 0;
+	WindowSize.Right = width;
+	WindowSize.Bottom = height;
+	SetConsoleWindowInfo(hStdout, 1, &WindowSize);
 }
 
 //Hide scrollbar of the console window
@@ -29,6 +39,7 @@ void CreateConsoleWindow(int width, int height) {
 	system("color 70");
 	SetConsoleTitle(L"Caro Game");
 	SetWindowSize(width, height);
+	SetScreenBufferSize(width, height);
 	ShowScrollbar(0);
 	FixConsoleWindow();
 }
@@ -89,7 +100,7 @@ void PrintTextColor_Char(const char& s, const int& color) {
 void Exit() {
 	ShowCur(0);
 	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
-	int x = 87 - int(D3_EXIT_01.size() / 2.0f) + 5;
+	int x = 81 - int(D3_EXIT_01.size() / 2.0f) + 5;
 	GotoXY(x, 10);
 	wcout << D3_EXIT_01;
 	GotoXY(x, 11);
@@ -102,12 +113,6 @@ void Exit() {
 	wcout << D3_EXIT_05;
 	GotoXY(x, 15);
 	wcout << D3_EXIT_06;
-	//GotoXY(x, 16);
-	//wcout << D3_EXIT_07;
-	//GotoXY(x, 17);
-	//wcout << D3_EXIT_08;
-	//GotoXY(x, 18);
-	//wcout << D3_EXIT_09;
 	for (int i = 0, j = 173 - int(D2_RUNANDGO_TEXT_01.size()); i <= 83 - int(D2_RUNANDGO_LOGO_01.size()) || (j >= 91); i += 3, j -= 3)
 	{
 		GotoXY(i, 25);
