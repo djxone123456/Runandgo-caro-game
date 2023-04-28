@@ -233,8 +233,10 @@ void PrintFileName(string Name[])// array of file name
 	string str;
 	int i = 0;
 	getline(FileName, str);
-	if (str == "")
+	if (str == "") {
+		GotoXY(78, 23);
 		cout << "No file found !";
+	}
 	else
 	{
 		GotoXY(Name_X - 3, Name_Y);
