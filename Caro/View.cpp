@@ -17,15 +17,14 @@ static void SetScreenBufferSize(SHORT width, SHORT height) {
 	SetConsoleScreenBufferSize(hStdout, NewSize);
 }
 
-//Set the size of console window
-static void SetWindowSize(SHORT width, SHORT height) {
-	HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
-	SMALL_RECT WindowSize;
-	WindowSize.Top = 0;
-	WindowSize.Left = 0;
-	WindowSize.Right = width;
-	WindowSize.Bottom = height;
-	SetConsoleWindowInfo(hStdout, 1, &WindowSize);
+//Set the size of the console window
+static void SetWindowSize(int width, int height) {
+	HWND consoleWindow = GetConsoleWindow();
+	RECT r;
+	HANDLE hConsole;
+	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	GetWindowRect(consoleWindow, &r);
+	MoveWindow(consoleWindow, 0, 0, width, height, TRUE);
 }
 
 //Hide scrollbar of the console window
@@ -39,7 +38,7 @@ void CreateConsoleWindow(int width, int height) {
 	system("color 70");
 	SetConsoleTitle(L"Caro Game");
 	SetWindowSize(width, height);
-	SetScreenBufferSize(width, height);
+	SetScreenBufferSize(172, 42);
 	ShowScrollbar(0);
 	FixConsoleWindow();
 }
