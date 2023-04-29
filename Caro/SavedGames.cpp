@@ -236,6 +236,7 @@ void PrintFileName(string Name[])// array of file name
 	if (str == "") {
 		GotoXY(78, 23);
 		cout << "No file found !";
+		isEmpty = 1;
 	}
 	else
 	{
@@ -329,18 +330,20 @@ void HandleKeyForLoad(int x, int y, KEY_EVENT_RECORD key)
 	if (key.bKeyDown) //Key pressed
 		switch (key.wVirtualKeyCode) {
 		case VK_RETURN: //Enter
-			if (D2_INGAME_MUSIC) PlaySound(TEXT("Sounds//select.wav"), NULL, SND_FILENAME | SND_ASYNC);
-			LoadGame(File, Name[Locate - 1]);
-			isLoadFile = 1;
-			loadedFileName = Name[Locate - 1];
-			for (int i = 0; i < 4; i++) loadedFileName.pop_back();
-			system("cls");
-			ConvertData(File);
-			if (D2_PLAYER02_NAME == "Mega Roboto") D3_GameMode = 0;
-			else D3_GameMode = 1;
-			StartGame();
-			Locate = 1;
-			_CURRENT_MENU = 9;
+			if (isEmpty == 0) {
+				if (D2_INGAME_MUSIC) PlaySound(TEXT("Sounds//select.wav"), NULL, SND_FILENAME | SND_ASYNC);
+				LoadGame(File, Name[Locate - 1]);
+				isLoadFile = 1;
+				loadedFileName = Name[Locate - 1];
+				for (int i = 0; i < 4; i++) loadedFileName.pop_back();
+				system("cls");
+				ConvertData(File);
+				if (D2_PLAYER02_NAME == "Mega Roboto") D3_GameMode = 0;
+				else D3_GameMode = 1;
+				StartGame();
+				Locate = 1;
+				_CURRENT_MENU = 9;
+			}
 			break;
 			//Then load data from struct Load to play board
 		case VK_DOWN: case 0x53:
@@ -373,6 +376,7 @@ void HandleKeyForLoad(int x, int y, KEY_EVENT_RECORD key)
 			_KEYPRESSED = 1;
 			_MENU = 0;
 			_CURRENT_MENU = 0;
+			isEmpty = 0;
 			break;
 		}
 }
