@@ -347,28 +347,32 @@ void HandleKeyForLoad(int x, int y, KEY_EVENT_RECORD key)
 			break;
 			//Then load data from struct Load to play board
 		case VK_DOWN: case 0x53:
-			GotoXY(Name_X - 3, Name_Y + 2 * Locate - 2);
-			cout << " ";
-			if (D2_INGAME_MUSIC) PlaySound(TEXT("Sounds//switch-selection.wav"), NULL, SND_FILENAME | SND_ASYNC);
-			Locate++;
-			if (Locate == Numb_of_file + 1)
-				Locate = 1;
-			GotoXY(Name_X - 3, Name_Y + 2 * Locate - 2);
-			cout << D2_SELECT_RIGHT;
-			DeleteInfo();
-			PrintFileInfo(Info_X, Info_Y, Name[Locate - 1]);
+			if (isEmpty == 0) {
+				GotoXY(Name_X - 3, Name_Y + 2 * Locate - 2);
+				cout << " ";
+				if (D2_INGAME_MUSIC) PlaySound(TEXT("Sounds//switch-selection.wav"), NULL, SND_FILENAME | SND_ASYNC);
+				Locate++;
+				if (Locate == Numb_of_file + 1)
+					Locate = 1;
+				GotoXY(Name_X - 3, Name_Y + 2 * Locate - 2);
+				cout << D2_SELECT_RIGHT;
+				DeleteInfo();
+				PrintFileInfo(Info_X, Info_Y, Name[Locate - 1]);
+			}
 			break;
 		case VK_UP: case 0x57:
-			GotoXY(Name_X - 3, Name_Y + 2 * Locate - 2);
-			cout << " ";
-			if (D2_INGAME_MUSIC) PlaySound(TEXT("Sounds//switch-selection.wav"), NULL, SND_FILENAME | SND_ASYNC);
-			Locate--;
-			if (Locate == 0)
-				Locate = Numb_of_file;
-			GotoXY(Name_X - 3, Name_Y + 2 * Locate - 2);
-			cout << D2_SELECT_RIGHT;
-			DeleteInfo();
-			PrintFileInfo(Info_X, Info_Y, Name[Locate - 1]);
+			if (isEmpty == 0) {
+				GotoXY(Name_X - 3, Name_Y + 2 * Locate - 2);
+				cout << " ";
+				if (D2_INGAME_MUSIC) PlaySound(TEXT("Sounds//switch-selection.wav"), NULL, SND_FILENAME | SND_ASYNC);
+				Locate--;
+				if (Locate == 0)
+					Locate = Numb_of_file;
+				GotoXY(Name_X - 3, Name_Y + 2 * Locate - 2);
+				cout << D2_SELECT_RIGHT;
+				DeleteInfo();
+				PrintFileInfo(Info_X, Info_Y, Name[Locate - 1]);
+			}
 			break;
 		case VK_ESCAPE: //Esc
 			if (D2_INGAME_MUSIC) PlaySound(TEXT("Sounds//select.wav"), NULL, SND_FILENAME | SND_ASYNC);
