@@ -26,4 +26,5 @@ extern int Numb_of_file;
 extern bool isLoadFile;
 extern string loadedFileName;
 
+extern bool isEmpty;
 #endif
