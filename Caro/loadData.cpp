@@ -16,3 +16,5 @@ int Locate = 1;
 
 bool isLoadFile = 0;
 string loadedFileName = "";
+
+bool isEmpty = 0;
