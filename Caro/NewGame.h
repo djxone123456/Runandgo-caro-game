@@ -20,8 +20,8 @@
 #define D3_Vertical_Button_Line char(186)
 #define D3_Horizontal_Button_Thin_Line char(196)
 #define D3_Horizontal_Button_Double_Line char(205)
-#define D3_Upper_Left_Corner_Button_Line char(214)
-#define D3_Upper_Right_Corner_Button_Line char(183)
+#define D3_Upper_Left_Corner_Button_Line char(201)
+#define D3_Upper_Right_Corner_Button_Line char(187)
 #define D3_Lower_Left_Corner_Button_Line char(200)
 #define D3_Lower_Right_Corner_Button_Line char(188)
 
@@ -34,4 +34,3 @@ void HandleKeyForNewGame(int D3_X, int D3_Y, KEY_EVENT_RECORD key);
 void D3_EraseConsole(int x1, int x2, int y1);
 
 #endif
-
