@@ -89,8 +89,8 @@ int NewGame()
 	GotoXY(D3_NewGame_Box_Left + 4, D3_NewGame_Box_Max_j - 4);
 	cout << D3_Upper_Left_Corner_Button_Line;
 	GotoXY(D3_NewGame_Box_Left + 5, D3_NewGame_Box_Max_j - 4);
-	cout << D3_Horizontal_Button_Thin_Line << D3_Horizontal_Button_Thin_Line << D3_Horizontal_Button_Thin_Line << D3_Horizontal_Button_Thin_Line;
-	cout << D3_Horizontal_Button_Thin_Line << D3_Horizontal_Button_Thin_Line << D3_Horizontal_Button_Thin_Line;
+	cout << D3_Horizontal_Button_Double_Line << D3_Horizontal_Button_Double_Line << D3_Horizontal_Button_Double_Line << D3_Horizontal_Button_Double_Line;
+	cout << D3_Horizontal_Button_Double_Line << D3_Horizontal_Button_Double_Line << D3_Horizontal_Button_Double_Line;
 	GotoXY(D3_NewGame_Box_Left + 12, D3_NewGame_Box_Max_j - 4);
 	cout << D3_Upper_Right_Corner_Button_Line;
 	GotoXY(D3_NewGame_Box_Left + 12, D3_NewGame_Box_Max_j - 3);
@@ -114,8 +114,8 @@ int NewGame()
 	GotoXY(D3_NewGame_Box_Left + D3_NewGame_Box_Max_i - 11, D3_NewGame_Box_Max_j - 4);
 	cout << D3_Upper_Left_Corner_Button_Line;
 	GotoXY(D3_NewGame_Box_Left + D3_NewGame_Box_Max_i - 10, D3_NewGame_Box_Max_j - 4);
-	cout << D3_Horizontal_Button_Thin_Line << D3_Horizontal_Button_Thin_Line << D3_Horizontal_Button_Thin_Line << D3_Horizontal_Button_Thin_Line;
-	cout << D3_Horizontal_Button_Thin_Line << D3_Horizontal_Button_Thin_Line << D3_Horizontal_Button_Thin_Line;
+	cout << D3_Horizontal_Button_Double_Line << D3_Horizontal_Button_Double_Line << D3_Horizontal_Button_Double_Line << D3_Horizontal_Button_Double_Line;
+	cout << D3_Horizontal_Button_Double_Line << D3_Horizontal_Button_Double_Line << D3_Horizontal_Button_Double_Line;
 	GotoXY(D3_NewGame_Box_Left + D3_NewGame_Box_Max_i - 3, D3_NewGame_Box_Max_j - 4);
 	cout << D3_Upper_Right_Corner_Button_Line;
 	GotoXY(D3_NewGame_Box_Left + D3_NewGame_Box_Max_i - 3, D3_NewGame_Box_Max_j - 3);
