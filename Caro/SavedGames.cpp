@@ -382,5 +382,63 @@ void HandleKeyForLoad(int x, int y, KEY_EVENT_RECORD key)
 			_CURRENT_MENU = 0;
 			isEmpty = 0;
 			break;
+		case VK_DELETE: //Delete
+			if (isEmpty == 0) {
+				if (D2_INGAME_MUSIC) PlaySound(TEXT("Sounds//select.wav"), NULL, SND_FILENAME | SND_ASYNC);
+				remove(("SavedFiles\\" + Name[Locate - 1]).c_str());
+				for (int i = Locate - 1; i < Numb_of_file - 1; i++)
+					Name[i] = Name[i + 1];
+				Numb_of_file--;
+				ofstream D2_fileLoad("SavedFiles\\fileLoad.json", ios::out);
+				for (int i = 0; i < Numb_of_file; i++)
+					D2_fileLoad << Name[i] << "\n";
+				D2_fileLoad.close();
+				GotoXY(Name_X - 3, Name_Y);
+				cout << "               ";
+				GotoXY(Name_X - 3, Name_Y + 1);
+				cout << "               ";
+				GotoXY(Name_X - 3, Name_Y + 2);
+				cout << "               ";
+				GotoXY(Name_X - 3, Name_Y + 3);
+				cout << "               ";
+				GotoXY(Name_X - 3, Name_Y + 4);
+				cout << "               ";
+				GotoXY(Name_X - 3, Name_Y + 5);
+				cout << "               ";
+				GotoXY(Name_X - 3, Name_Y + 6);
+				cout << "               ";
+				GotoXY(Name_X - 3, Name_Y + 7);
+				cout << "               ";
+				GotoXY(Name_X - 3, Name_Y + 8);
+				cout << "               ";
+				GotoXY(Name_X - 3, Name_Y + 9);
+				cout << "               ";
+				Locate = 1;
+				GotoXY(Info_X, 15);
+				cout << "                                                  ";
+				GotoXY(Info_X, 16);
+				cout << "                                                  ";
+				GotoXY(Info_X, 17);
+				cout << "                                                  ";
+				GotoXY(Info_X, 18);
+				cout << "                                                  ";
+				GotoXY(Info_X, 19);
+				cout << "                                                  ";
+				GotoXY(Info_X, 20);
+				cout << "                                                  ";
+				GotoXY(Info_X, 21);
+				cout << "                                                  ";
+				GotoXY(Info_X, 22);
+				cout << "                                                  ";
+				GotoXY(Info_X, 23);
+				cout << "                                                  ";
+				GotoXY(Info_X, 24);
+				cout << "                                                  ";
+				GotoXY(Info_X, 25);
+				cout << "                                                  ";
+				if (Numb_of_file != 0)
+					PrintFileInfo(Info_X, Info_Y, Name[Locate - 1]);
+				PrintFileName(Name);
+			}
 		}
 }

@@ -1081,7 +1081,37 @@ void SaveNameFile() {
 	GotoXY(LLeft + 32, LTop + 7);
 	cout << "=> ";
 	ShowCur(1);
-	getline(cin, FileName);
+	ifstream D2_fileLoad;
+	string D2_fileName[10];
+	D2_fileLoad.open("SavedFiles\\fileLoad.json", ios::in);
+	int i = 0;
+	if (D2_fileLoad)
+		while (getline(D2_fileLoad, D2_fileName[i])) {
+			if (D2_fileName[i] == "") break;
+			i++;
+		}
+	D2_fileLoad.close();
+	while (1) {
+		getline(cin, FileName);
+		int j = 0;
+		for (; j <= i; j++)
+			if ((FileName + ".txt") == D2_fileName[j]) {
+				RemoveLogoFrame();
+				ShowCur(0);
+				GotoXY(LLeft + 32, LTop + 6);
+				cout << "This file already exists !";
+				Sleep(500);
+				RemoveLogoFrame();
+				GotoXY(LLeft + 32, LTop + 5);
+				cout << "Type Your File Name: ";
+				GotoXY(LLeft + 32, LTop + 7);
+				cout << "=> ";
+				ShowCur(1);
+				break;
+			}
+		if (j == i + 1) break;
+
+	}
 	if(FileName.size() > 15) //If more than 15 characters, resize it
 		FileName.resize(15);
 	if (D2_INGAME_MUSIC) PlaySound(TEXT("sounds//select.wav"), NULL, SND_FILENAME | SND_ASYNC);
