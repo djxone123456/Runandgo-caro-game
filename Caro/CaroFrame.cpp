@@ -452,6 +452,8 @@ void HandleKeyForBoardBot(int x, int y, KEY_EVENT_RECORD key) {
 	if (Turn % 2 == 1) {
 		Count++;
 		Turn++;
+		Sleep(400);
+		DrawTurn(1);
 		BotRandom(_MATRIX);
 		GotoXY(_X, _Y);
 		if (Check_Win('o', bot_x, bot_y)) {
