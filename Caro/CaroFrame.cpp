@@ -1084,7 +1084,7 @@ void SaveNameFile() {
 	cout << "=> ";
 	ShowCur(1);
 	ifstream D2_fileLoad;
-	string D2_fileName[10];
+	string D2_fileName[100];
 	D2_fileLoad.open("SavedFiles\\fileLoad.json", ios::in);
 	int i = 0;
 	if (D2_fileLoad)
