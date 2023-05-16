@@ -386,32 +386,51 @@ void HandleKeyForLoad(int x, int y, KEY_EVENT_RECORD key)
 			if (isEmpty == 0) {
 				if (D2_INGAME_MUSIC) PlaySound(TEXT("Sounds//select.wav"), NULL, SND_FILENAME | SND_ASYNC);
 				remove(("SavedFiles\\" + Name[Locate - 1]).c_str());
-				for (int i = Locate - 1; i < Numb_of_file - 1; i++)
-					Name[i] = Name[i + 1];
-				Numb_of_file--;
-				ofstream D2_fileLoad("SavedFiles\\fileLoad.json", ios::out);
-				for (int i = 0; i < Numb_of_file; i++)
-					D2_fileLoad << Name[i] << "\n";
+				ifstream D2_fileLoad;
+				string D2_fileName[100];
+				D2_fileLoad.open("SavedFiles\\fileLoad.json", ios::in);
+				int D2_NUM_FILE = 0;
+				if (D2_fileLoad)
+					while (getline(D2_fileLoad, D2_fileName[D2_NUM_FILE])) {
+						if (D2_fileName[D2_NUM_FILE] == "") break;
+						D2_NUM_FILE++;
+					}
 				D2_fileLoad.close();
+				for (int i = Locate - 1; i < 99; i++)
+					D2_fileName[i] = D2_fileName[i + 1];
+				D2_NUM_FILE--;
+				if (D2_NUM_FILE > 8) {
+					for (int i = 0; i < 9; i++)
+						Name[i] = D2_fileName[i];
+				}
+				else {
+					for (int i = Locate - 1; i < Numb_of_file - 1; i++)
+						Name[i] = Name[i + 1];
+					Numb_of_file--;
+				}
+				ofstream D2_fileLoad_out("SavedFiles\\fileLoad.json", ios::out);
+				for (int i = 0; i < D2_NUM_FILE; i++)
+					D2_fileLoad_out << D2_fileName[i] << "\n";
+				D2_fileLoad_out.close();
 				GotoXY(Name_X - 3, Name_Y);
-				cout << "               ";
-				GotoXY(Name_X - 3, Name_Y + 1);
 				cout << "               ";
 				GotoXY(Name_X - 3, Name_Y + 2);
 				cout << "               ";
-				GotoXY(Name_X - 3, Name_Y + 3);
-				cout << "               ";
 				GotoXY(Name_X - 3, Name_Y + 4);
-				cout << "               ";
-				GotoXY(Name_X - 3, Name_Y + 5);
 				cout << "               ";
 				GotoXY(Name_X - 3, Name_Y + 6);
 				cout << "               ";
-				GotoXY(Name_X - 3, Name_Y + 7);
-				cout << "               ";
 				GotoXY(Name_X - 3, Name_Y + 8);
 				cout << "               ";
-				GotoXY(Name_X - 3, Name_Y + 9);
+				GotoXY(Name_X - 3, Name_Y + 10);
+				cout << "               ";
+				GotoXY(Name_X - 3, Name_Y + 12);
+				cout << "               ";
+				GotoXY(Name_X - 3, Name_Y + 14);
+				cout << "               ";
+				GotoXY(Name_X - 3, Name_Y + 16);
+				cout << "               ";
+				GotoXY(Name_X - 3, Name_Y + 18);
 				cout << "               ";
 				Locate = 1;
 				GotoXY(Info_X, 15);
