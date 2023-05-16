@@ -1,6 +1,32 @@
 #include "Store.h"
 
 //Input a string with a limited length
+//void D2_Input_Data(string& s, const int& max, const int& x, const int& y) {
+//	s.clear();
+//	int x_tmp = x;
+//	GotoXY(x, y);
+//	int i = 0;
+//	char c = '\0';
+//	while (1) {
+//		c = (char)_getch();
+//		if (c == 0x0D) break;
+//		if (c == 8) {
+//			s.clear();
+//			i = 0;
+//			x_tmp = x;
+//			GotoXY(x, y);
+//			for (int j = 0; j < max; j++) cout << " ";
+//			GotoXY(x, y);
+//			continue;
+//		}
+//		if (i == max) continue;
+//		s.push_back(c);
+//		cout << s[i++];
+//		GotoXY(++x_tmp, y);
+//	}
+//}
+
+//Input a string with a limited length
 void D2_Input_Data(string& s, const int& max, const int& x, const int& y) {
 	s.clear();
 	int x_tmp = x;
@@ -11,12 +37,13 @@ void D2_Input_Data(string& s, const int& max, const int& x, const int& y) {
 		c = (char)_getch();
 		if (c == 0x0D) break;
 		if (c == 8) {
-			s.clear();
-			i = 0;
-			x_tmp = x;
-			GotoXY(x, y);
-			for (int j = 0; j < max; j++) cout << " ";
-			GotoXY(x, y);
+			if (s.size() == 0) continue;
+			i--;
+			x_tmp--;
+			s.pop_back();
+			GotoXY(x_tmp, y);
+			cout << " ";
+			GotoXY(x_tmp, y);
 			continue;
 		}
 		if (i == max) continue;
