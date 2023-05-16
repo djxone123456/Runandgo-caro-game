@@ -24,5 +24,6 @@ void PrintFileName(string Name[]);
 void LoadGame(Load& File, string Name);
 void HandleKeyForLoad(int x, int y, KEY_EVENT_RECORD key);
 void DeleteInfo();
+void ReverseDataInFile();
 
 #endif

@@ -1,5 +1,15 @@
 ﻿#include "View.h"
 
+//Don't allow user to select in console window
+static void DisableSelection()
+{
+	HANDLE hInput = GetStdHandle(STD_INPUT_HANDLE);
+	DWORD prev_mode;
+	GetConsoleMode(hInput, &prev_mode);
+	SetConsoleMode(hInput, ENABLE_EXTENDED_FLAGS |
+		(prev_mode & ~ENABLE_QUICK_EDIT_MODE));
+}
+
 //Fix the size of the console window
 static void FixConsoleWindow() {
 	HWND consoleWindow = GetConsoleWindow();
@@ -41,6 +51,7 @@ void CreateConsoleWindow(int width, int height) {
 	SetScreenBufferSize(172, 42);
 	ShowScrollbar(0);
 	FixConsoleWindow();
+	DisableSelection();
 }
 
 //Go to position (x, y)

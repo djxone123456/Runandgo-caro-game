@@ -56,6 +56,7 @@ void ControlMenu() {
 				NewGame();
 				break;
 			case 2:
+				ReverseDataInFile();
 				DrawSavedBoard();
 				DrawButton();
 				PrintFileName(Name);

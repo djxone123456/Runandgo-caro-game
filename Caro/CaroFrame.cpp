@@ -454,6 +454,7 @@ void HandleKeyForBoardBot(int x, int y, KEY_EVENT_RECORD key) {
 		Turn++;
 		Sleep(400);
 		DrawTurn(1);
+		if (D2_INGAME_MUSIC) PlaySound(TEXT("sounds//put-x-o.wav"), NULL, SND_FILENAME | SND_ASYNC);
 		BotRandom(_MATRIX);
 		GotoXY(_X, _Y);
 		if (Check_Win('o', bot_x, bot_y)) {
@@ -1094,12 +1095,13 @@ void SaveNameFile() {
 		}
 	D2_fileLoad.close();
 	while (1) {
-		getline(cin, FileName);
+		D2_Input_Data(FileName, 15, LLeft + 35, LTop + 7);
+		if (FileName.size() == 0) continue;
 		int j = 0;
 		for (; j <= i; j++)
 			if ((FileName + ".txt") == D2_fileName[j]) {
-				RemoveLogoFrame();
 				ShowCur(0);
+				RemoveLogoFrame();
 				GotoXY(LLeft + 32, LTop + 6);
 				cout << "This file already exists !";
 				Sleep(500);
@@ -1114,8 +1116,6 @@ void SaveNameFile() {
 		if (j == i + 1) break;
 
 	}
-	if(FileName.size() > 15) //If more than 15 characters, resize it
-		FileName.resize(15);
 	if (D2_INGAME_MUSIC) PlaySound(TEXT("sounds//select.wav"), NULL, SND_FILENAME | SND_ASYNC);
 	ofstream File;
 	File.open("SavedFiles\\fileLoad.json", ios::app);

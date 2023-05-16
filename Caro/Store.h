@@ -8,5 +8,6 @@
 void HandleKeyForChoosingChar(int x, int y, KEY_EVENT_RECORD key);
 int Store();
 void PrintCharacter(int code, int _x, int _y);
+void D2_Input_Data(string& s, const int& max, const int& x, const int& y);
 
 #endif

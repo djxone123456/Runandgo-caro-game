@@ -107,6 +107,9 @@ void DrawButton()
 	GotoXY(118, 34);
 	cout << "ENTER";
 	//(43 - 126)/2 = 41 -> mid 84
+	GotoXY(71, 34);
+	cout << "Press DEL to delete a file !";
+
 }
 
 void DrawScore(int i, int x, int y)
@@ -341,6 +344,7 @@ void HandleKeyForLoad(int x, int y, KEY_EVENT_RECORD key)
 				if (D2_PLAYER02_NAME == "Mega Roboto") D3_GameMode = 0;
 				else D3_GameMode = 1;
 				StartGame();
+				ReverseDataInFile();
 				Locate = 1;
 				_CURRENT_MENU = 9;
 			}
@@ -381,6 +385,7 @@ void HandleKeyForLoad(int x, int y, KEY_EVENT_RECORD key)
 			_MENU = 0;
 			_CURRENT_MENU = 0;
 			isEmpty = 0;
+			ReverseDataInFile();
 			break;
 		case VK_DELETE: //Delete
 			if (isEmpty == 0) {
@@ -460,4 +465,21 @@ void HandleKeyForLoad(int x, int y, KEY_EVENT_RECORD key)
 				PrintFileName(Name);
 			}
 		}
+}
+
+void ReverseDataInFile() {
+	fstream D2_fileLoad;
+	string D2_fileName[100];
+	D2_fileLoad.open("SavedFiles\\fileLoad.json", ios::in);
+	int D2_NUM_FILE = 0;
+	if (D2_fileLoad)
+		while (getline(D2_fileLoad, D2_fileName[D2_NUM_FILE])) {
+			if (D2_fileName[D2_NUM_FILE] == "") break;
+			D2_NUM_FILE++;
+		}
+	D2_fileLoad.close();
+	D2_fileLoad.open("SavedFiles\\fileLoad.json", ios::out);
+	for (int i = D2_NUM_FILE - 1; i >= 0; i--)
+		D2_fileLoad << D2_fileName[i] << "\n";
+	D2_fileLoad.close();
 }

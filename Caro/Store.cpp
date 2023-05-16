@@ -1,9 +1,35 @@
 #include "Store.h"
 
+//Input a string with a limited length
+void D2_Input_Data(string& s, const int& max, const int& x, const int& y) {
+	s.clear();
+	int x_tmp = x;
+	GotoXY(x, y);
+	int i = 0;
+	char c = '\0';
+	while (1) {
+		c = (char)_getch();
+		if (c == 0x0D) break;
+		if (c == 8) {
+			s.clear();
+			i = 0;
+			x_tmp = x;
+			GotoXY(x, y);
+			for (int j = 0; j < max; j++) cout << " ";
+			GotoXY(x, y);
+			continue;
+		}
+		if (i == max) continue;
+		s.push_back(c);
+		cout << s[i++];
+		GotoXY(++x_tmp, y);
+	}
+}
+
 //Input player name
 static void D2_InputPlayerName(string& name) {
 	while (1) {
-		getline(cin, name);
+		D2_Input_Data(name, 12, D2_X_NEWGAME + 25, D2_Y_NEWGAME + 13);
 		if (name.size() != 0) {
 			ShowCur(0);
 			GotoXY(D2_X_NEWGAME + 23, D2_Y_NEWGAME + 12);
@@ -147,7 +173,6 @@ int Store() {
 
 	return 0x0000;   //Store succeeded
 }
-
 
 void PrintCharacter(int code, int _x, int _y) {
 	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
