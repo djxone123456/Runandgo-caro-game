@@ -756,7 +756,10 @@ void DrawWin(int n) {
 	OWin[4] = L"╚██████╔╝    ╚███╔███╔╝██║██║ ╚████║";
 	OWin[5] = L" ╚═════╝      ╚══╝╚══╝ ╚═╝╚═╝  ╚═══╝";
 
-	if (D2_INGAME_MUSIC) PlaySound(TEXT("sounds//win.wav"), NULL, SND_FILENAME | SND_ASYNC);
+	if (D2_INGAME_MUSIC) {
+		if (D2_BACKGROUND_MUSIC) mciSendString(L"pause \"sounds//background-music.mp3\"", NULL, 0, 0);
+		PlaySound(TEXT("sounds//win.wav"), NULL, SND_FILENAME | SND_ASYNC);
+	}
 	int Color[3] = { RED, GREEN, BLUE };
 	for (int i = 0; i < 3; i++) {
 		for (int j = 0; j < 6; j++)
@@ -780,6 +783,7 @@ void DrawWin(int n) {
 	}
 	TextColor(0);
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
+	BackgroundMusic();
 	ShowCur(1);
 }
 
