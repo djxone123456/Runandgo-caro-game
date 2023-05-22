@@ -85,6 +85,26 @@ void DrawButton()
 	for (int j = 0; j < 9; j++)
 		wcout << b3[j];
 
+	GotoXY(64, 33);
+	for (int j = 0; j < 9; j++)
+		wcout << b1[j];
+	GotoXY(64, 34);
+	for (int j = 0; j < 9; j++)
+		wcout << b2[j];
+	GotoXY(64, 35);
+	for (int j = 0; j < 9; j++)
+		wcout << b3[j];
+
+	GotoXY(98, 33);
+	for (int j = 0; j < 9; j++)
+		wcout << b1[j];
+	GotoXY(98, 34);
+	for (int j = 0; j < 9; j++)
+		wcout << b2[j];
+	GotoXY(98, 35);
+	for (int j = 0; j < 9; j++)
+		wcout << b3[j];
+
 	GotoXY(116, 33);
 	for (int j = 0; j < 9; j++)
 		wcout << b1[j];
@@ -97,6 +117,16 @@ void DrawButton()
 
 	int CurrentMode = _setmode(_fileno(stdout), OldMode);
 
+	GotoXY(67, 34);
+	cout << "DEL";
+	GotoXY(74, 34);
+	cout << "DELETE";
+
+	GotoXY(101, 34);
+	cout << "TAB";
+	GotoXY(92, 34);
+	cout << "QLOAD";
+
 	GotoXY(48, 34);
 	cout << "ESC";
 	GotoXY(55, 34);
@@ -107,9 +137,6 @@ void DrawButton()
 	GotoXY(118, 34);
 	cout << "ENTER";
 	//(43 - 126)/2 = 41 -> mid 84
-	GotoXY(71, 34);
-	cout << "Press DEL to delete a file !";
-
 }
 
 void DrawScore(int i, int x, int y)
@@ -328,6 +355,86 @@ void DeleteInfo()
 	}
 }
 
+static void QuickLoad() {
+	int OldMode = _setmode(_fileno(stdout), _O_WTEXT);
+	GotoXY(90, 27); wcout << L"╔═══════════════════╗";
+	GotoXY(90, 28); wcout << L"║ Enter file name:  ║";
+	GotoXY(90, 29); wcout << L"║ >                 ║";
+	GotoXY(90, 30); wcout << L"╚═══════════════════╝";
+	int CurrentMode = _setmode(_fileno(stdout), OldMode);
+	ifstream D2_fileLoad;
+	string D2_fileName[100];
+	D2_fileLoad.open("SavedFiles\\fileLoad.json", ios::in);
+	int i = 0;
+	if (D2_fileLoad)
+		while (getline(D2_fileLoad, D2_fileName[i])) {
+			if (D2_fileName[i] == "") break;
+			i++;
+		}
+	D2_fileLoad.close();
+	string QFile = "";
+	while (1) {
+		while (QFile == "") {
+			QFile.clear();
+			int x_tmp = 94;
+			GotoXY(94, 29);
+			int k = 0;
+			char c = '\0';
+			while (1) {
+				c = (char)_getch();
+				if (c == 0x09) {
+					if (D2_INGAME_MUSIC) PlaySound(TEXT("Sounds//select.wav"), NULL, SND_FILENAME | SND_ASYNC);
+					for (int i = 0; i < 4; i++) {
+						GotoXY(90, 27 + i);
+						cout << "                     ";
+					}
+					return;
+				}
+				if (c == 0x0D) break;
+				if (c == 8) {
+					if (QFile.size() == 0) continue;
+					k--;
+					x_tmp--;
+					QFile.pop_back();
+					GotoXY(x_tmp, 29);
+					cout << " ";
+					GotoXY(x_tmp, 29);
+					continue;
+				}
+				if (k == 15) continue;
+				QFile.push_back(c);
+				cout << QFile[k++];
+				GotoXY(++x_tmp, 29);
+			}
+		}
+		int j = 0;
+		for (; j <= i; j++)
+			if (D2_fileName[j] == QFile + ".txt") {
+				if (D2_INGAME_MUSIC) PlaySound(TEXT("Sounds//select.wav"), NULL, SND_FILENAME | SND_ASYNC);
+				LoadGame(File, QFile + ".txt");
+				isLoadFile = 1;
+				loadedFileName = QFile;
+				system("cls");
+				ConvertData(File);
+				if (D2_PLAYER02_NAME == "Mega Roboto") D3_GameMode = 0;
+				else D3_GameMode = 1;
+				StartGame();
+				ReverseDataInFile();
+				Locate = 1;
+				_CURRENT_MENU = 9;
+				return;
+			}
+		if (j == i + 1) {
+			GotoXY(92, 28); cout << "This file doesn't";
+			GotoXY(92, 29); cout << "     exist !!!   ";
+			Sleep(400);
+			GotoXY(92, 28); cout << "Enter file name: ";
+			GotoXY(92, 29); cout << ">                ";
+			QFile.clear();
+		}
+	}
+}
+
 void HandleKeyForLoad(int x, int y, KEY_EVENT_RECORD key)
 {
 	if (key.bKeyDown) //Key pressed
@@ -464,6 +571,13 @@ void HandleKeyForLoad(int x, int y, KEY_EVENT_RECORD key)
 					PrintFileInfo(Info_X, Info_Y, Name[Locate - 1]);
 				PrintFileName(Name);
 			}
+			break;
+		case 0x09: //TAB
+			if (isEmpty == 0) {
+				if (D2_INGAME_MUSIC) PlaySound(TEXT("Sounds//select.wav"), NULL, SND_FILENAME | SND_ASYNC);
+				QuickLoad();
+			}
+			break;
 		}
 }
 
