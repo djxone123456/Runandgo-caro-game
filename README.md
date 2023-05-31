@@ -18,7 +18,7 @@
 <div align="center">
   <a href="https://www.youtube.com/watch?v=7e8CDz5YVeU" title="Caro Chess Demo">
    <p align="center">
-     <img width="50%" src="https://scontent.fsgn5-12.fna.fbcdn.net/v/t1.15752-9/342270510_1034169850892280_3620968664864840828_n.png?_nc_cat=103&ccb=1-7&_nc_sid=ae9488&_nc_ohc=RfMAQkGeQuwAX_j-GRX&_nc_ht=scontent.fsgn5-12.fna&oh=03_AdR7iFp4kDEtuHOYJlZ_2DxpBj6qWt91Czm0A-AMOHmpDQ&oe=6471837D" alt="Caro Chess Demo"/>
+     <img width="50%" src="https://i3.ytimg.com/vi/7e8CDz5YVeU/maxresdefault.jpg" alt="Caro Chess Demo"/>
    </p>
   </a>
 </div>
